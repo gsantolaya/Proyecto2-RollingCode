@@ -110,6 +110,7 @@ let formSelectUserType = document.getElementById("form-select-user-type")
 let userType = document.getElementById("user-type")
 let registerForm = document.getElementById("register-form")
 let usersList = []
+let adminsList = []
 
 
 
@@ -204,6 +205,7 @@ formSelectUserType.onsubmit = (e) => {
                     Looks good!
                     </div>
                 </div>
+                
                 <div class="col-md-4">
                     <label for="user-email" class="form-label">Email:</label>
                     <div class="input-group has-validation">
@@ -259,17 +261,17 @@ formSelectUserType.onsubmit = (e) => {
             let userEmail = document.getElementById('user-email')
             let userPassword = document.getElementById('user-password')
             let userRepeatPassword = document.getElementById('user-repeat-password')
-            const toastLiveExample = document.getElementById('liveToast')
+            const successfulRegistrationAdminToast = document.getElementById('successful-registration-admin-toast')
 
 
             e.preventDefault()
-            const storageUserList = localStorage.getItem('admins')
+            const storageAdminsList = localStorage.getItem('admins')
 
             if (userFirstName.value.trim() != "" && userLastName.value.trim() != "" && userDni.value.trim() != "" && userNationality.value.trim() != "" && userPhone.value.trim() != "" && userAddress.value.trim() != "" && userPr.value.trim() != "" && userSpecialty.value.trim() != "" && userEmail.value.trim() != "" && userPassword.value.trim() != "" && userRepeatPassword.value.trim() != "") {
-                if (storageUserList) {
-                    usersList = JSON.parse(storageUserList)
+                if (storageAdminsList) {
+                    adminsList = JSON.parse(storageAdminsList)
                 }
-                const newUser = {
+                const newAdmin = {
                     firstName: userFirstName.value,
                     lastName: userLastName.value,
                     dni: userDni.value,
@@ -280,13 +282,14 @@ formSelectUserType.onsubmit = (e) => {
                     specialty: userSpecialty.value,
                     email: userEmail.value,
                     password: userPassword.value,
-                    type: userType.value
+                    type: userType.value,
+                    activation: null
                 }
-                usersList.push(newUser)
-                localStorage.setItem('admins', JSON.stringify(usersList))
-                const toast = new bootstrap.Toast(toastLiveExample)
+                adminsList.push(newAdmin)
+                localStorage.setItem('admins', JSON.stringify(adminsList))
+                const toast = new bootstrap.Toast(successfulRegistrationAdminToast)
                 toast.show()
-                registerForm.reset()
+                //window.location = 'index.html'
 
             }
         }
@@ -470,7 +473,7 @@ formSelectUserType.onsubmit = (e) => {
             let userEmail = document.getElementById('user-email')
             let userPassword = document.getElementById('user-password')
             let userRepeatPassword = document.getElementById('user-repeat-password')
-            const toastLiveExample = document.getElementById('liveToast')
+            const successfulRegistrationUserToast = document.getElementById('successful-registration-user-toast')
 
 
             e.preventDefault()
@@ -491,12 +494,14 @@ formSelectUserType.onsubmit = (e) => {
                     sure: userSure.value,
                     email: userEmail.value,
                     password: userPassword.value,
-                    type: userType.value
+                    type: userType.value,
                 }
                 usersList.push(newUser)
                 localStorage.setItem('users', JSON.stringify(usersList))
-                const toast = new bootstrap.Toast(toastLiveExample)
+                const toast = new bootstrap.Toast(successfulRegistrationUserToast)
                 toast.show()
+                //window.location = 'index.html'
+
             }
         }
     }

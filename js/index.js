@@ -22,7 +22,7 @@ if (storageUserLogIn) {
             <a class="dropdown-item" href="./error.html">Mi cuenta</a>
         </li>
         <li>
-        <a class="dropdown-item" href="./error.html">Mis Turnos</a>
+        <a class="dropdown-item" href="./error.html">Mis turnos</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -57,11 +57,14 @@ if (storageUserLogIn) {
             <a class="dropdown-item" href="./error.html">Mi cuenta</a>
         </li>
         <li>
-        <a class="dropdown-item" href="./error.html">Turnos</a>
+        <a class="dropdown-item" href="./error.html">Mis turnos</a>
         </li>
-    <li>
-    <a class="dropdown-item" href="./error.html">Datos pacientes</a>
-    </li>
+        <li>
+            <a class="dropdown-item" href="./admin.html">Registros</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="./error.html">Datos pacientes</a>
+        </li>
         <li>
             <hr class="dropdown-divider">
         </li>
@@ -78,11 +81,11 @@ if (storageUserLogIn) {
         localStorage.removeItem('adminLogIn');
     }
 }
-//----------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
 let bookAppointmentButton = document.getElementById("book-appointment-button")
 bookAppointmentButton.onclick = (e) => {
     e.preventDefault()
     window.location = './bookAnAppointment.html'
 }
-//-----------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
