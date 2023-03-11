@@ -1,78 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Clínica odontológica">
-        <meta name="keywords" content="clínica odontológica, odontologo, dentista, dentist">
-        <meta name="author" content="X Team">
-        <link rel="shortcut icon" type="image/x-icon" href="./icons/icono-diente-png.png">
-        <title>Clínica odontológica</title>
-        <link rel="stylesheet" href="./css/admin.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica odontológica">
+    <meta name="keywords" content="clínica odontológica, odontologo, dentista, dentist">
+    <meta name="author" content="X Team">
+    <link rel="shortcut icon" type="image/x-icon" href="./icons/icono-diente-png.png">
+    <title>Clínica odontológica</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</head>
+
 <body>
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2" alt="logo" width="30px" height="30px">Clinica odontológica</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2"
+                        alt="logo" width="30px" height="30px">Clinica odontológica</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-flex justify-content-evenly" id="navbarNavDropdown">
-                    <ul class="container-navbar navbar-nav" id="ulNavbar">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Nuestra clinica</a>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll"
+                        style="--bs-scroll-height: 100px;" id="ulNavbar">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#clinica">Nuestra clinica</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Especialistas</a>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#especialistas">Especialistas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tratamientos</a>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#tratamientos">Tratamientos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Casos clínicos</a>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#tratamientos">Casos clinicos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./error.html">Blog</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./contact.html">Contacto</a>
                         </li>
-                        <li id="turn-button" >
-                            <form class="container-fluid justify-content-start">
-                                <button class="btn btn-sm btn-outline-secondary" type="button">Solicitar turno</button>
-                            </form>
-                        </li>
-                        <li class="nav-item dropdown" id="profile">
+                        <li class="nav-item dropdown mx-3" id="profile">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                                aria-expanded="false"><img src="./icons/user.svg" height="25px" weight="25px"
+                                    alt="user-icon">
                                 Perfil
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu mx-3">
                                 <li><a class="dropdown-item" href="./login.html">Iniciar Sesion</a></li>
                                 <li><a class="dropdown-item" href="./register.html">Registrarse</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
                     </ul>
+                    <form class="d-flex" role="book-appointment" id="turn-button">
+                        <button class="btn btn-sm btn-outline-secondary" type="button"
+                            id="book-appointment-button">Solicitar turno</button>
+                    </form>
                 </div>
-
             </div>
         </nav>
     </header>
+    <main>
+        <div class="col-12 col-md-6 mt-4 mt-md-0">
+            <h2>Solicitudes de registros</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="num-prod" scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Matricula Profesional</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="adminsRegisterTableDetails">
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>DNI</td>
+                        <td>Matricula Profesional</td>
+                        <td>Especialidad</td>
+                        <td>
+                            <button class="btn btn-outline-dark" id=""><span
+                                    class="fa fa-solid fa-check"></span></button>
+                            <button class="btn btn-outline-danger" id=""><span
+                                    class="fa fa-solid fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- <tbody id="table-body">
+                </tbody> -->
+            </table>
+        </div>
+        <div class="col-12 col-md-6 mt-4 mt-md-0">
+            <h2>Profesionales registrados</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="num-prod" scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Matricula Profesional</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="adminsTableDetails">
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>DNI</td>
+                        <td>Matricula Profesional</td>
+                        <td>Especialidad</td>
+                        <td>
+                            <button class="btn btn-outline-dark" id=""><span
+                                    class="fa fa-solid fa-check"></span></button>
+                            <button class="btn btn-outline-danger" id=""><span
+                                    class="fa fa-solid fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-md-6 mt-4 mt-md-0">
+            <h2>Pacientes registrados</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="num-prod" scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableDetails">
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>DNI</td>
+                        <td>
+                            <button class="btn btn-outline-dark" id=""><span
+                                    class="fa fa-solid fa-check"></span></button>
+                            <button class="btn btn-outline-danger" id=""><span
+                                    class="fa fa-solid fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditUser">
+                        <div class="mb-3">
+                            <label for="typeUserForm" class="form-label">Activar:</label>
+                            <select class="form-select" id="typeUserForm">
+                                <option value="activado">Activado</option>
+                                <option value="desactivado">Desactivado</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditAdmin">
+                        <div class="mb-3">
+                            <label for="firstNameAdminForm" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="firstNameAdminForm">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastNameAdminForm" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="lastNameAdminForm">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dniAdminForm" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="dniAdminForm">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mpAdminForm" class="form-label">Matricula Profesional</label>
+                            <input type="text" class="form-control" id="mpAdminForm">
+                        </div>
+                        <div class="mb-3">
+                            <label for="typeAdminForm" class="form-label">Activar:</label>
+                            <select class="form-select" id="typeAdminForm">
+                                <option value="activado">Activado</option>
+                                <option value="desactivado">Desactivado</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Estas seguro de eliminar este item?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btnDeleteItem"
+                        data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastOk" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/happy_icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Actualizacion correcta</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                La operacion se realizo correctamente :)
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastError" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/error_icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-error" class="me-auto">Error</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Algun campo esta imcompleto. Actualizacion no realizada.
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row p-0 m-0">
+            <div id="footer-1" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
+                <div>
+                    <p class="footer-tt"><b>Contactanos:</b></p>
+                    <ul>
+                        <li>(+54) 381 5792863</li>
+                        <li>clinicaodontologica@gmail.com</li>
+                        <li>Laprida 550</li>
+                        <li>Lunes a viernes de 9 a 21 hs</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer-2" class="col-12 col-md-4 pt-2 bg-light text-center">
+                <a href="#"><img width="130px" src="./icons/icono-diente-png.png" alt="logo"></a>
+                <p class="fst-italic text-dark">&copy;Todos los derechos reservados</p>
+            </div>
+            <div id="footer-3" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
+                <div>
+                    <p class="footer-tt"><b>Encuentranos tambien en:</b></p>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./404notfound.html">
+                            <img class="button-icon-footer" src="./icons/instagram-icon-footer.png"
+                                alt="instagram-icon">
+                            <p class="p-3" id="google-text">clinica_odontologica</p>
+                        </a>
+                    </div>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./404notfound.html">
+                            <img class="button-icon-footer" src="./icons/facebook-icon-footer.png" alt="facebook-icon">
+                            <p class="p-3" id="google-text">Clinica Odontologica</p>
+                        </a>
+                    </div>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./404notfound.html">
+                            <img class="button-icon-footer" src="./icons/twitter-icon-footer.png" alt="twitter-icon">
+                            <p class="p-3" id="google-text">@clinicaodontologica</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="./js/admin.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/9f538b4106.js" defer crossorigin="anonymous"></script>
 </body>
+
 </html>
