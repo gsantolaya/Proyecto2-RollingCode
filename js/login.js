@@ -103,31 +103,63 @@ formLogin.onsubmit = (e) => {
     const storageUsersList = localStorage.getItem('users')
     const storageAdminsList = localStorage.getItem('admins')
 
-    if (storageUsersList || storageAdminsList) {
-        usersList = JSON.parse(storageUsersList)
+    if (storageUsersList) {
+            usersList = JSON.parse(storageUsersList)
+            // adminsList = JSON.parse(storageAdminsList)
+            const userFind = usersList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
+            if (userFind) {
+            const user = {
+                email: userFind.email,
+                firstname: userFind.firstName,
+                lastname: userFind.lastName,
+                type: userFind.type
+            }
+            localStorage.setItem('userLogIn', JSON.stringify(user))
+            window.location = 'index.html'
+        }
+    }
+    if (storageAdminsList){
         adminsList = JSON.parse(storageAdminsList)
+        const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
+        if (adminFind){
+            if(adminFind.activation == "activado"){
+            const admin = {
+                email: adminFind.email,
+                firstname: adminFind.firstName,
+                lastname: adminFind.lastName,
+                type: adminFind.type
+            }
+            localStorage.setItem('adminLogIn', JSON.stringify(admin))
+            window.location = 'index.html'
+        }else{
+            alert("usuario no activado")
+        }
+        }
     }
-    const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
-    if (adminFind) {
-        const admin = {
-            email: adminFind.email,
-            firstname: adminFind.firstName,
-            lastname: adminFind.lastName,
-            type: adminFind.type
-        }
-        localStorage.setItem('adminLogIn', JSON.stringify(admin))
-        window.location = 'index.html'
-        }
-    
-    const userFind = usersList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
-    if (userFind) {
-        const user = {
-            email: userFind.email,
-            firstname: userFind.firstName,
-            lastname: userFind.lastName,
-            type: userFind.type
-        }
-        localStorage.setItem('userLogIn', JSON.stringify(user))
-        window.location = 'index.html'
-    }
+    // const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
+    // if (adminFind){
+    //     if(adminFind.activation == "activado"){
+    //     const admin = {
+    //         email: adminFind.email,
+    //         firstname: adminFind.firstName,
+    //         lastname: adminFind.lastName,
+    //         type: adminFind.type
+    //     }
+    //     localStorage.setItem('adminLogIn', JSON.stringify(admin))
+    //     window.location = 'index.html'
+    //     }else{
+    //         alert("usuario no activado")
+    //     }
+    // }
+    // const userFind = usersList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
+    // if (userFind) {
+    //     const user = {
+    //         email: userFind.email,
+    //         firstname: userFind.firstName,
+    //         lastname: userFind.lastName,
+    //         type: userFind.type
+    //     }
+    //     localStorage.setItem('userLogIn', JSON.stringify(user))
+    //     window.location = 'index.html'
+    // }
 }

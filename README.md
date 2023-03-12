@@ -1,2 +1,2 @@
 # Proyecto2-RollingCode
-Proyecto 2 de RollingCode - web para clinica
+En este proyecto se realizo una web para una clinica odontologica en la cual el usuario puede registrarse e ingresar como profesional o como paciente, los profesionales al logearse podran ver sus turnos asignados, informacion de los pacientes, administrar otras cuentas entre otras opciones, los pacientes podran solicitar turnos encontrando al profesional que necesiten por nombre, dias de atencion o especialidad y a su vez visualizar los turnos ya solicitados.

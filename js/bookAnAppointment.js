@@ -89,10 +89,24 @@ bookAppointmentButton.onclick = (e) => {
 
 //Si no hay una sesion iniciada, redirecciona a login
 
+const myModal = document.getElementById('login-modal')
+const myInput = document.getElementById('formLogIn')
+
 if (storageUserLogIn == null) {
     window.location = './login.html'
     alert("Debe iniciar sesion")
 }
+
+function loadEditProductModal(product) {
+    productToEdit = product;
+    const nameDOM = document.getElementById('nameProductForm')
+    nameDOM.value = product.nombre
+    const detailDOM = document.getElementById('detailProducForm')
+    detailDOM.textContent = product.detalle
+    const priceDOM = document.getElementById('priceProductForm')
+    priceDOM.value = product.precio
+}
+
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -145,11 +159,12 @@ bookAnAppointmentForm.onsubmit = (e) => {
 //Agregando profesionales
 let selectingDr = document.getElementById('select-dr')
 const storageProfesionals = localStorage.getItem('admins')
-if(storageProfesionals){
+profesionals = []
+if (storageProfesionals) {
     profesionals = JSON.parse(storageProfesionals)
 }
 for (let i = 0; i < profesionals.length; i++) {
 
     selectingDr.innerHTML += `<option>Dr. ${profesionals[i].firstName} ${profesionals[i].lastName}</option>`
-    
+
 }
