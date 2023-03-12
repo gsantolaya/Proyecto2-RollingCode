@@ -11,32 +11,24 @@
     <link rel="shortcut icon" type="image/x-icon" href="./icons/icono-diente-png.png">
     <title>Clínica odontológica</title>
     <link rel="stylesheet" href="./css/bookAnAppointment.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- link calendario -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
-        integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
 </head>
 
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark"   >
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2"
-                        alt="logo" width="30px" height="30px">Clinica odontológica</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2" alt="logo" width="30px" height="30px">Clinica odontológica</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll"
-                        style="--bs-scroll-height: 100px;" id="ulNavbar">
+                    <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;" id="ulNavbar">
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="#clinica">Nuestra clinica</a>
                         </li>
@@ -56,10 +48,7 @@
                             <a class="nav-link" href="./contact.html">Contacto</a>
                         </li>
                         <li class="nav-item dropdown mx-3" id="profile">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false"><img src="./icons/user.svg" height="25px" weight="25px"
-                                    alt="user-icon">
-                                Perfil
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./icons/user.svg" height="25px" weight="25px" alt="user-icon"> Perfil
                             </a>
                             <ul class="dropdown-menu mx-3">
                                 <li><a class="dropdown-item" href="./login.html">Iniciar Sesion</a></li>
@@ -68,54 +57,71 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="book-appointment" id="turn-button">
-                        <button class="btn btn-sm btn-outline-secondary" type="button"
-                            id="book-appointment-button">Solicitar turno</button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button" id="book-appointment-button">Solicitar turno</button>
                     </form>
                 </div>
             </div>
         </nav>
     </header>
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
     <main>
         <h1>Solicitar turno</h1>
         <div class="container">
+
+            <div class="mb-3 col-12 col-md-4">
+                <label for="search-input" class="form-label"></label>
+                <input type="text" class="form-control" id="search-input" placeholder="Buscar">
+            </div>
+
+            <h5>Buscar profesional por:</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="search-name" value="option1" checked>
+                <label class="form-check-label" for="search-name">Nombre</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="search-specialty" value="option2">
+                <label class="form-check-label" for="search-specialty">Especialidad</label>
+            </div>
+            <label for="days-attention">Dias de atención</label>
+            <select name="days_attention" id="days-attention">
+                <option value="alls" selected>Todos</option>
+                <option value="monday">Lunes</option>
+                <option value="tuesday">Martes</option>
+                <option value="wednesday">Miercoles</option>
+                <option value="thursday">Jueves</option>
+                <option value="friday">Viernes</option>
+              </select>
+
+
             <form class="row g-3 needs-validation" id="bookAnAppointment-form" novalidate>
                 <div class="mb-3">
                     <label for="select-dr" class="form-label">Seleccione con quien desea solicitar el turno:</label>
                     <select class="form-select" required aria-label="select example" id="select-dr">
-                        <option value="">Dr...</option>
-                        <!-- <option value="1">Dr. One</option>
-                        <option value="2">Dr. Two</option>
-                        <option value="3">Dr. Three</option> -->
+                        <option selected disabled value="">Seleccione una opción</option>
                     </select>
-                    <div class="invalid-feedback">Seleccione una opcion</div>
+                    <div class="invalid-feedback">
+                        Por favor seleccione una opcion.
+                    </div>
                 </div>
-                <!-- Prueba calendario ------------------------------------------------------------------------------------------>
                 <div class="mb-3">
-                    <label for="fecha" class="form-label">Seleccione la fecha y horario:</label>
-                    <br>
-                    <input type="text" id="fecha" class="form-control" />
-
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-                        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-                        crossorigin="anonymous"></script>
-                    <script
-                        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
-                        integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk="
-                        crossorigin="anonymous"></script>
-
-                    <script>
-                        $(document).ready(() => {
-                            $('#fecha').datetimepicker({
-                                inline: true,
-                            });
-                        });
-                    </script>
+                    <label for="select-day" class="form-label">Seleccione el día:</label>
+                    <select class="form-select" required aria-label="select example" id="select-day">
+                        <option selected disabled value="">Seleccione una opción</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor seleccione una opcion.</div>
                 </div>
-                <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+                <div class="mb-3">
+                    <label for="select-hour" class="form-label">Seleccione la hora:</label>
+                    <select class="form-select" required aria-label="select example" id="select-hour">
+                        <option selected disabled value="">Seleccione una opción</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor seleccione una opcion.</div>
+                </div>
+
                 <div class="mb-3">
                     <label for="validationTextarea" class="form-label">Motivo de la consulta:</label>
-                    <textarea class="form-control" id="validationTextarea"
-                        placeholder="Detalle el motivo de su consulta" required></textarea>
+                    <textarea class="form-control" maxlength="300" minlength="5" id="validationTextarea" placeholder="Detalle el motivo de su consulta" required></textarea>
                     <div class="invalid-feedback">
                         Por favor ingrese el motivo de su consulta.
                     </div>
@@ -133,8 +139,53 @@
                 </div>
             </form>
         </div>
-
     </main>
+    <!-- <footer>
+        <div class="row p-0 m-0">
+            <div id="footer-1" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
+                <div>
+                    <p class="footer-tt"><b>Contactanos:</b></p>
+                    <ul>
+                        <li>(+54) 381 5792863</li>
+                        <li>clinicaodontologica@gmail.com</li>
+                        <li>Laprida 550</li>
+                        <li>Lunes a viernes de 9 a 21 hs</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer-2" class="col-12 col-md-4 pt-2 bg-light text-center">
+                <a href="#"><img width="130px" src="./icons/icono-diente-png.png" alt="logo"></a>
+                <p class="fst-italic text-dark">&copy;Todos los derechos reservados</p>
+            </div>
+            <div id="footer-3" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
+                <div>
+                    <p class="footer-tt"><b>Encuentranos tambien en:</b></p>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./404notfound.html">
+                            <img class="button-icon-footer" src="./icons/instagram-icon-footer.png"
+                                alt="instagram-icon">
+                            <p class="p-3" id="google-text">clinica_odontologica</p>
+                        </a>
+                    </div>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./404notfound.html">
+                            <img class="button-icon-footer" src="./icons/facebook-icon-footer.png" alt="facebook-icon">
+                            <p class="p-3" id="google-text">Clinica Odontologica</p>
+                        </a>
+                    </div>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./404notfound.html">
+                            <img class="button-icon-footer" src="./icons/twitter-icon-footer.png" alt="twitter-icon">
+                            <p class="p-3" id="google-text">@clinicaodontologica</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+    <div>
+        <a href="https://api.whatsapp.com/send?phone=543815792863" target="_blank"><img src="./icons/icono-whatsapp.png" alt="whatsapp-support" class="whatsapp-icon"></a>
+    </div>
     <script src="./js/bookAnAppointment.js"></script>
 </body>
 
