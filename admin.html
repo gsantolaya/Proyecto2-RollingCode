@@ -72,7 +72,8 @@
         </nav>
     </header>
     <main>
-        <div class="col-12 col-md-6 mt-4 mt-md-0">
+        <!-- Tablas -->
+        <div class="col-12">
             <h2>Solicitudes de registros</h2>
             <table class="table">
                 <thead>
@@ -81,8 +82,6 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">DNI</th>
-                        <th scope="col">Matricula Profesional</th>
-                        <th scope="col">Especialidad</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -92,8 +91,6 @@
                         <td>Nombre</td>
                         <td>Apellido</td>
                         <td>DNI</td>
-                        <td>Matricula Profesional</td>
-                        <td>Especialidad</td>
                         <td>
                             <button class="btn btn-outline-dark" id=""><span
                                     class="fa fa-solid fa-check"></span></button>
@@ -102,11 +99,10 @@
                         </td>
                     </tr>
                 </tbody>
-                <!-- <tbody id="table-body">
-                </tbody> -->
             </table>
         </div>
-        <div class="col-12 col-md-6 mt-4 mt-md-0">
+
+        <div class="col-12">
             <h2>Profesionales registrados</h2>
             <table class="table">
                 <thead>
@@ -115,6 +111,10 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">DNI</th>
+                        <th scope="col">Fecha de nacimiento</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Dirección</th>
                         <th scope="col">Matricula Profesional</th>
                         <th scope="col">Especialidad</th>
                         <th scope="col">Acciones</th>
@@ -126,7 +126,11 @@
                         <td>Nombre</td>
                         <td>Apellido</td>
                         <td>DNI</td>
-                        <td>Matricula Profesional</td>
+                        <td>Fecha de nacimiento</th>
+                        <td>Sexo</td>
+                        <td>Teléfono</td>
+                        <td>Dirección</td>
+                        <td>Matricula Profesional</th>
                         <td>Especialidad</td>
                         <td>
                             <button class="btn btn-outline-dark" id=""><span
@@ -138,7 +142,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-12 col-md-6 mt-4 mt-md-0">
+        <div class="col-12">
             <h2>Pacientes registrados</h2>
             <table class="table">
                 <thead>
@@ -147,6 +151,12 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">DNI</th>
+                        <th scope="col">Fecha de nacimiento</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Nacionalidad</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Domicilio</th>
+                        <th scope="col">Obra social</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -156,6 +166,12 @@
                         <td>Nombre</td>
                         <td>Apellido</td>
                         <td>DNI</td>
+                        <td>Fecha de nacimiento</td>
+                        <td>Sexo</th>
+                        <td>Nacionalidad</td>
+                        <td>Teléfono</td>
+                        <td>Domicilio</td>
+                        <td>Obra social</td>
                         <td>
                             <button class="btn btn-outline-dark" id=""><span
                                     class="fa fa-solid fa-check"></span></button>
@@ -167,19 +183,19 @@
             </table>
         </div>
     </main>
-
-    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modals -->
+    <div class="modal fade" id="activeAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Activar cuenta</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formEditUser">
+                    <form id="formActiveAdmin">
                         <div class="mb-3">
-                            <label for="typeUserForm" class="form-label">Activar:</label>
-                            <select class="form-select" id="typeUserForm">
+                            <label for="admin-active-status" class="form-label">Activar:</label>
+                            <select class="form-select" id="admin-active-status">
                                 <option value="activado">Activado</option>
                                 <option value="desactivado">Desactivado</option>
                             </select>
@@ -189,6 +205,43 @@
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmAdminDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalDeleteLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Estas seguro de eliminar este usuario?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-admin"
+                        data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmUserDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Estas seguro de eliminar este usuario?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-user"
+                        data-bs-dismiss="modal">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -197,30 +250,75 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user</h1>
+                    <h1 class="modal-title fs-5" id="edit-admin">Editar usuario:</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formEditAdmin">
-                        <div class="mb-3">
-                            <label for="firstNameAdminForm" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="firstNameAdminForm">
+                        <div class="">
+                            <label for="admin-first-name" class="form-label">Nombre:</label>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="admin-first-name"
+                                value="" placeholder="Ej:Juán" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-last-name" class="form-label">Apellido:</label>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="admin-last-name"
+                                value="" placeholder="Ej:Pérez" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-dni" class="form-label">DNI:</label>
+                            <input type="number" maxlength="8" minlength="7" class="form-control" id="admin-dni"
+                                value="" placeholder="Ej: 35263544" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-birthdate" class="form-label">Fecha de nacimiento:</label>
+                            <input type="date" class="form-control" id="admin-birthdate" value="" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-gender" class="form-label">Sexo:</label>
+                            <select class="form-select" id="admin-gender" required>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <label for="admin-phone" class="form-label">Teléfono:</label>
+                            <input type="tel" maxlength="15" minlength="2" class="form-control" id="admin-phone"
+                                value="" placeholder="Ej: 3815792562" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-address" class="form-label">Domicilio:</label>
+                            <input type="text" maxlength="30" minlength="10" class="form-control" id="admin-address"
+                                value="" placeholder="Ej: Laprida 550" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-pr" class="form-label">Matrícula profesional:</label>
+                            <input type="text" maxlength="4" minlength="3" class="form-control" id="admin-pr" value=""
+                                placeholder="Ej: 2750" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-specialty" class="form-label">Especialidad:</label>
+                            <select class="form-select" id="admin-specialty" required>
+                                <option>General</option>
+                                <option>Endodoncia</option>
+                                <option>Cirugia</option>
+                                <option>Ortodoncia</option>
+                                <option>Operatoria</option>
+                                <option>Protesis</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <label for="admin-email" class="form-label">Email:</label>
+                            <input type="email" maxlength="30" minlength="5" class="form-control" id="admin-email" aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-password" class="form-label">Contraseña:</label>
+                            <input type="password" maxlength="30" minlength="5" class="form-control" id="admin-password"
+                                value="" maxlength="20" minlength="6" placeholder="******" required>
                         </div>
                         <div class="mb-3">
-                            <label for="lastNameAdminForm" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="lastNameAdminForm">
-                        </div>
-                        <div class="mb-3">
-                            <label for="dniAdminForm" class="form-label">DNI</label>
-                            <input type="text" class="form-control" id="dniAdminForm">
-                        </div>
-                        <div class="mb-3">
-                            <label for="mpAdminForm" class="form-label">Matricula Profesional</label>
-                            <input type="text" class="form-control" id="mpAdminForm">
-                        </div>
-                        <div class="mb-3">
-                            <label for="typeAdminForm" class="form-label">Activar:</label>
-                            <select class="form-select" id="typeAdminForm">
+                            <label for="admin-status" class="form-label">Estado:</label>
+                            <select class="form-select" id="admin-status">
                                 <option value="activado">Activado</option>
                                 <option value="desactivado">Desactivado</option>
                             </select>
@@ -234,41 +332,132 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Advertencia</h1>
+                    <h1 class="modal-title fs-5" id="edit-user">Editar usuario:</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Esta operacion es irreversible. ¿Estas seguro de eliminar este item?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" id="btnDeleteItem"
-                        data-bs-dismiss="modal">Confirmar</button>
+                    <form id="formEditUser">
+                        <div class="">
+                            <label for="user-first-name" class="form-label">Nombre:</label>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="user-first-name" value="" placeholder="Ej:Juán" required>
+                        </div>
+                        <div class="">
+                            <label for="user-last-name" class="form-label">Apellido:</label>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="user-last-name" value="" placeholder="Ej:Pérez" required>
+                        </div>
+                        <div class="">
+                            <label for="user-dni" class="form-label">DNI:</label>
+                            <input type="number" maxlength="8" minlength="7" class="form-control" id="user-dni" value="" placeholder="Ej: 35263544" required>
+                        </div>
+                        <div class="">
+                            <label for="user-nationality" class="form-label">Nacionalidad:</label>
+                            <input type="text" maxlength="15" minlength="5" class="form-control" id="user-nationality" value="" placeholder="Ej: Argentino" required>
+                        </div>
+                        <div class="">
+                            <label for="user-birthdate" class="form-label">Fecha de nacimiento:</label>
+                            <input type="date" class="form-control" id="user-birthdate" value="" required>
+                        </div>
+                        <div class="">
+                            <label for="user-gender" class="form-label">Sexo:</label>
+                            <select class="form-select" id="user-gender" required>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <label for="user-phone" class="form-label">Teléfono:</label>
+                            <input type="tel" maxlength="15" minlength="2" class="form-control" id="user-phone" value="" placeholder="Ej: 3815792562" required>
+                        </div>
+                        <div class="">
+                            <label for="user-address" class="form-label">Domicilio:</label>
+                            <input type="text" maxlength="30" minlength="10" class="form-control" id="user-address" value="" placeholder="Ej: Laprida 550" required>
+                        </div>
+                        <div class="">
+                            <label for="user-sure" class="form-label">Obra social:</label>
+                            <select class="form-select" id="user-sure">
+                                <option>Sin Obra Social</option>
+                                <option>SUBSIDIO DE SALUD</option>
+                                <option>SWISS MEDICAL GROUP	</option>
+                                <option>O.S.A. PRENSA</option>
+                                <option>PODER JUDICIAL NAC.	</option>
+                                <option>APM PROTESIS	</option>
+                                <option>LUIS PASTEUR</option>
+                                <option>SOCDUS Ceramistas</option>
+                                <option>OSPRERA</option>
+                                <option>AMFFA</option>
+                                <option>OSDIPP</option>
+                                <option>OSSEG </option>
+                                <option>OSDE</option>
+                                <option>TV SALUD</option>
+                                <option>JERARQUICO SALUD</option>
+                                <option>POLICIA FEDERAL</option>
+                                <option>CONSULMED</option>
+                                <option>GALENO</option>
+                                <option>SADAIC</option>
+                                <option>ASOC. MUTUAL SANCOR</option>
+                                <option>ACA SALUD - AVALIAN</option>
+                                <option>DASUTeN</option>
+                                <option>OSPLAD</option>
+                                <option>AMNSTERDAM SALUD</option>
+                                <option>APM ODONTOLOGIA GRAL.</option>
+                                <option>BRAMED PRIVADA</option>
+                                <option>ODONTOPLAD</option>
+                                <option>BASA UTE UOM</option>
+                                <option>MUTUAL AGUA Y ENERGIA</option>
+                                <option>UTA</option>
+                                <option>OSPe</option>
+                                <option>OSFATUN - SER SANO</option>
+                                <option>PREVENCION SALUD</option>
+                                <option>OSFATLYF - LUZ Y FUERZA</option>
+                                <option>MEDICUS</option>
+                                <option>PROVINCIA ART</option>
+                                <option>MEP LIFE</option>
+                                <option>ODONTOLOGIA FAA</option>
+                                <option>IOSFA</option>
+                                <option>MEDIFE</option>
+                                <option>OSPIM</option>
+                                <option>AMERICA SERVICIOS</option>
+                                <option>PERSONAL DE FARMACIA</option>
+                                <option>OTRA</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <label for="user-email" class="form-label">Email:</label>
+                            <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email"aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
+                        </div>
+                        <div class="">
+                            <label for="user-password" class="form-label">Contraseña:</label>
+                            <input type="password" maxlength="30" minlength="5" class="form-control" id="user-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- Toasts -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toastOk" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="admin-actived-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <img src="./icons/happy_icon.svg" class="rounded me-2" alt="error icon">
-                <strong id="title-success" class="me-auto">Actualizacion correcta</strong>
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Usuario activado</strong>
                 <small>Ahora</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                La operacion se realizo correctamente :)
+                El usuario ha sido activado correctamente.
             </div>
         </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toastError" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <img src="./icons/error_icon.svg" class="rounded me-2" alt="error icon">
                 <strong id="title-error" class="me-auto">Error</strong>
@@ -276,7 +465,33 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                Algun campo esta imcompleto. Actualizacion no realizada.
+                Algo ha salido mal, intente nuevamente.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="success-delete-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Usario eliminado.</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                El usuario ha sido eliminado correctamente.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="success-edit-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Usario editado.</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                El usuario ha sido editado correctamente.
             </div>
         </div>
     </div>
@@ -323,6 +538,10 @@
             </div>
         </div>
     </footer>
+    <div>
+        <a href="https://api.whatsapp.com/send?phone=543815792863" target="_blank"><img src="./icons/icono-whatsapp.png"
+                alt="whatsapp-support" class="whatsapp-icon"></a>
+    </div>
     <script src="./js/admin.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

@@ -22,7 +22,7 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark"   >
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2"
                         alt="logo" width="30px" height="30px">Clinica odontológica</a>
@@ -100,33 +100,43 @@
             </div>
         </div>
     </main>
-    <footer></footer>
+    <footer>
+
+    </footer>
+
+    <!-- Toasts -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="successful-registration-admin-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="successful-registration-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <img src="./icons/check-icon.svg" class="rounded me-2" alt="check-icon">
                 <strong class="me-auto">Registro exitoso</strong>
-                <small>11 mins ago</small>
+                <small>Ahora</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body">
-                Se ha registrado correctamente como profesional, recibira un email confirmando la activación de su cuenta cuando esta sea aprobada.
+            <div class="toast-body" id="successful-registration-body-toast">
+                Se ha registrado correctamente como profesional, recibira un email confirmando la activación de su
+                cuenta cuando esta sea aprobada.
             </div>
         </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="successful-registration-user-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="error-registration-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <img src="./icons/check-icon.svg" class="rounded me-2" alt="check-icon">
-                <strong class="me-auto">Registro exitoso</strong>
-                <small>11 mins ago</small>
+                <img src="./icons/error_icon.svg" class="rounded me-2" alt="check-icon">
+                <strong class="me-auto">Error</strong>
+                <small>Ahora</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body">
-                Se ha registrado correctamente como paciente, ya puede ingresar a su cuenta.
+            <div class="toast-body" id="error-registration-body-toast">
+                No se ha podido completar el registro, complete los campos correctamente.
             </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
     <script src="./js/register.js"></script>
 </body>
 

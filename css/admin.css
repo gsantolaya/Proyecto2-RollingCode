@@ -1,8 +1,11 @@
 
 footer{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
     font-family: 'Zen Dots', cursive;
     font-size: 12px;
-    /* background-color: #212429;  */
 }
 .button-footer{
     display: flex;

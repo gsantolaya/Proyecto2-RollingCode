@@ -89,7 +89,7 @@ bookAppointmentButton.onclick = (e) => {
 
 //Si no hay una sesion iniciada, redirecciona a login
 
-const myModal = document.getElementById('login-modal')
+/*const myModal = document.getElementById('login-modal')
 const myInput = document.getElementById('formLogIn')
 
 if (storageUserLogIn == null) {
@@ -105,7 +105,7 @@ function loadEditProductModal(product) {
     detailDOM.textContent = product.detalle
     const priceDOM = document.getElementById('priceProductForm')
     priceDOM.value = product.precio
-}
+}*/
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,42 +129,202 @@ function loadEditProductModal(product) {
     })
 })()
 //-------------------------------------------------------------------------------------------------------------------------------------
-//Agregando turnos
 let bookAnAppointmentForm = document.getElementById('bookAnAppointment-form')
-let selectDr = document.getElementById('select-dr')
+let selectDrDOM = document.getElementById('select-dr')
+let selectDayDOM = document.getElementById('select-day')
+let selectHourDOM = document.getElementById('select-hour')
 let fecha = document.getElementById('fecha')
 let validationTextarea = document.getElementById('validationTextarea')
 let fileInput = document.getElementById('file-input')
+let searchInputDOM = document.getElementById('search-input')
 let listTurns = []
+let listProfessionals = []
+let filteredprofessional = []
+let prefix = undefined
 
+
+const storageProfessionals = localStorage.getItem('admins')
+if (storageProfessionals) {
+    listProfessionals = JSON.parse(storageProfessionals)
+}
+
+let searchNameDOM = document.getElementById('search-name')
+let searchSpecialtyDOM = document.getElementById('search-specialty')
+let daysAttentionDOM = document.getElementById('days-attention')
+let optionSearchSelected = "name"
+
+searchNameDOM.onclick = () => {
+    optionSearchSelected = "name"
+}
+searchSpecialtyDOM.onclick = () => {
+    optionSearchSelected = "specialty"
+}
+
+selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+for (let i = 0; i < listProfessionals.length; i++) {
+    const professional = listProfessionals[i];
+    if (professional.gender == "Femenino") {
+        prefix = "Dra."
+    } else {
+        prefix = "Dr."
+    }
+    selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
+}
+if (daysAttentionDOM.value == 'alls') {
+    searchInputDOM.onkeyup = (e) => {
+        let professionalFilter = (e.target.value).toLowerCase().trim()
+        let searchBy = optionSearchSelected == "specialty" ? 'specialty' : 'firstName'
+        filteredprofessional = listProfessionals.filter((profesional) => profesional[searchBy].toLowerCase().trim().includes(professionalFilter))
+
+        selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+        for (let i = 0; i < filteredprofessional.length; i++) {
+            const professional = filteredprofessional[i];
+            if (professional.gender == "Femenino") {
+                prefix = "Dra."
+            } else {
+                prefix = "Dr."
+            }
+            selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
+        }
+    }
+
+
+    daysAttentionDOM.onchange = (e) => {
+        let daySelected = e.target.value
+        let searchBy = optionSearchSelected == "specialty" ? 'specialty' : 'firstName'
+        filteredprofessional = []
+        listProfessionals.forEach((professional) => {
+            if (professional[searchBy].toLowerCase().trim().includes(searchInputDOM.value.toLowerCase().trim())) {
+                if (professional.schedules[daySelected] && professional.schedules[daySelected].length > 0) {
+                    filteredprofessional.push(professional)
+                }
+            }
+        })
+        selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+        for (let i = 0; i < filteredprofessional.length; i++) {
+            const professional = filteredprofessional[i];
+            if (professional.gender == "Femenino") {
+                prefix = "Dra."
+            } else {
+                prefix = "Dr."
+            }
+            selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
+        }
+        searchInputDOM.onkeyup = (e) => {
+            let professionalFilter = (e.target.value).toLowerCase().trim()
+            let searchBy = optionSearchSelected == "specialty" ? 'specialty' : 'firstName'
+            filteredprofessional = []
+            listProfessionals.forEach((professional) => {
+                if (professional[searchBy].toLowerCase().trim().includes(professionalFilter)) {
+                    if (professional.schedules[daysAttentionDOM.value] && professional.schedules[daysAttentionDOM.value].length > 0) {
+                        filteredprofessional.push(professional)
+                    }
+                }
+            })
+        }
+    }
+    
+}
+// selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+// for (let i = 0; i < listProfessionals.length; i++) {
+//     const professional = listProfessionals[i];
+//     if (professional.gender == "Femenino") {
+//         prefix = "Dra."
+//     } else {
+//         prefix = "Dr."
+//     }
+//     selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
+
+
+
+    // filteredprofessional = listProfessionals.filter((professional) => (Object.keys(professional.schedules).length > 0 && Object.keys(professional.schedules).includes(daysAttentionDOM.value)) && professional[searchBy].toLowerCase().trim().includes(professionalFilter))
+/*selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+for (let i = 0; i < filteredprofessional.length; i++) {
+    const professional = filteredprofessional[i];
+    if (professional.gender == "Femenino") {
+        prefix = "Dra."
+    } else {
+        prefix = "Dr."
+    }
+    selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
+}*/
+//}
+/*
+selectDrDOM.onchange = () => {
+    selectDayDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+    let professionalSelected = listProfessionals.find(professional => selectDrDOM.value.includes(professional.firstName, professional.lastName))
+    if (professionalSelected.schedules.monday.length != 0) {
+        selectDayDOM.innerHTML += `<option>Lunes</option>`
+    }
+    if (professionalSelected.schedules.tuesday.length != 0) {
+        selectDayDOM.innerHTML += `<option>Martes</option>`
+    }
+    if (professionalSelected.schedules.wednesday.length != 0) {
+        selectDayDOM.innerHTML += `<option>Miércoles</option>`
+    }
+    if (professionalSelected.schedules.thursday.length != 0) {
+        selectDayDOM.innerHTML += `<option>Jueves</option>`
+    }
+    if (professionalSelected.schedules.friday.length != 0) {
+        selectDayDOM.innerHTML += `<option>Viernes</option>`
+    }
+}
+
+selectDayDOM.onchange = () => {
+    selectHourDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
+    let professionalSelected = listProfessionals.find(professional => selectDrDOM.value.includes(professional.firstName, professional.lastName))
+    switch (selectDayDOM.value) {
+        case "Lunes":
+            for (let i = 0; i < professionalSelected.schedules.monday.length; i++) {
+                const hour = professionalSelected.schedules.monday[i];
+                selectHourDOM.innerHTML += `<option>${hour}</option>`
+            }
+            break;
+        case "Martes":
+            for (let i = 0; i < professionalSelected.schedules.tuesday.length; i++) {
+                const hour = professionalSelected.schedules.tuesday[i];
+                selectHourDOM.innerHTML += `<option>${hour}</option>`
+            }
+            break;
+        case "Miércoles":
+            for (let i = 0; i < professionalSelected.schedules.wednesday.length; i++) {
+                const hour = professionalSelected.schedules.wednesday[i];
+                selectHourDOM.innerHTML += `<option>${hour}</option>`
+            }
+            break;
+        case "Jueves":
+            for (let i = 0; i < professionalSelected.schedules.thursday.length; i++) {
+                const hour = professionalSelected.schedules.thursday[i];
+                selectHourDOM.innerHTML += `<option>${hour}</option>`
+            }
+            break;
+        case "Viernes":
+            for (let i = 0; i < professionalSelected.schedules.friday.length; i++) {
+                const hour = professionalSelected.schedules.friday[i];
+                selectHourDOM.innerHTML += `<option>${hour}</option>`
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+
+const storageTurns = localStorage.getItem('turns')
+if (storageTurns) {
+    listTurns = JSON.parse(storageTurns)
+}
 bookAnAppointmentForm.onsubmit = (e) => {
     e.preventDefault()
-    const storageTurns = localStorage.getItem('turns')
-
-    if (selectDr.value.trim() != "" && fecha.value.trim() != "" && validationTextarea.value.trim() != "") {
-        if (storageTurns) {
-            usersList = JSON.parse(storageTurns)
-        }
+    if (selectDrDOM.value.trim() != "" && selectDayDOM.value.trim() != "" && selectHourDOM.value.trim() != "" && validationTextarea.value.trim() != "") {
+        
         const newTurn = {
-            Dr: selectDr.value,
-            date: fecha.value,
-            consulta: validationTextarea.value,
-            input: fileInput
+            dr: selectDrDOM.value,
+            day: selectDayDOM.value,
+            hour: selectHourDOM.value,
+            reasonConsultation: validationTextarea.value
         }
         listTurns.push(newTurn)
         localStorage.setItem('turns', JSON.stringify(listTurns))
     }
-}
-//-------------------------------------------------------------------------------------------------------------------------------------
-//Agregando profesionales
-let selectingDr = document.getElementById('select-dr')
-const storageProfesionals = localStorage.getItem('admins')
-profesionals = []
-if (storageProfesionals) {
-    profesionals = JSON.parse(storageProfesionals)
-}
-for (let i = 0; i < profesionals.length; i++) {
-
-    selectingDr.innerHTML += `<option>Dr. ${profesionals[i].firstName} ${profesionals[i].lastName}</option>`
-
-}
+}*/

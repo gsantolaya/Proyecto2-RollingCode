@@ -79,19 +79,20 @@ if (storageUserLogIn) {
     }
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 const storageAdmins = localStorage.getItem('admins')
 const storageUsers = localStorage.getItem('users')
-let btnDeleteDOM = document.getElementById('btnDeleteItem')
-let btnActivationDOM = document.getElementById('btnActivation')
+
+let formActiveAdminDOM = document.getElementById('formActiveAdmin')
+let formEditAdminDOM = document.getElementById('formEditAdmin')
+let formEditUserDOM = document.getElementById('formEditUser')
+let btnDeleteAdminDOM = document.getElementById('btn-delete-admin')
+let btnDeleteUserDOM = document.getElementById('btn-delete-user')
+//let btnActivationDOM = document.getElementById('btnActivation')
 let tbodyUserDOM = document.getElementById('adminsRegisterTableDetails')
 let tbodyAdminsDOM = document.getElementById('adminsTableDetails')
 let tbodyUsersDOM = document.getElementById('usersTableDetails')
-let titleSuccessDOM = document.getElementById('title-success')
-let formUserAMBDOM = document.getElementById('formEditUser')
-let formAdminAMBDOM = document.getElementById('formEditAdmin')
-let userToEdit = null;
-
+let adminToEdit = null 
+let userToEdit = null
 let listAdmins = []
 let listUsers = []
 
@@ -109,68 +110,99 @@ function deleteUser(email) {
         email: email
     }
 }
+function loadActiveAdmin(admin) {
+    adminToEdit = admin;
+    const statusAdminDOM = document.getElementById('admin-active-status')
+    statusAdminDOM.value = admin.status
+}
+
+function loadEditAdmin(admin) {
+    adminToEdit = admin;
+    const firstNameAdminDOM = document.getElementById('admin-first-name')
+    firstNameAdminDOM.value = admin.firstName
+    const lastNameAdminDOM = document.getElementById('admin-last-name')
+    lastNameAdminDOM.value = admin.lastName
+    const dniAdminDOM = document.getElementById('admin-dni')
+    dniAdminDOM.value = admin.dni
+    const birthdateAdminDOM = document.getElementById('admin-birthdate')
+    birthdateAdminDOM.value = admin.birthdate
+    const genderAdminDOM = document.getElementById('admin-gender')
+    genderAdminDOM.value = admin.gender
+    const phoneAdminDOM = document.getElementById('admin-phone')
+    phoneAdminDOM.value = admin.phone
+    const addressAdminDOM = document.getElementById('admin-address')
+    addressAdminDOM.value = admin.address
+    const prAdminDOM = document.getElementById('admin-pr')
+    prAdminDOM.value = admin.pr
+    const specialtyAdminDOM = document.getElementById('admin-specialty')
+    specialtyAdminDOM.value = admin.specialty
+    const emailAdminDOM = document.getElementById('admin-email')
+    emailAdminDOM.value = admin.email
+    const passwordAdminDOM = document.getElementById('admin-password')
+    passwordAdminDOM.value = admin.password
+    const statusAdminDOM = document.getElementById('admin-status')
+    statusAdminDOM.value = admin.status
+}
 
 function loadEditUser(user) {
     userToEdit = user;
-    const typeUserDOM = document.getElementById('typeUserForm')
-    typeUserDOM.value = user.activation
+
+    const firstNameUserDOM = document.getElementById('user-first-name')
+    firstNameUserDOM.value = user.firstName
+    const lastNameUserDOM = document.getElementById('user-last-name')
+    lastNameUserDOM.value = user.lastName
+    const dniUserDOM = document.getElementById('user-dni')
+    dniUserDOM.value = user.dni
+    const nationalityUserDOM = document.getElementById('user-nationality')
+    nationalityUserDOM.value = user.dni
+    const birthdateUserDOM = document.getElementById('user-birthdate')
+    birthdateUserDOM.value = user.birthdate
+    const genderUserDOM = document.getElementById('user-gender')
+    genderUserDOM.value = user.gender
+    const phoneUserDOM = document.getElementById('user-phone')
+    phoneUserDOM.value = user.phone
+    const addressUserDOM = document.getElementById('user-address')
+    addressUserDOM.value = user.address
+    const sureUserDOM = document.getElementById('user-sure')
+    sureUserDOM.value = user.sure
+    const emailUserDOM = document.getElementById('user-email')
+    emailUserDOM.value = user.email
+    const passwordUserDOM = document.getElementById('user-password')
+    passwordUserDOM.value = user.password
 }
-
-function loadEditAdmin(user) {
-    userToEdit = user;
-    const firstNameAdminDOM = document.getElementById('firstNameAdminForm')
-    firstNameAdminDOM.value = user.firstName
-    const lastNameAdminDOM = document.getElementById('lastNameAdminForm')
-    lastNameAdminDOM.value = user.lastName
-    const dniAdminDOM = document.getElementById('dniAdminForm')
-    dniAdminDOM.value = user.dni
-    const mpAdminDOM = document.getElementById('mpAdminForm')
-    mpAdminDOM.value = user.pr
-    const typeAdminDOM = document.getElementById('typeAdminForm')
-    typeAdminDOM.value = user.activation
-}
-
-
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Funciones creando tablas DOM
 function generateTableRegisterAdmins(listAdmins) {
     tbodyUserDOM.innerHTML = ''
-    listAdmins.forEach((user, i) => {
-        if (user.activation != "activado") {
+    listAdmins.forEach((admin, i) => {
+        if (admin.status != "activado") {
 
             const thDOM = document.createElement('th')
             thDOM.textContent = i + 1
-
             const trDOM = document.createElement('tr')
 
             const tdFirstNameDOM = document.createElement('td')
-            tdFirstNameDOM.textContent = user.firstName
-
+            tdFirstNameDOM.textContent = admin.firstName
             const tdLastNameDOM = document.createElement('td')
-            tdLastNameDOM.textContent = user.lastName
-
-
+            tdLastNameDOM.textContent = admin.lastName
             const tdDNIDOM = document.createElement('td')
-            tdDNIDOM.textContent = user.dni
+            tdDNIDOM.textContent = admin.dni
 
-            const tdMPDOM = document.createElement('td')
-            tdMPDOM.textContent = user.pr
-
-            const tdSpecialtyDOM = document.createElement('td')
-            tdSpecialtyDOM.textContent = user.specialty
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
             btnEditDOM.innerHTML = `<span class="fa fa-solid fa-check"></span>`
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
-            btnEditDOM.setAttribute("data-bs-target", "#editUserModal");
-            btnEditDOM.onclick = () => { loadEditUser(user) }
+            btnEditDOM.setAttribute("data-bs-target", "#activeAdminModal");
+            btnEditDOM.onclick = () => {loadActiveAdmin(admin) }
 
             const btnDeleteDOM = document.createElement('button')
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
-            btnDeleteDOM.setAttribute("data-bs-target", "#confirmDelete");
-            btnDeleteDOM.onclick = () => { deleteUser(user.email) }
+            btnDeleteDOM.setAttribute("data-bs-target", "#confirmAdminDelete");
+            btnDeleteDOM.onclick = () => {deleteUser(admin.email) }
 
             tdActionsDOM.appendChild(btnEditDOM)
             tdActionsDOM.appendChild(btnDeleteDOM)
@@ -180,8 +212,6 @@ function generateTableRegisterAdmins(listAdmins) {
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
-            trDOM.appendChild(tdMPDOM)
-            trDOM.appendChild(tdSpecialtyDOM)
 
             trDOM.appendChild(tdActionsDOM)
             tbodyUserDOM.append(trDOM)
@@ -191,29 +221,31 @@ function generateTableRegisterAdmins(listAdmins) {
 
 function generateTableAdmins(listAdmins) {
     tbodyAdminsDOM.innerHTML = ''
-    listAdmins.forEach((user, i) => {
-        if (user.activation == "activado") {
+    listAdmins.forEach((admin, i) => {
+        if (admin.status == "activado") {
 
             const thDOM = document.createElement('th')
             thDOM.textContent = i + 1
-
             const trDOM = document.createElement('tr')
 
             const tdFirstNameDOM = document.createElement('td')
-            tdFirstNameDOM.textContent = user.firstName
-
+            tdFirstNameDOM.textContent = admin.firstName
             const tdLastNameDOM = document.createElement('td')
-            tdLastNameDOM.textContent = user.lastName
-
-
+            tdLastNameDOM.textContent = admin.lastName
             const tdDNIDOM = document.createElement('td')
-            tdDNIDOM.textContent = user.dni
-
-            const tdMPDOM = document.createElement('td')
-            tdMPDOM.textContent = user.pr
-
+            tdDNIDOM.textContent = admin.dni
+            const tdBirthdateDOM = document.createElement('td')
+            tdBirthdateDOM.textContent = admin.birthdate
+            const tdGenderDOM = document.createElement('td')
+            tdGenderDOM.textContent = admin.gender
+            const tdPhoneDOM = document.createElement('td')
+            tdPhoneDOM.textContent = admin.phone
+            const tdAddressDOM = document.createElement('td')
+            tdAddressDOM.textContent = admin.address
+            const tdPrDOM = document.createElement('td')
+            tdPrDOM.textContent = admin.pr
             const tdSpecialtyDOM = document.createElement('td')
-            tdSpecialtyDOM.textContent = user.specialty
+            tdSpecialtyDOM.textContent = admin.specialty
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
@@ -221,14 +253,14 @@ function generateTableAdmins(listAdmins) {
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editAdminModal");
-            btnEditDOM.onclick = () => { loadEditAdmin(user) }
+            btnEditDOM.onclick = () => { loadEditAdmin(admin) }
 
             const btnDeleteDOM = document.createElement('button')
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
-            btnDeleteDOM.setAttribute("data-bs-target", "#confirmDelete");
-            btnDeleteDOM.onclick = () => { deleteUser(user.email) }
+            btnDeleteDOM.setAttribute("data-bs-target", "#confirmAdminDelete");
+            btnDeleteDOM.onclick = () => { deleteUser(admin.email) }
 
             tdActionsDOM.appendChild(btnEditDOM)
             tdActionsDOM.appendChild(btnDeleteDOM)
@@ -238,7 +270,11 @@ function generateTableAdmins(listAdmins) {
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
-            trDOM.appendChild(tdMPDOM)
+            trDOM.appendChild(tdBirthdateDOM)
+            trDOM.appendChild(tdGenderDOM)
+            trDOM.appendChild(tdPhoneDOM)
+            trDOM.appendChild(tdAddressDOM)
+            trDOM.appendChild(tdPrDOM)
             trDOM.appendChild(tdSpecialtyDOM)
 
             trDOM.appendChild(tdActionsDOM)
@@ -254,18 +290,26 @@ function generateTableUsers(listUsers) {
 
             const thDOM = document.createElement('th')
             thDOM.textContent = i + 1
-
             const trDOM = document.createElement('tr')
 
             const tdFirstNameDOM = document.createElement('td')
             tdFirstNameDOM.textContent = user.firstName
-
             const tdLastNameDOM = document.createElement('td')
             tdLastNameDOM.textContent = user.lastName
-
-
             const tdDNIDOM = document.createElement('td')
             tdDNIDOM.textContent = user.dni
+            const tdBirthdateDOM = document.createElement('td')
+            tdBirthdateDOM.textContent = user.birthdate
+            const tdGenderDOM = document.createElement('td')
+            tdGenderDOM.textContent = user.gender
+            const tdNationalityDOM = document.createElement('td')
+            tdNationalityDOM.textContent = user.nationality
+            const tdPhoneDOM = document.createElement('td')
+            tdPhoneDOM.textContent = user.phone
+            const tdAddressDOM = document.createElement('td')
+            tdAddressDOM.textContent = user.address
+            const tdSureDOM = document.createElement('td')
+            tdSureDOM.textContent = user.sure
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
@@ -279,8 +323,8 @@ function generateTableUsers(listUsers) {
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
-            btnDeleteDOM.setAttribute("data-bs-target", "#confirmDelete");
-            btnDeleteDOM.onclick = () => { deleteUser(user.email) }
+            btnDeleteDOM.setAttribute("data-bs-target", "#confirmUserDelete");
+            btnDeleteDOM.onclick = () => { deleteUser(user.email)}
 
             tdActionsDOM.appendChild(btnEditDOM)
             tdActionsDOM.appendChild(btnDeleteDOM)
@@ -290,81 +334,172 @@ function generateTableUsers(listUsers) {
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
+            trDOM.appendChild(tdBirthdateDOM)
+            trDOM.appendChild(tdGenderDOM)
+            trDOM.appendChild(tdNationalityDOM)
+            trDOM.appendChild(tdPhoneDOM)
+            trDOM.appendChild(tdAddressDOM)
+            trDOM.appendChild(tdSureDOM)
+
 
             trDOM.appendChild(tdActionsDOM)
             tbodyUsersDOM.append(trDOM)
         }
     });
 }
-
-
-btnDeleteDOM.onclick = (e) => {
-    let newItems = []
-    newItems = listAdmins.filter(u => u.email != deleteConfig.email)
-    localStorage.setItem('admins', JSON.stringify(newItems))
-    listAdmins = newItems;
-    titleSuccessDOM.textContent = 'Usuario eliminado';
-    const toastOkDOM = document.getElementById('toastOk')
-    const toast = new bootstrap.Toast(toastOkDOM)
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Funciones delete:
+btnDeleteUserDOM.onclick = (e) => {
+    let newUsers = []
+    newUsers = listUsers.filter(u => u.email != deleteConfig.email)
+    localStorage.setItem('users', JSON.stringify(newUsers))
+    listUsers = newUsers;
+    const successDeleteToast = document.getElementById('success-delete-toast')
+    const toast = new bootstrap.Toast(successDeleteToast)
     toast.show()
-    generateTableRegisterAdmins(newItems)
+    generateTableUsers(newUsers)
 }
-
-formUserAMBDOM.onsubmit = (e) => {
+btnDeleteAdminDOM.onclick = (e) => {
+    let newAdmins = []
+    newAdmins = listAdmins.filter(u => u.email != deleteConfig.email)
+    localStorage.setItem('admins', JSON.stringify(newAdmins))
+    listAdmins = newAdmins;
+    const successDeleteToast = document.getElementById('success-delete-toast')
+    const toast = new bootstrap.Toast(successDeleteToast)
+    toast.show()
+    generateTableRegisterAdmins(newAdmins)
+    generateTableAdmins(newAdmins)
+}
+// Funciones edit:
+formActiveAdminDOM.onsubmit = (e) => {
     e.preventDefault()
-    const id = listAdmins.findIndex(u => u.email == userToEdit.email)
-    const typeUserDOM = document.getElementById('typeUserForm')
-    userToEdit = null;
-    if (typeUserDOM.value) {
-        listAdmins[id].activation = typeUserDOM.value
+    const id = listAdmins.findIndex(u => u.email == adminToEdit.email)
+
+    const adminActiveStatusDOM = document.getElementById('admin-active-status')
+
+    adminToEdit = null;
+    if (adminActiveStatusDOM.value) {
+        listAdmins[id].status = adminActiveStatusDOM.value
         localStorage.setItem('admins', JSON.stringify(listAdmins))
         listAdmins = JSON.parse(localStorage.getItem('admins'))
         generateTableRegisterAdmins(listAdmins)
-        titleSuccessDOM.textContent = 'Usuario editado';
-        const toastOkDOM = document.getElementById('toastOk')
-        const toast = new bootstrap.Toast(toastOkDOM)
-        location.reload()
+        generateTableAdmins(listAdmins)
+        // setTimeout(function() {
+        //     location.reload();
+        // }, 3000);
+        if(adminActiveStatusDOM.value == "activado"){
+        const adminActivedToastDOM = document.getElementById('admin-actived-toast')
+        const toast = new bootstrap.Toast(adminActivedToastDOM)
         toast.show()
-    } else {
-        const toastErrorDOM = document.getElementById('toastError')
-        const toast = new bootstrap.Toast(toastErrorDOM)
-        location.reload()
+        }
+    }else {
+        const errorToastDOM = document.getElementById('error-toast')
+        const toast = new bootstrap.Toast(errorToastDOM)
         toast.show()
     }
 }
-
-formAdminAMBDOM.onsubmit = (e) => {
+formEditAdminDOM.onsubmit = (e) => {
     e.preventDefault()
-    const id = listAdmins.findIndex(u => u.email == userToEdit.email)
-    const firstNameAdminDOM = document.getElementById('firstNameAdminForm')
-    const lastNameAdminDOM = document.getElementById('lastNameAdminForm')
-    const dniAdminDOM = document.getElementById('dniAdminForm')
-    const prAdminDOM = document.getElementById('mpAdminForm')
-    const typeAdminDOM = document.getElementById('typeAdminForm')
-    userToEdit = null;
-    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (dniAdminDOM.value) && (prAdminDOM.value) && (typeAdminDOM.value)) {
+    const id = listAdmins.findIndex(u => u.email == adminToEdit.email)
+    const firstNameAdminDOM = document.getElementById('admin-first-name')
+    const lastNameAdminDOM = document.getElementById('admin-last-name')
+    const dniAdminDOM = document.getElementById('admin-dni')
+    const birthdateAdminDOM = document.getElementById('admin-birthdate')
+    const genderAdminDOM = document.getElementById('admin-gender')
+    const phoneAdminDOM = document.getElementById('admin-phone')
+    const addressAdminDOM = document.getElementById('admin-address')
+    const prAdminDOM = document.getElementById('admin-pr')
+    const specialtyAdminDOM = document.getElementById('admin-specialty')
+    const emailAdminDOM = document.getElementById('admin-email')
+    const passwordAdminDOM = document.getElementById('admin-password')
+    const statusAdminDOM = document.getElementById('admin-status')
+
+    adminToEdit = null;
+    
+    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (dniAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (emailAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
         listAdmins[id].firstName = firstNameAdminDOM.value
         listAdmins[id].lastName = lastNameAdminDOM.value
         listAdmins[id].dni = dniAdminDOM.value
+        listAdmins[id].birthdate = birthdateAdminDOM.value
+        listAdmins[id].gender = genderAdminDOM.value
+        listAdmins[id].phone = phoneAdminDOM.value
+        listAdmins[id].address = addressAdminDOM.value
         listAdmins[id].pr = prAdminDOM.value
-        listAdmins[id].activation = typeAdminDOM.value
+        listAdmins[id].specialty = specialtyAdminDOM.value
+        listAdmins[id].email = emailAdminDOM.value
+        listAdmins[id].password = passwordAdminDOM.value
+        listAdmins[id].status = statusAdminDOM.value
+
         localStorage.setItem('admins', JSON.stringify(listAdmins))
         listAdmins = JSON.parse(localStorage.getItem('admins'))
         generateTableRegisterAdmins(listAdmins)
-        titleSuccessDOM.textContent = 'Usuario editado';
-        const toastOkDOM = document.getElementById('toastOk')
-        const toast = new bootstrap.Toast(toastOkDOM)
-        location.reload()
+        generateTableAdmins(listAdmins)
+
+        const successEditToastDOM = document.getElementById('success-edit-toast')
+        const toast = new bootstrap.Toast(successEditToastDOM)
         toast.show()
+        // setTimeout(function() {
+        //     location.reload();
+        // }, 3000);
     } else {
-        const toastErrorDOM = document.getElementById('toastError')
-        const toast = new bootstrap.Toast(toastErrorDOM)
-        location.reload()
+        const errorToastDOM = document.getElementById('error-toast')
+        const toast = new bootstrap.Toast(errorToastDOM)
         toast.show()
+        setTimeout(function() {
+            location.reload();
+        }, 3000);
     }
 }
 
+formEditUserDOM.onsubmit = (e) => {
+    e.preventDefault()
+    const id = listUsers.findIndex(u => u.email == userToEdit.email)
+    const firstNameUserDOM = document.getElementById('user-first-name')
+    const lastNameUserDOM = document.getElementById('user-last-name')
+    const dniUserDOM = document.getElementById('user-dni')
+    const birthdateUserDOM = document.getElementById('user-birthdate')
+    const genderUserDOM = document.getElementById('user-gender')
+    const phoneUserDOM = document.getElementById('user-phone')
+    const addressUserDOM = document.getElementById('user-address')
+    const sureUserDOM = document.getElementById('user-sure')
+    const nationalityUserDOM = document.getElementById('user-nationality')
+    const emailUserDOM = document.getElementById('user-email')
+    const passwordUserDOM = document.getElementById('user-password')
 
+    userToEdit = null;
+
+    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (dniUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (emailUserDOM.value) && (passwordUserDOM.value)){
+        listUsers[id].firstName = firstNameUserDOM.value
+        listUsers[id].lastName = lastNameUserDOM.value
+        listUsers[id].dni = dniUserDOM.value
+        listUsers[id].dni = birthdateUserDOM.value
+        listUsers[id].gender = genderUserDOM.value
+        listUsers[id].phone = phoneUserDOM.value
+        listUsers[id].address = addressUserDOM.value
+        listUsers[id].pr = sureUserDOM.value
+        listUsers[id].specialty = nationalityUserDOM.value
+        listUsers[id].email = emailUserDOM.value
+        listUsers[id].password = passwordUserDOM.value
+
+        localStorage.setItem('users', JSON.stringify(listUsers))
+        listUsers = JSON.parse(localStorage.getItem('users'))
+        generateTableUsers(listUsers)
+
+        const successEditToastDOM = document.getElementById('success-edit-toast')
+        const toast = new bootstrap.Toast(successEditToastDOM)
+        toast.show()
+        // setTimeout(function() {
+        //     location.reload();
+        // }, 3000);
+    } else {
+        const errorToastDOM = document.getElementById('error-toast')
+        const toast = new bootstrap.Toast(errorToastDOM)
+        toast.show()
+        setTimeout(function() {
+            location.reload();
+        }, 3000);
+    }
+}
 generateTableRegisterAdmins(listAdmins)
 generateTableAdmins(listAdmins)
 generateTableUsers(listUsers)
