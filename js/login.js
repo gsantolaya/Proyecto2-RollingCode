@@ -1,8 +1,8 @@
 //Navbar
-profile = document.getElementById("profile")
-ulNavbar = document.getElementById("ulNavbar")
-navbarScroll = document.getElementById("navbarScroll")
-turnButton = document.getElementById("turn-button")
+profileNavDOM = document.getElementById("profile")
+ulNavDOM = document.getElementById("ul-navbar")
+scrollNavDOM = document.getElementById("navbarScroll")
+turnButtonNavDOM = document.getElementById("turn-button")
 
 const storageUserLogIn = localStorage.getItem('userLogIn')
 const storageAdminLogIn = localStorage.getItem('adminLogIn')
@@ -11,7 +11,7 @@ if (storageUserLogIn) {
     let userLogin = JSON.parse(storageUserLogIn)
     const liDOM = document.createElement('li')
     liDOM.className += "nav-item dropdown"
-    ulNavbar.appendChild(liDOM)
+    ulNavDOM.appendChild(liDOM)
     liDOM.innerHTML = `
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="./icons/user.svg" height="25px" weight="25px" alt="user-icon">
@@ -20,9 +20,6 @@ if (storageUserLogIn) {
         <ul class="dropdown-menu">
         <li>
             <a class="dropdown-item" href="./error.html">Mi cuenta</a>
-        </li>
-        <li>
-        <a class="dropdown-item" href="./error.html">Mis Turnos</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -35,7 +32,7 @@ if (storageUserLogIn) {
         </li>
     </ul>`
 
-    ulNavbar.removeChild(profile)
+    ulNavDOM.removeChild(profileNavDOM)
     cerrarSesion = document.getElementById("cerrar-sesion")
 
     cerrarSesion.onclick = () => {
@@ -46,7 +43,7 @@ if (storageUserLogIn) {
     let adminLogin = JSON.parse(storageAdminLogIn)
     const liDOM = document.createElement('li')
     liDOM.className += "nav-item dropdown"
-    ulNavbar.appendChild(liDOM)
+    ulNavDOM.appendChild(liDOM)
     liDOM.innerHTML = `
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="./icons/user.svg" height="25px" weight="25px" alt="user-icon">
@@ -57,10 +54,10 @@ if (storageUserLogIn) {
             <a class="dropdown-item" href="./error.html">Mi cuenta</a>
         </li>
         <li>
-        <a class="dropdown-item" href="./error.html">Turnos</a>
+        <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
         </li>
     <li>
-    <a class="dropdown-item" href="./error.html">Datos pacientes</a>
+    <a class="dropdown-item" href="./error.html">Historias clínicas</a>
     </li>
         <li>
             <hr class="dropdown-divider">
@@ -69,8 +66,8 @@ if (storageUserLogIn) {
             <a class="dropdown-item" id="cerrar-sesion" href="./index.html">Cerrar Sesion</a>
         </li>
     </ul>`
-    navbarScroll.removeChild(turnButton)
-    ulNavbar.removeChild(profile)
+    scrollNavDOM.removeChild(turnButtonNavDOM)
+    ulNavDOM.removeChild(profileNavDOM)
     cerrarSesion = document.getElementById("cerrar-sesion")
 
 
@@ -80,24 +77,25 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
+if(storageUserLogIn){
+    let bookAppointmentButton = document.getElementById("book-appointment-button")
+
 bookAppointmentButton.onclick = (e) => {
     e.preventDefault()
     window.location = './bookAnAppointment.html'
 }
-//-----------------------------------------------------------------------------------------------------------------------------------------
-
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
 let formLogin = document.getElementById('form-login')
 let userEmail = document.getElementById('user-email')
 let userPassword = document.getElementById('user-password')
 let usersList = []
 let adminsList = []
 
+
 if (storageUserLogIn || storageAdminLogIn) {
     window.location = './index.html'
 }
-
-
 formLogin.onsubmit = (e) => {
     e.preventDefault()
     const storageUsersList = localStorage.getItem('users')
@@ -105,7 +103,6 @@ formLogin.onsubmit = (e) => {
 
     if (storageUsersList) {
             usersList = JSON.parse(storageUsersList)
-            // adminsList = JSON.parse(storageAdminsList)
             const userFind = usersList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
             if (userFind) {
             const user = {
@@ -123,7 +120,7 @@ formLogin.onsubmit = (e) => {
         adminsList = JSON.parse(storageAdminsList)
         const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
         if (adminFind){
-            if(adminFind.activation == "activado"){
+            if(adminFind.status == "activado"){
             const admin = {
                 email: adminFind.email,
                 firstname: adminFind.firstName,
@@ -138,30 +135,4 @@ formLogin.onsubmit = (e) => {
         }
         }
     }
-    // const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
-    // if (adminFind){
-    //     if(adminFind.activation == "activado"){
-    //     const admin = {
-    //         email: adminFind.email,
-    //         firstname: adminFind.firstName,
-    //         lastname: adminFind.lastName,
-    //         type: adminFind.type
-    //     }
-    //     localStorage.setItem('adminLogIn', JSON.stringify(admin))
-    //     window.location = 'index.html'
-    //     }else{
-    //         alert("usuario no activado")
-    //     }
-    // }
-    // const userFind = usersList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
-    // if (userFind) {
-    //     const user = {
-    //         email: userFind.email,
-    //         firstname: userFind.firstName,
-    //         lastname: userFind.lastName,
-    //         type: userFind.type
-    //     }
-    //     localStorage.setItem('userLogIn', JSON.stringify(user))
-    //     window.location = 'index.html'
-    // }
 }

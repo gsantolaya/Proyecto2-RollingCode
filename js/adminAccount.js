@@ -76,10 +76,3 @@ if (storageUserLogIn) {
     }
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
-//Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
-bookAppointmentButton.onclick = (e) => {
-    e.preventDefault()
-    window.location = './bookAnAppointment.html'
-}
-//---------------------------------------------------------------------------------------------------------------------------------------------------------
