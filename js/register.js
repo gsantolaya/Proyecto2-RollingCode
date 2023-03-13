@@ -622,6 +622,9 @@ formSelectUserType.onsubmit = (e) => {
                             const toast = new bootstrap.Toast(successfulRegistrationToastDOM)
                             successfulRegistrationBodyToastDOM.innerHTML='Se ha registrado correctamente como profesional, recibira un mail cuando su cuenta sea activada'
                             toast.show()
+                            setTimeout(function() {
+                            location.reload();
+                            }, 3000);
                         } else {
                             adminPasswordDOM.setCustomValidity(":invalid")
                             adminRepeatPasswordDOM.setCustomValidity(":invalid")
@@ -634,8 +637,6 @@ formSelectUserType.onsubmit = (e) => {
             }else{
                 const toast = new bootstrap.Toast(errorRegistrationToastDOM)
                 toast.show()
-                //window.location = 'index.html'
-
             }
         }
     }else if (userType.value == "Paciente") {
@@ -885,6 +886,9 @@ formSelectUserType.onsubmit = (e) => {
                                 const toast = new bootstrap.Toast(successfulRegistrationToastDOM)
                                 successfulRegistrationBodyToastDOM.innerHTML='Se ha registrado correctamente como paciente, ya puede ingresar a su cuenta.'
                                 toast.show()
+                                setTimeout(function() {
+                                    window.location = './login.html';
+                                    }, 3000);
                             }else {
                                 adminPasswordDOM.setCustomValidity(":invalid")
                                 adminRepeatPasswordDOM.setCustomValidity(":invalid")

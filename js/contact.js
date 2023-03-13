@@ -77,12 +77,14 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
+if(storageUserLogIn){
+    let bookAppointmentButton = document.getElementById("book-appointment-button")
+
 bookAppointmentButton.onclick = (e) => {
     e.preventDefault()
     window.location = './bookAnAppointment.html'
 }
-
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
@@ -105,13 +107,13 @@ bookAppointmentButton.onclick = (e) => {
 })()
 //-------------------------------------------------------------------------------------------------------------------------------------
 let contactForm = document.getElementById('contact-form')
-const storageConsults = localStorage.getItem('listConsults')
+const storageConsults = localStorage.getItem('consults')
 
 let listConsults = []
 
 
 if (storageConsults) {
-    listConsults = JASON.parse(storageConsults)
+    listConsults = JSON.parse(storageConsults)
 }
 
 
@@ -129,7 +131,7 @@ contactForm.onsubmit = (e) => {
             consult: userConsult.value
         }
         listConsults.push(newConsult)
-        localStorage.setItem('consult', JSON.stringify(listConsults))
+        localStorage.setItem('consults', JSON.stringify(listConsults))
         const successToastDOM = document.getElementById('success-toast')
         const toast = new bootstrap.Toast(successToastDOM)
         toast.show()

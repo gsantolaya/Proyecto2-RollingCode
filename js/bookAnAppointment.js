@@ -320,6 +320,9 @@ bookAnAppointmentForm.onsubmit = (e) => {
                 const successToastDOM = document.getElementById('success-toast')
                 const toast = new bootstrap.Toast(successToastDOM)
                 toast.show()
+                setTimeout(function() {
+                location.reload();
+                }, 3000);
             }
         }
     } else {
