@@ -246,10 +246,10 @@ formSelectUserType.onsubmit = (e) => {
                     Excelente!
                 </div>
             </div>
-            <div class="row-12">
-                <div class="6">
-                    <h5><b>Selecciones sus días y horarios de atención:</b></h5>
-                    <div class="d-flex">
+            <div class="d-md-flex flex-row align-items-center justify-content-center mt-lg-4">
+                <div class="col-12 col-lg-6 justify-content-end align-items-end m-0 p-0 text-center">
+                    <h5 class="w-100"><b>Selecciones sus días y horarios de atención:</b></h5>
+                    <div class="col-12 d-flex justify-content-evenly mt-lg-3">
                         <div>
                             <h6>Lunes:</h6>
                             <div class="form-check">
@@ -502,18 +502,17 @@ formSelectUserType.onsubmit = (e) => {
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12">
-                    <div class="form-check">
+                <div class="col-12 col-lg-6 align-items-center justify-content-center mx-md-5">
+                    <div class="form-check col-12 mx-md-5">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck"><b>Estoy de acuerdo con los términos y condiciones.</b></label>
                         <div class="invalid-feedback">
                             Debes estar de acuerdo con los términos y condiciones antes de registrarte.
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-secondary" id="form-register-button" type="submit"><b>Registrarse</b></button>
+                        <div class="col-12 m-md-3">
+                        <button class="btn btn-secondary w-100 w-md-57" id="form-register-button" type="submit"><b>Registrarse</b></button>
+                    </div>
                 </div>
             </div>
             `
