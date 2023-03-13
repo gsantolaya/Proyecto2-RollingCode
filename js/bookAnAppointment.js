@@ -77,33 +77,25 @@ if (storageUserLogIn) {
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
-bookAppointmentButton.onclick = (e) => {
-    e.preventDefault()
-    window.location = './bookAnAppointment.html'
+if (storageUserLogIn) {
+    let bookAppointmentButton = document.getElementById("book-appointment-button")
+
+    bookAppointmentButton.onclick = (e) => {
+        e.preventDefault()
+        window.location = './bookAnAppointment.html'
+    }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------
-
 //Si no hay una sesion iniciada, redirecciona a login
-
 const myModal = document.getElementById('login-modal')
 const myInput = document.getElementById('formLogIn')
-
-if (storageUserLogIn == null) {
+if (storageAdminLogIn){
+    window.location = './index.html'
+} else if (storageUserLogIn == null) {
     window.location = './login.html'
     alert("Debe iniciar sesion")
 }
-
-function loadEditProductModal(product) {
-    productToEdit = product;
-    const nameDOM = document.getElementById('nameProductForm')
-    nameDOM.value = product.nombre
-    const detailDOM = document.getElementById('detailProducForm')
-    detailDOM.textContent = product.detalle
-    const priceDOM = document.getElementById('priceProductForm')
-    priceDOM.value = product.precio
-}
-//------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
     'use strict'

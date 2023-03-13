@@ -75,12 +75,15 @@ if (storageUserLogIn) {
         localStorage.removeItem('adminLogIn');
     }
 }
-//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
-bookAppointmentButton.onclick = (e) => {
-    e.preventDefault()
-    window.location = './bookAnAppointment.html'
+if (storageUserLogIn) {
+    let bookAppointmentButton = document.getElementById("book-appointment-button")
+
+    bookAppointmentButton.onclick = (e) => {
+        e.preventDefault()
+        window.location = './bookAnAppointment.html'
+    }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------
 // Example starter JavaScript for disabling form submissions if there are invalid fields
