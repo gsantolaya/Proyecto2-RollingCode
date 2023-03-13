@@ -1,3 +1,8 @@
+body{
+  background-color:#f3d8c7 !important;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 

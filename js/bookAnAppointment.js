@@ -3,19 +3,19 @@ profile = document.getElementById("profile")
 ulNavbar = document.getElementById("ulNavbar")
 navbarScroll = document.getElementById("navbarScroll")
 turnButton = document.getElementById("turn-button")
-let userLogIn = []
+
 const storageUserLogIn = localStorage.getItem('userLogIn')
 const storageAdminLogIn = localStorage.getItem('adminLogIn')
 
 if (storageUserLogIn) {
-    let userLogIn = JSON.parse(storageUserLogIn)
+    let userLogin = JSON.parse(storageUserLogIn)
     const liDOM = document.createElement('li')
     liDOM.className += "nav-item dropdown"
     ulNavbar.appendChild(liDOM)
     liDOM.innerHTML = `
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="./icons/user.svg" height="25px" weight="25px" alt="user-icon">
-        <span>${userLogIn.firstname} ${userLogIn.lastname}</span>
+        <span>${userLogin.firstname} ${userLogin.lastname}</span>
         </a>
         <ul class="dropdown-menu">
         <li>
