@@ -186,6 +186,34 @@
     <div>
         <a href="https://api.whatsapp.com/send?phone=543815792863" target="_blank"><img src="./icons/icono-whatsapp.png" alt="whatsapp-support" class="whatsapp-icon"></a>
     </div>
+    <!-- Toasts -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="success-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="success-icon">
+                <strong id="title-error" class="me-auto">Excelente!</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Se ha registrado su turno correctamente.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/error_icon.svg" class="rounded me-2" alt="error-icon">
+                <strong id="title-error" class="me-auto">Error</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="error-toast-body">
+                No se ha podido solicitar el turno, complete los campos correctamente e intente nuevamente.
+            </div>
+        </div>
+    </div>
+
     <script src="./js/bookAnAppointment.js"></script>
 </body>
 

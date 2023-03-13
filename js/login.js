@@ -112,7 +112,8 @@ formLogin.onsubmit = (e) => {
                 email: userFind.email,
                 firstname: userFind.firstName,
                 lastname: userFind.lastName,
-                type: userFind.type
+                type: userFind.type,
+                dni: userFind.dni
             }
             localStorage.setItem('userLogIn', JSON.stringify(user))
             window.location = 'index.html'
@@ -127,7 +128,8 @@ formLogin.onsubmit = (e) => {
                 email: adminFind.email,
                 firstname: adminFind.firstName,
                 lastname: adminFind.lastName,
-                type: adminFind.type
+                type: adminFind.type,
+                dni: adminFind.dni
             }
             localStorage.setItem('adminLogIn', JSON.stringify(admin))
             window.location = 'index.html'
