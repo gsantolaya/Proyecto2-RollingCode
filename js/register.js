@@ -120,7 +120,7 @@ formSelectUserType.onsubmit = (e) => {
         registerForm.innerHTML =
             `
             <div class="col-md-4">
-                <label for="admin-first-name" class="form-label">Nombre:</label>
+                <label for="admin-first-name" class="form-label"><b>Nombre:</b></label>
                 <input type="text" maxlength="30" minlength="2" class="form-control" id="admin-first-name" value="" placeholder="Ej:Juán" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su Nombre correctamente.
@@ -130,7 +130,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-last-name" class="form-label">Apellido:</label>
+                <label for="admin-last-name" class="form-label"><b>Apellido:</b></label>
                 <input type="text" maxlength="30" minlength="2" class="form-control" id="admin-last-name" value="" placeholder="Ej:Pérez" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su apellido correctamente.
@@ -140,7 +140,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-dni" class="form-label">DNI:</label>
+                <label for="admin-dni" class="form-label"><b>DNI:</b></label>
                 <input type="number" maxlength="8" minlength="7" class="form-control" id="admin-dni" value="" placeholder="Ej: 35263544" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su número de DNI correctamente.
@@ -150,7 +150,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-birthdate" class="form-label">Fecha de nacimiento:</label>
+                <label for="admin-birthdate" class="form-label"><b>Fecha de nacimiento:</b></label>
                 <input type="date" class="form-control" id="admin-birthdate" value="" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su fecha de nacimiento correctamente.
@@ -160,7 +160,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-gender" class="form-label">Sexo:</label>
+                <label for="admin-gender" class="form-label"><b>Sexo:</b></label>
                 <select class="form-select" id="admin-gender" required>
                     <option>Masculino</option>
                     <option>Femenino</option>
@@ -173,7 +173,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-phone" class="form-label">Teléfono:</label>
+                <label for="admin-phone" class="form-label"><b>Teléfono:</b></label>
                 <input type="tel" maxlength="15" minlength="2" class="form-control" id="admin-phone" value="" placeholder="Ej: 3815792562" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su número de teléfono correctamente.
@@ -183,7 +183,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-address" class="form-label">Domicilio:</label>
+                <label for="admin-address" class="form-label"><b>Domicilio:</b></label>
                 <input type="text" maxlength="30" minlength="10" class="form-control" id="admin-address" value="" placeholder="Ej: Laprida 550" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su domicilio correctamente.
@@ -193,7 +193,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-pr" class="form-label">Matrícula profesional:</label>
+                <label for="admin-pr" class="form-label"><b>Matrícula profesional:</b></label>
                 <input type="text" maxlength="4" minlength="3" class="form-control" id="admin-pr" value="" placeholder="Ej: 2750" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su número de matrícula profesional correctamente.
@@ -203,7 +203,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-specialty" class="form-label">Especialidad:</label>
+                <label for="admin-specialty" class="form-label"><b>Especialidad:</b></label>
                 <select class="form-select" id="admin-specialty" required>
                     <option>General</option>
                     <option>Endodoncia</option>
@@ -220,7 +220,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-email" class="form-label">Email:</label>
+                <label for="admin-email" class="form-label"><b>Email:</b></label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                     <input type="email" maxlength="30" minlength="5" class="form-control" id="admin-email"aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
@@ -233,23 +233,23 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-password" class="form-label">Contraseña:</label>
+                <label for="admin-password" class="form-label"><b>Contraseña:</b></label>
                 <input type="password" maxlength="30" minlength="5" class="form-control" id="admin-password" value="" maxlength="20" minlength="6" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="admin-repeat-password" class="form-label">Repetir contraseña:</label>
+                <label for="admin-repeat-password" class="form-label"><b>Repetir contraseña:</b></label>
                 <input type="password" maxlength="30" minlength="5" class="form-control" id="admin-repeat-password" value="" maxlength="20" minlength="6" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
             </div>
-            <div class="row-12">
-                <div class="6">
-                    <h5>Selecciones sus días y horarios de atención:</h5>
-                    <div class="d-flex">
+            <div class="d-md-flex flex-row align-items-center justify-content-center mt-lg-4">
+                <div class="col-12 col-lg-6 justify-content-end align-items-end m-0 p-0 text-center">
+                    <h5 class="w-100"><b>Selecciones sus días y horarios de atención:</b></h5>
+                    <div class="col-12 d-flex justify-content-evenly mt-lg-3">
                         <div>
                             <h6>Lunes:</h6>
                             <div class="form-check">
@@ -502,18 +502,17 @@ formSelectUserType.onsubmit = (e) => {
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12">
-                    <div class="form-check">
+                <div class="col-12 col-lg-6 align-items-center justify-content-center mx-md-5">
+                    <div class="form-check col-12 mx-md-5">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">Estoy de acuerdo con los términos y condiciones.</label>
+                        <label class="form-check-label" for="invalidCheck"><b>Estoy de acuerdo con los términos y condiciones.</b></label>
                         <div class="invalid-feedback">
                             Debes estar de acuerdo con los términos y condiciones antes de registrarte.
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-primary" id="form-register-button" type="submit">Registrarse</button>
+                        <div class="col-12 m-md-3">
+                        <button class="btn btn-secondary w-100 w-md-57" id="form-register-button" type="submit"><b>Registrarse</b></button>
+                    </div>
                 </div>
             </div>
             `
@@ -642,7 +641,7 @@ formSelectUserType.onsubmit = (e) => {
     }else if (userType.value == "Paciente") {
             registerForm.innerHTML = `
             <div class="col-md-4">
-                <label for="user-first-name" class="form-label">Nombre:</label>
+                <label for="user-first-name" class="form-label"><b>Nombre:</b></label>
                 <input type="text" maxlength="30" minlength="2" class="form-control" id="user-first-name" value="" placeholder="Ej:Juán" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su Nombre correctamente.
@@ -653,7 +652,7 @@ formSelectUserType.onsubmit = (e) => {
             </div>
             </div>
             <div class="col-md-4">
-                <label for="user-last-name" class="form-label">Apellido:</label>
+                <label for="user-last-name" class="form-label"><b>Apellido:</b></label>
                 <input type="text" maxlength="30" minlength="2" class="form-control" id="user-last-name" value="" placeholder="Ej:Pérez" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su apellido correctamente.
@@ -663,7 +662,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-dni" class="form-label">DNI:</label>
+                <label for="user-dni" class="form-label"><b>DNI:</b></label>
                 <input type="number" maxlength="8" minlength="7" class="form-control" id="user-dni" value="" placeholder="Ej: 35263544" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su número de DNI correctamente.
@@ -673,7 +672,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-nationality" class="form-label">Nacionalidad:</label>
+                <label for="user-nationality" class="form-label"><b>Nacionalidad:</b></label>
                 <input type="text" maxlength="15" minlength="5" class="form-control" id="user-nationality" value="" placeholder="Ej: Argentino" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su nacionalidad correctamente.
@@ -683,7 +682,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-birthdate" class="form-label">Fecha de nacimiento:</label>
+                <label for="user-birthdate" class="form-label"><b>Fecha de nacimiento:</b></label>
                 <input type="date" class="form-control" id="user-birthdate" value="" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su fecha de nacimiento correctamente.
@@ -693,7 +692,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-gender" class="form-label">Sexo:</label>
+                <label for="user-gender" class="form-label"><b>Sexo:</b></label>
                 <select class="form-select" id="user-gender" required>
                     <option>Masculino</option>
                     <option>Femenino</option>
@@ -706,7 +705,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-phone" class="form-label">Teléfono:</label>
+                <label for="user-phone" class="form-label"><b>Teléfono:</b></label>
                 <input type="tel" maxlength="15" minlength="2" class="form-control" id="user-phone" value="" placeholder="Ej: 3815792562" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su número de teléfono correctamente.
@@ -716,7 +715,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-address" class="form-label">Domicilio:</label>
+                <label for="user-address" class="form-label"><b>Domicilio:</b></label>
                 <input type="text" maxlength="30" minlength="10" class="form-control" id="user-address" value="" placeholder="Ej: Laprida 550" required>
                 <div class="invalid-feedback">
                     Por favor ingrese su domicilio correctamente.
@@ -726,7 +725,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-sure" class="form-label">Obra social:</label>
+                <label for="user-sure" class="form-label"><b>Obra social:</b></label>
                 <select class="form-select" id="user-sure">
                     <option>Sin Obra Social</option>
                     <option>SUBSIDIO DE SALUD</option>
@@ -778,7 +777,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-email" class="form-label">Email:</label>
+                <label for="user-email" class="form-label"><b>Email:</b></label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                     <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email"aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
@@ -791,34 +790,36 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-password" class="form-label">Contraseña:</label>
+                <label for="user-password" class="form-label"><b>Contraseña:</b></label>
                 <input type="password" maxlength="30" minlength="5" class="form-control" id="user-password" value="" maxlength="20" minlength="6" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="user-repeat-password" class="form-label">Repetir contraseña:</label>
+                <label for="user-repeat-password" class="form-label"><b>Repetir contraseña:</b></label>
                 <input type="password" maxlength="30" minlength="5" class="form-control" id="user-repeat-password" value="" maxlength="20" minlength="6" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
             </div>
-            <div>
-            <div class="col-12">
+            <div class="mt-4">
+                <div class="col-12">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
-                            Estoy de acuerdo con los términos y condiciones.
+                        <b>Estoy de acuerdo con los términos y condiciones.</b>
                         </label>
                         <div class="invalid-feedback">
                             Debes estar de acuerdo con los términos y condiciones antes de registrarte.
                         </div>
                     </div>
                 </div>
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit">Registrarse</button>
+                <div class="col-12">
+                    <button class="btn btn-secondary w-75" type="submit"><b>Registrarse</b></button>
+                </div>
             </div>
+
             `
 
             registerForm.onsubmit = (e) => {

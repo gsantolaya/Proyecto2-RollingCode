@@ -1,11 +1,23 @@
+body{
+    background-image: linear-gradient(
+        to right top,
+        #d0b8ac,
+        #f3d8c7,
+        #efe5dc,
+        #fbfefb,
+        #ffffff
+      ) !important;
+      font-family: 'Open Sans', sans-serif !important;
+}
+.search-options-container{
+    padding: 10px;
+    border: dotted 1px #d0b8ac;
+    border-radius: 10px;
+}
 #validationTextarea {
     resize: none;
 }
 footer{
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
     font-family: 'Zen Dots', cursive;
     font-size: 12px;
 }
@@ -38,4 +50,23 @@ footer{
     position: fixed;
     bottom: 20px;
     right: 30px;
+}
+@media screen and (max-width: 576px){
+    #footer-1{
+        display: none !important;
+    }
+    #footer-3{
+        display: none !important;
+    }
+    .pub-final{
+        display:none;
+    }
+}
+@media screen and (min-width:577px) and (max-width: 766px){
+    #footer-1{
+        display: none !important;
+    }
+    #footer-3{
+        display: none !important;
+    }
 }

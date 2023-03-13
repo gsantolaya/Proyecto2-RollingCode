@@ -137,7 +137,9 @@ let fecha = document.getElementById('fecha')
 let validationTextarea = document.getElementById('validationTextarea')
 let fileInput = document.getElementById('file-input')
 let searchInputDOM = document.getElementById('search-input')
+let listUserLogIn = []
 let listTurns = []
+//let userLogIn = []
 let listProfessionals = []
 let filteredprofessional = []
 let prefix = undefined
@@ -223,36 +225,16 @@ if (daysAttentionDOM.value == 'alls') {
             })
         }
     }
-    
+
 }
-// selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
-// for (let i = 0; i < listProfessionals.length; i++) {
-//     const professional = listProfessionals[i];
-//     if (professional.gender == "Femenino") {
-//         prefix = "Dra."
-//     } else {
-//         prefix = "Dr."
-//     }
-//     selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
 
 
 
-    // filteredprofessional = listProfessionals.filter((professional) => (Object.keys(professional.schedules).length > 0 && Object.keys(professional.schedules).includes(daysAttentionDOM.value)) && professional[searchBy].toLowerCase().trim().includes(professionalFilter))
-/*selectDrDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
-for (let i = 0; i < filteredprofessional.length; i++) {
-    const professional = filteredprofessional[i];
-    if (professional.gender == "Femenino") {
-        prefix = "Dra."
-    } else {
-        prefix = "Dr."
-    }
-    selectDrDOM.innerHTML += `<option value="${professional.dni}">${prefix} ${professional.firstName} ${professional.lastName}</option>`
-}*/
-//}
-/*
+
+
 selectDrDOM.onchange = () => {
     selectDayDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
-    let professionalSelected = listProfessionals.find(professional => selectDrDOM.value.includes(professional.firstName, professional.lastName))
+    let professionalSelected = listProfessionals.find(professional => selectDrDOM.value.includes(professional.dni))
     if (professionalSelected.schedules.monday.length != 0) {
         selectDayDOM.innerHTML += `<option>Lunes</option>`
     }
@@ -272,7 +254,7 @@ selectDrDOM.onchange = () => {
 
 selectDayDOM.onchange = () => {
     selectHourDOM.innerHTML = `<option selected disabled value="">Seleccione una opción</option>`
-    let professionalSelected = listProfessionals.find(professional => selectDrDOM.value.includes(professional.firstName, professional.lastName))
+    let professionalSelected = listProfessionals.find(professional => selectDrDOM.value.includes(professional.dni))
     switch (selectDayDOM.value) {
         case "Lunes":
             for (let i = 0; i < professionalSelected.schedules.monday.length; i++) {
@@ -310,21 +292,52 @@ selectDayDOM.onchange = () => {
 }
 
 
-const storageTurns = localStorage.getItem('turns')
-if (storageTurns) {
-    listTurns = JSON.parse(storageTurns)
-}
+
+
 bookAnAppointmentForm.onsubmit = (e) => {
     e.preventDefault()
-    if (selectDrDOM.value.trim() != "" && selectDayDOM.value.trim() != "" && selectHourDOM.value.trim() != "" && validationTextarea.value.trim() != "") {
-        
-        const newTurn = {
-            dr: selectDrDOM.value,
-            day: selectDayDOM.value,
-            hour: selectHourDOM.value,
-            reasonConsultation: validationTextarea.value
-        }
-        listTurns.push(newTurn)
-        localStorage.setItem('turns', JSON.stringify(listTurns))
+    const storageTurns = localStorage.getItem('turns')
+    if (storageTurns) {
+        listTurns = JSON.parse(storageTurns)
     }
-}*/
+    if (storageUserLogIn) {
+        userLogIn = JSON.parse(storageUserLogIn)
+    }
+    if (selectDrDOM.value.trim() != "" && selectDayDOM.value.trim() != "" && selectHourDOM.value.trim() != "" && validationTextarea.value.trim() != "") {
+        const userFind = listTurns.find(turn => turn.patient == userLogIn.dni && turn.dr == selectDrDOM.value)
+        if (userFind) {
+            const errorToastDOM = document.getElementById('error-toast')
+            const errorToastBody = document.getElementById('error-toast-body')
+            errorToastBody.innerHTML = 'Lo sentimos, ya posee un turno con el profesional seleccionado, si desea cambiarlo debe eliminarlo primero.'
+            const toast = new bootstrap.Toast(errorToastDOM)
+            toast.show()
+        } else {
+            const turnFind = listTurns.find(turn => turn.dr == selectDrDOM.value.trim() && turn.day == selectDayDOM.value.trim() && turn.hour == selectHourDOM.value.trim())
+            if (turnFind) {
+                const errorToastDOM = document.getElementById('error-toast')
+                const errorToastBody = document.getElementById('error-toast-body')
+                errorToastBody.innerHTML = 'Lo sentimos, el turno seleccionado no se encuentra disponible, intente nuevamente en otro día u horario'
+                const toast = new bootstrap.Toast(errorToastDOM)
+                toast.show()
+            } else {
+                const newTurn = {
+                    dr: selectDrDOM.value,
+                    day: selectDayDOM.value,
+                    hour: selectHourDOM.value,
+                    reasonConsultation: validationTextarea.value,
+                    patient: `${userLogIn.dni}`
+                }
+                listTurns.push(newTurn)
+                localStorage.setItem('turns', JSON.stringify(listTurns))
+
+                const successToastDOM = document.getElementById('success-toast')
+                const toast = new bootstrap.Toast(successToastDOM)
+                toast.show()
+            }
+        }
+    } else {
+        const errorToastDOM = document.getElementById('error-toast')
+        const toast = new bootstrap.Toast(errorToastDOM)
+        toast.show()
+    }
+}
