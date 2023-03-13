@@ -10,7 +10,7 @@
     <meta name="author" content="X Team">
     <link rel="shortcut icon" type="image/x-icon" href="./icons/icono-diente-png.png">
     <title>Clínica odontológica</title>
-    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/adminRegisters.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -32,7 +32,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll"
-                        style="--bs-scroll-height: 100px;" id="ulNavbar">
+                        style="--bs-scroll-height: 100px;" id="ul-navbar">
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="#clinica">Nuestra clinica</a>
                         </li>
@@ -70,119 +70,168 @@
                 </div>
             </div>
         </nav>
+        <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------- -->
     </header>
     <main>
-        <!-- Tablas -->
-        <div class="col-12">
-            <h2>Solicitudes de registros</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="num-prod" scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="adminsRegisterTableDetails">
-                    <tr>
-                        <th scope="row">#</th>
-                        <td>Nombre</td>
-                        <td>Apellido</td>
-                        <td>DNI</td>
-                        <td>
-                            <button class="btn btn-outline-dark" id=""><span
-                                    class="fa fa-solid fa-check"></span></button>
-                            <button class="btn btn-outline-danger" id=""><span
-                                    class="fa fa-solid fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="m-md-5">
+            <div class="col-12 mt-md-5">
+                <h2>Solicitudes de registros</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="num-prod" scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminsRegisterTableDetails">
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>DNI</td>
+                            <td>
+                                <button class="btn btn-outline-dark" id=""><span
+                                        class="fa fa-solid fa-check"></span></button>
+                                <button class="btn btn-outline-danger" id=""><span
+                                        class="fa fa-solid fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="col-12">
-            <h2>Profesionales registrados</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="num-prod" scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Fecha de nacimiento</th>
-                        <th scope="col">Sexo</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Dirección</th>
-                        <th scope="col">Matricula Profesional</th>
-                        <th scope="col">Especialidad</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="adminsTableDetails">
-                    <tr>
-                        <th scope="row">#</th>
-                        <td>Nombre</td>
-                        <td>Apellido</td>
-                        <td>DNI</td>
-                        <td>Fecha de nacimiento</th>
-                        <td>Sexo</td>
-                        <td>Teléfono</td>
-                        <td>Dirección</td>
-                        <td>Matricula Profesional</th>
-                        <td>Especialidad</td>
-                        <td>
-                            <button class="btn btn-outline-dark" id=""><span
-                                    class="fa fa-solid fa-check"></span></button>
-                            <button class="btn btn-outline-danger" id=""><span
-                                    class="fa fa-solid fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-12">
-            <h2>Pacientes registrados</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="num-prod" scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Fecha de nacimiento</th>
-                        <th scope="col">Sexo</th>
-                        <th scope="col">Nacionalidad</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Domicilio</th>
-                        <th scope="col">Obra social</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="usersTableDetails">
-                    <tr>
-                        <th scope="row">#</th>
-                        <td>Nombre</td>
-                        <td>Apellido</td>
-                        <td>DNI</td>
-                        <td>Fecha de nacimiento</td>
-                        <td>Sexo</th>
-                        <td>Nacionalidad</td>
-                        <td>Teléfono</td>
-                        <td>Domicilio</td>
-                        <td>Obra social</td>
-                        <td>
-                            <button class="btn btn-outline-dark" id=""><span
-                                    class="fa fa-solid fa-check"></span></button>
-                            <button class="btn btn-outline-danger" id=""><span
-                                    class="fa fa-solid fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-12 mt-md-5">
+                <h2>Profesionales registrados</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="num-prod" scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">DNI</th>
+                            <!-- <th scope="col">Fecha de nacimiento</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Matricula Profesional</th>
+                            <th scope="col">Especialidad</th> -->
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminsTableDetails">
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>DNI</td>
+                            <!-- <td>Fecha de nacimiento</th>
+                            <td>Sexo</td>
+                            <td>Teléfono</td>
+                            <td>Dirección</td>
+                            <td>Matricula Profesional</th>
+                            <td>Especialidad</td> -->
+                            <td>
+                                <button class="btn btn-outline-dark" id=""><span
+                                        class="fa fa-solid fa-check"></span></button>
+                                <button class="btn btn-outline-danger" id=""><span
+                                        class="fa fa-solid fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 mt-md-5">
+                <h2>Pacientes registrados</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="num-prod" scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">DNI</th>
+                            <!-- <th scope="col">Fecha de nacimiento</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Nacionalidad</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Domicilio</th>
+                            <th scope="col">Obra social</th> -->
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableDetails">
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>DNI</td>
+                            <!-- <td>Fecha de nacimiento</td>
+                            <td>Sexo</th>
+                            <td>Nacionalidad</td>
+                            <td>Teléfono</td>
+                            <td>Domicilio</td>
+                            <td>Obra social</td> -->
+                            <td>
+                                <button class="btn btn-outline-dark" id=""><span
+                                        class="fa fa-solid fa-check"></span></button>
+                                <button class="btn btn-outline-danger" id=""><span
+                                        class="fa fa-solid fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
+    <footer>
+        <div class="row p-0 m-0">
+            <div id="footer-1" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
+                <div>
+                    <p class="footer-tt"><b>Contactanos:</b></p>
+                    <ul>
+                        <li>(+54) 381 5792863</li>
+                        <li>clinicaodontologica@gmail.com</li>
+                        <li>Laprida 550</li>
+                        <li>Lunes a viernes de 9 a 21 hs</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer-2" class="col-12 col-md-4 pt-2 bg-light text-center">
+                <a href="#"><img width="100px" src="./icons/icono-diente-png.png" alt="logo"></a>
+                <p class="fst-italic text-dark">&copy;Todos los derechos reservados</p>
+            </div>
+            <div id="footer-3" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
+                <div>
+                    <p class="footer-tt"><b>Encuentranos tambien en:</b></p>
+                    <div class="div-button-google">
+                        <a class="button-footer" href=".error.html">
+                            <img class="button-icon-footer" src="./icons/instagram-icon-footer.png"
+                                alt="instagram-icon">
+                            <p class="p-3" id="google-text">clinica_odontologica</p>
+                        </a>
+                    </div>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./error.html">
+                            <img class="button-icon-footer" src="./icons/facebook-icon-footer.png" alt="facebook-icon">
+                            <p class="p-3" id="google-text">Clinica Odontologica</p>
+                        </a>
+                    </div>
+                    <div class="div-button-google">
+                        <a class="button-footer" href="./error.html">
+                            <img class="button-icon-footer" src="./icons/twitter-icon-footer.png" alt="twitter-icon">
+                            <p class="p-3" id="google-text">@clinicaodontologica</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div>
+        <a href="https://api.whatsapp.com/send?phone=543815792863" target="_blank"><img src="./icons/icono-whatsapp.png"
+                alt="whatsapp-support" class="whatsapp-icon"></a>
+    </div>
     <!-- Modals -->
     <div class="modal fade" id="activeAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -309,7 +358,8 @@
                         </div>
                         <div class="">
                             <label for="admin-email" class="form-label">Email:</label>
-                            <input type="email" maxlength="30" minlength="5" class="form-control" id="admin-email" aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
+                            <input type="email" maxlength="30" minlength="5" class="form-control" id="admin-email"
+                                aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
                         </div>
                         <div class="">
                             <label for="admin-password" class="form-label">Contraseña:</label>
@@ -343,19 +393,23 @@
                     <form id="formEditUser">
                         <div class="">
                             <label for="user-first-name" class="form-label">Nombre:</label>
-                            <input type="text" maxlength="30" minlength="2" class="form-control" id="user-first-name" value="" placeholder="Ej:Juán" required>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="user-first-name"
+                                value="" placeholder="Ej:Juán" required>
                         </div>
                         <div class="">
                             <label for="user-last-name" class="form-label">Apellido:</label>
-                            <input type="text" maxlength="30" minlength="2" class="form-control" id="user-last-name" value="" placeholder="Ej:Pérez" required>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="user-last-name"
+                                value="" placeholder="Ej:Pérez" required>
                         </div>
                         <div class="">
                             <label for="user-dni" class="form-label">DNI:</label>
-                            <input type="number" maxlength="8" minlength="7" class="form-control" id="user-dni" value="" placeholder="Ej: 35263544" required>
+                            <input type="number" maxlength="8" minlength="7" class="form-control" id="user-dni" value=""
+                                placeholder="Ej: 35263544" required>
                         </div>
                         <div class="">
                             <label for="user-nationality" class="form-label">Nacionalidad:</label>
-                            <input type="text" maxlength="15" minlength="5" class="form-control" id="user-nationality" value="" placeholder="Ej: Argentino" required>
+                            <input type="text" maxlength="15" minlength="5" class="form-control" id="user-nationality"
+                                value="" placeholder="Ej: Argentino" required>
                         </div>
                         <div class="">
                             <label for="user-birthdate" class="form-label">Fecha de nacimiento:</label>
@@ -370,21 +424,23 @@
                         </div>
                         <div class="">
                             <label for="user-phone" class="form-label">Teléfono:</label>
-                            <input type="tel" maxlength="15" minlength="2" class="form-control" id="user-phone" value="" placeholder="Ej: 3815792562" required>
+                            <input type="tel" maxlength="15" minlength="2" class="form-control" id="user-phone" value=""
+                                placeholder="Ej: 3815792562" required>
                         </div>
                         <div class="">
                             <label for="user-address" class="form-label">Domicilio:</label>
-                            <input type="text" maxlength="30" minlength="10" class="form-control" id="user-address" value="" placeholder="Ej: Laprida 550" required>
+                            <input type="text" maxlength="30" minlength="10" class="form-control" id="user-address"
+                                value="" placeholder="Ej: Laprida 550" required>
                         </div>
                         <div class="">
                             <label for="user-sure" class="form-label">Obra social:</label>
                             <select class="form-select" id="user-sure">
                                 <option>Sin Obra Social</option>
                                 <option>SUBSIDIO DE SALUD</option>
-                                <option>SWISS MEDICAL GROUP	</option>
+                                <option>SWISS MEDICAL GROUP </option>
                                 <option>O.S.A. PRENSA</option>
-                                <option>PODER JUDICIAL NAC.	</option>
-                                <option>APM PROTESIS	</option>
+                                <option>PODER JUDICIAL NAC. </option>
+                                <option>APM PROTESIS </option>
                                 <option>LUIS PASTEUR</option>
                                 <option>SOCDUS Ceramistas</option>
                                 <option>OSPRERA</option>
@@ -427,11 +483,13 @@
                         </div>
                         <div class="">
                             <label for="user-email" class="form-label">Email:</label>
-                            <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email"aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
+                            <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email"
+                                aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
                         </div>
                         <div class="">
                             <label for="user-password" class="form-label">Contraseña:</label>
-                            <input type="password" maxlength="30" minlength="5" class="form-control" id="user-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                            <input type="password" maxlength="30" minlength="5" class="form-control" id="user-password"
+                                value="" maxlength="20" minlength="6" placeholder="******" required>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -495,54 +553,8 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="row p-0 m-0">
-            <div id="footer-1" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
-                <div>
-                    <p class="footer-tt"><b>Contactanos:</b></p>
-                    <ul>
-                        <li>(+54) 381 5792863</li>
-                        <li>clinicaodontologica@gmail.com</li>
-                        <li>Laprida 550</li>
-                        <li>Lunes a viernes de 9 a 21 hs</li>
-                    </ul>
-                </div>
-            </div>
-            <div id="footer-2" class="col-12 col-md-4 pt-2 bg-light text-center">
-                <a href="#"><img width="130px" src="./icons/icono-diente-png.png" alt="logo"></a>
-                <p class="fst-italic text-dark">&copy;Todos los derechos reservados</p>
-            </div>
-            <div id="footer-3" class="col-0 col-md-4 pt-2 bg-light d-flex align-items-center justify-content-center">
-                <div>
-                    <p class="footer-tt"><b>Encuentranos tambien en:</b></p>
-                    <div class="div-button-google">
-                        <a class="button-footer" href="./404notfound.html">
-                            <img class="button-icon-footer" src="./icons/instagram-icon-footer.png"
-                                alt="instagram-icon">
-                            <p class="p-3" id="google-text">clinica_odontologica</p>
-                        </a>
-                    </div>
-                    <div class="div-button-google">
-                        <a class="button-footer" href="./404notfound.html">
-                            <img class="button-icon-footer" src="./icons/facebook-icon-footer.png" alt="facebook-icon">
-                            <p class="p-3" id="google-text">Clinica Odontologica</p>
-                        </a>
-                    </div>
-                    <div class="div-button-google">
-                        <a class="button-footer" href="./404notfound.html">
-                            <img class="button-icon-footer" src="./icons/twitter-icon-footer.png" alt="twitter-icon">
-                            <p class="p-3" id="google-text">@clinicaodontologica</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div>
-        <a href="https://api.whatsapp.com/send?phone=543815792863" target="_blank"><img src="./icons/icono-whatsapp.png"
-                alt="whatsapp-support" class="whatsapp-icon"></a>
-    </div>
-    <script src="./js/admin.js"></script>
+    <!-- Scripts -->
+    <script src="./js/adminRegisters.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script> -->
