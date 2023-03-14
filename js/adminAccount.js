@@ -88,6 +88,7 @@ let myAccountTableBodyDOM = document.getElementById('myAccountTableBody')
 let btnDeleteConsultDOM = document.getElementById('btn-delete-consult')
 let btnDeleteTurnDOM = document.getElementById('btn-delete-turn')
 let btnDeleteMyAccountDOM = document.getElementById('btn-delete-myaccount')
+let formEditMyAccountDOM = document.getElementById('formEditMyAccount')
 
 let listTurnsDr = []
 let myAdmin = []
@@ -123,6 +124,36 @@ function deleteMyAdmin(dni) {
     }
 }
 
+function loadEditMyAccount(admin) {
+    adminToEdit = admin;
+    const firstNameAdminDOM = document.getElementById('admin-first-name')
+    firstNameAdminDOM.value = admin.firstName
+    const lastNameAdminDOM = document.getElementById('admin-last-name')
+    lastNameAdminDOM.value = admin.lastName
+    const dniAdminDOM = document.getElementById('admin-dni')
+    dniAdminDOM.value = admin.dni
+    const birthdateAdminDOM = document.getElementById('admin-birthdate')
+    birthdateAdminDOM.value = admin.birthdate
+    const genderAdminDOM = document.getElementById('admin-gender')
+    genderAdminDOM.value = admin.gender
+    const phoneAdminDOM = document.getElementById('admin-phone')
+    phoneAdminDOM.value = admin.phone
+    const addressAdminDOM = document.getElementById('admin-address')
+    addressAdminDOM.value = admin.address
+    const prAdminDOM = document.getElementById('admin-pr')
+    prAdminDOM.value = admin.pr
+    const specialtyAdminDOM = document.getElementById('admin-specialty')
+    specialtyAdminDOM.value = admin.specialty
+    const emailAdminDOM = document.getElementById('admin-email')
+    emailAdminDOM.value = admin.email
+    const passwordAdminDOM = document.getElementById('admin-password')
+    passwordAdminDOM.value = admin.password
+    const statusAdminDOM = document.getElementById('admin-status')
+    statusAdminDOM.value = admin.status
+
+}
+
+
 //Funciones generando tablas:
 for (let i = 0; i < listAdmins.length; i++) {
     adminLogin = JSON.parse(storageAdminLogIn)
@@ -141,7 +172,8 @@ for (let i = 0; i < listAdmins.length; i++) {
             email: admin.email,
             password: admin.password,
             type: admin.type,
-            schedules: admin.schedules
+            schedules: admin.schedules,
+            status:admin.status
         }
         myAdmin.push(newAdmin)
     }
@@ -166,13 +198,13 @@ function generateMyAccount(myAdmin) {
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
-            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit"></span>`
+            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit btnEdit"></span>`
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
-            btnEditDOM.setAttribute("data-bs-target", "#activeAdminModal");
-            btnEditDOM.onclick = () => {loadActiveAdmin(admin) }
+            btnEditDOM.setAttribute("data-bs-target", "#editMyAccount");
+            btnEditDOM.onclick = () => {loadEditMyAccount(admin) }
             const btnDeleteDOM = document.createElement('button')
-            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmMyAccountDelete");
@@ -228,7 +260,7 @@ function generateTableDrTurns(listTurnsDr) {
             const tdActionsDOM = document.createElement('td')
 
             const btnDeleteDOM = document.createElement('button')
-            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmDrTurntDelete");
@@ -270,7 +302,7 @@ function generateTableConsults(listConsults) {
             const tdActionsDOM = document.createElement('td')
 
             const btnDeleteDOM = document.createElement('button')
-            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmConsultDelete");
@@ -324,7 +356,56 @@ btnDeleteMyAccountDOM.onclick = (e) => {
     listAdmins = newMyAdmin;
     localStorage.removeItem('adminLogIn')
     window.location = './index.html'
+}
+formEditMyAccount.onsubmit = (e) => {
+    e.preventDefault()
+    const id = listAdmins.findIndex(u => u.email == adminToEdit.email)
+    const firstNameAdminDOM = document.getElementById('admin-first-name')
+    const lastNameAdminDOM = document.getElementById('admin-last-name')
+    const dniAdminDOM = document.getElementById('admin-dni')
+    const birthdateAdminDOM = document.getElementById('admin-birthdate')
+    const genderAdminDOM = document.getElementById('admin-gender')
+    const phoneAdminDOM = document.getElementById('admin-phone')
+    const addressAdminDOM = document.getElementById('admin-address')
+    const prAdminDOM = document.getElementById('admin-pr')
+    const specialtyAdminDOM = document.getElementById('admin-specialty')
+    const emailAdminDOM = document.getElementById('admin-email')
+    const passwordAdminDOM = document.getElementById('admin-password')
+    const statusAdminDOM = document.getElementById('admin-status')
+
+    adminToEdit = null;
     
+    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (dniAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (emailAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
+        listAdmins[id].firstName = firstNameAdminDOM.value
+        listAdmins[id].lastName = lastNameAdminDOM.value
+        listAdmins[id].dni = dniAdminDOM.value
+        listAdmins[id].birthdate = birthdateAdminDOM.value
+        listAdmins[id].gender = genderAdminDOM.value
+        listAdmins[id].phone = phoneAdminDOM.value
+        listAdmins[id].address = addressAdminDOM.value
+        listAdmins[id].pr = prAdminDOM.value
+        listAdmins[id].specialty = specialtyAdminDOM.value
+        listAdmins[id].email = emailAdminDOM.value
+        listAdmins[id].password = passwordAdminDOM.value
+        listAdmins[id].status = statusAdminDOM.value
+
+        localStorage.setItem('admins', JSON.stringify(listAdmins))
+        listAdmins = JSON.parse(localStorage.getItem('admins'))
+
+        const successEditToastDOM = document.getElementById('success-editMyAccount-toast')
+        const toast = new bootstrap.Toast(successEditToastDOM)
+        toast.show()
+        setTimeout(function() {
+            location.reload()
+        }, 3000)
+    }else {
+        /*const errorToastDOM = document.getElementById('error-toast')
+        const toast = new bootstrap.Toast(errorToastDOM)
+        toast.show()*/
+        setTimeout(function() {
+            location.reload()
+        }, 3000);
+    }
 }
 
 generateTableDrTurns(listTurnsDr)
