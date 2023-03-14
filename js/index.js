@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>

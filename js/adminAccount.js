@@ -83,17 +83,20 @@ let listTurns = []
 const storageConsults = localStorage.getItem('consults')
 let listConsults = []
 let tbodyConsultsTableDOM = document.getElementById('tbodyConsultsTable')
-let tbodyDrTurnsTableDOM = document.getElementById ('tbodyTurnsDrTable')
+let tbodyDrTurnsTableDOM = document.getElementById('tbodyTurnsDrTable')
+let myAccountTableBodyDOM = document.getElementById('myAccountTableBody')
 let btnDeleteConsultDOM = document.getElementById('btn-delete-consult')
 let btnDeleteTurnDOM = document.getElementById('btn-delete-turn')
+let btnDeleteMyAccountDOM = document.getElementById('btn-delete-myaccount')
 
 let listTurnsDr = []
+let myAdmin = []
 
 adminLogin = JSON.parse(storageAdminLogIn)
-if(storageAdmins){
+if (storageAdmins) {
     listAdmins = JSON.parse(storageAdmins)
 }
-if(storageTurns){
+if (storageTurns) {
     listTurns = JSON.parse(storageTurns)
 }
 if (storageConsults) {
@@ -113,21 +116,93 @@ function deleteDrTurn(patient) {
         patient: patient
     }
 }
+function deleteMyAdmin(dni) {
+    deleteConfig = {
+        for: 'admin',
+        dni: dni
+    }
+}
 
 //Funciones generando tablas:
+for (let i = 0; i < listAdmins.length; i++) {
+    adminLogin = JSON.parse(storageAdminLogIn)
+    const admin = listAdmins[i];
+    if (admin.dni == adminLogin.dni) {
+        let newAdmin = {
+            firstName: admin.firstName,
+            lastName: admin.lastName,
+            dni: admin.dni,
+            birthdate: admin.birthdate,
+            gender: admin.gender,
+            phone: admin.phone,
+            address: admin.address,
+            pr: admin.pr,
+            specialty: admin.specialty,
+            email: admin.email,
+            password: admin.password,
+            type: admin.type,
+            schedules: admin.schedules
+        }
+        myAdmin.push(newAdmin)
+    }
+}
+
+function generateMyAccount(myAdmin) {
+    myAccountTableBodyDOM.innerHTML = ''
+    myAdmin.forEach((admin, i) => {
+        if (admin) {
+            const thDOM = document.createElement('th')
+            thDOM.textContent = i + 1
+            const trDOM = document.createElement('tr')
+
+            const tdfirstNameMyAccountDOM = document.createElement('td')
+            tdfirstNameMyAccountDOM.textContent = admin.firstName
+            const tdLastNameMyAccountDOM = document.createElement('td')
+            tdLastNameMyAccountDOM.textContent = admin.lastName
+            const tdEmailMyAccountDOM = document.createElement('td')
+            tdEmailMyAccountDOM.textContent = admin.email
+            const tdPasswordMyAccountDOM = document.createElement('td')
+            tdPasswordMyAccountDOM.textContent = admin.password
+
+            const tdActionsDOM = document.createElement('td')
+            const btnEditDOM = document.createElement('button')
+            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit"></span>`
+            btnEditDOM.classList = 'btn btn-outline-dark me-1'
+            btnEditDOM.setAttribute("data-bs-toggle", "modal");
+            btnEditDOM.setAttribute("data-bs-target", "#activeAdminModal");
+            btnEditDOM.onclick = () => {loadActiveAdmin(admin) }
+            const btnDeleteDOM = document.createElement('button')
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.classList = 'btn btn-outline-danger'
+            btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
+            btnDeleteDOM.setAttribute("data-bs-target", "#confirmMyAccountDelete");
+            btnDeleteDOM.onclick = () => { deleteMyAdmin(admin.dni) }
+
+            tdActionsDOM.appendChild(btnEditDOM)
+            tdActionsDOM.appendChild(btnDeleteDOM)
 
 
+            trDOM.appendChild(thDOM)
+            trDOM.appendChild(tdfirstNameMyAccountDOM)
+            trDOM.appendChild(tdLastNameMyAccountDOM)
+            trDOM.appendChild(tdEmailMyAccountDOM)
+            trDOM.appendChild(tdPasswordMyAccountDOM)
 
-
+            trDOM.appendChild(tdActionsDOM)
+            myAccountTableBodyDOM.append(trDOM)
+        }
+    });
+}
+///----------------------------------------------------------------------------------------------------------------------------------------------------
 for (let i = 0; i < listTurns.length; i++) {
     adminLogin = JSON.parse(storageAdminLogIn)
     const turn = listTurns[i];
-    if(turn.dr == adminLogin.dni){
+    if (turn.dr == adminLogin.dni) {
         let newDrTurn = {
-            patient:turn.patient,
-            hour:turn.hour,
-            day:turn.day,
-            reasonConsultation:turn.reasonConsultation
+            patient: turn.patient,
+            hour: turn.hour,
+            day: turn.day,
+            reasonConsultation: turn.reasonConsultation
         }
         listTurnsDr.push(newDrTurn)
     }
@@ -157,7 +232,7 @@ function generateTableDrTurns(listTurnsDr) {
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmDrTurntDelete");
-            btnDeleteDOM.onclick = () => { deleteDrTurn(turn.patient)}
+            btnDeleteDOM.onclick = () => { deleteDrTurn(turn.patient) }
 
             tdActionsDOM.appendChild(btnDeleteDOM)
 
@@ -173,7 +248,7 @@ function generateTableDrTurns(listTurnsDr) {
         }
     });
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 function generateTableConsults(listConsults) {
     tbodyConsultsTableDOM.innerHTML = ''
     listConsults.forEach((consult, i) => {
@@ -199,7 +274,7 @@ function generateTableConsults(listConsults) {
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmConsultDelete");
-            btnDeleteDOM.onclick = () => { deleteConsult(consult.fullname)}
+            btnDeleteDOM.onclick = () => { deleteConsult(consult.fullname) }
 
             tdActionsDOM.appendChild(btnDeleteDOM)
 
@@ -230,11 +305,10 @@ btnDeleteConsultDOM.onclick = (e) => {
 }
 
 btnDeleteTurnDOM.onclick = (e) => {
-    let newDrTurns = []
-    newDrTurns = listTurnsDr.filter(u => u.patient != deleteConfig.patient)
-    console.log(newDrTurns)
-    //localStorage.setItem('turns', JSON.stringify(listTurnsDr))
-    listTurnsDr = newDrTurns;
+    let newListTurns = []
+    newListTurns = listTurns.filter(u => u.patient != deleteConfig.patient)
+    localStorage.setItem('turns', JSON.stringify(newListTurns))
+    listTurns = newListTurns;
     const drTurnDeleteToastDOM = document.getElementById('drTurn-delete-toast')
     const toast = new bootstrap.Toast(drTurnDeleteToastDOM)
     toast.show()
@@ -243,7 +317,16 @@ btnDeleteTurnDOM.onclick = (e) => {
     }, 3000);
 }
 
-
+btnDeleteMyAccountDOM.onclick = (e) => {
+    let newMyAdmin = []
+    newMyAdmin = listAdmins.filter(u => u.dni != deleteConfig.dni)
+    localStorage.setItem('admins', JSON.stringify(newMyAdmin))
+    listAdmins = newMyAdmin;
+    localStorage.removeItem('adminLogIn')
+    window.location = './index.html'
+    
+}
 
 generateTableDrTurns(listTurnsDr)
 generateTableConsults(listConsults)
+generateMyAccount(myAdmin)

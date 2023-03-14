@@ -623,7 +623,7 @@ formSelectUserType.onsubmit = (e) => {
                             successfulRegistrationBodyToastDOM.innerHTML='Se ha registrado correctamente como profesional, recibira un mail cuando su cuenta sea activada'
                             toast.show()
                             setTimeout(function() {
-                            location.reload();
+                            window.location = './index.html'
                             }, 3000);
                         } else {
                             adminPasswordDOM.setCustomValidity(":invalid")
@@ -887,8 +887,8 @@ formSelectUserType.onsubmit = (e) => {
                                 successfulRegistrationBodyToastDOM.innerHTML='Se ha registrado correctamente como paciente, ya puede ingresar a su cuenta.'
                                 toast.show()
                                 setTimeout(function() {
-                                    window.location = './login.html';
-                                    }, 3000);
+                                    window.location = './login.html'
+                                    }, 3000)
                             }else {
                                 adminPasswordDOM.setCustomValidity(":invalid")
                                 adminRepeatPasswordDOM.setCustomValidity(":invalid")

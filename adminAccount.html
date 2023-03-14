@@ -80,17 +80,22 @@
                         <th class="num-prod" scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">DNI</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contraseña</th>
+
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody id="adminsRegisterTableDetails">
+                <tbody id="myAccountTableBody">
                     <tr>
                         <th scope="row">#</th>
                         <td>Nombre</td>
                         <td>Apellido</td>
-                        <td>DNI</td>
+                        <td>Email</td>
+                        <td>Contraseña</td>
                         <td>
+                            <button class="btn btn-outline-dark" id=""><span
+                                    class="fa fa-solid fa-edit"></span></button>
                             <button class="btn btn-outline-danger" id=""><span
                                     class="fa fa-solid fa-trash"></span></button>
                         </td>
@@ -118,8 +123,6 @@
                         <td>Hora</td>
                         <td>Motivo de la consulta</td>
                         <td>
-                            <button class="btn btn-outline-dark" id=""><span
-                                    class="fa fa-solid fa-check"></span></button>
                             <button class="btn btn-outline-danger" id=""><span
                                     class="fa fa-solid fa-trash"></span></button>
                         </td>
@@ -225,6 +228,25 @@
         </div>
     </div>
     <div class="modal fade" id="confirmDrTurntDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalDeleteLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Estas seguro de eliminar este turno?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-turn"
+                        data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmMyAccountDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -233,11 +255,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Esta operacion es irreversible. ¿Estas seguro de eliminar este turno?
+                Esta operacion es irreversible. ¿Esta seguro de eliminar su cuenta?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" id="btn-delete-turn"
+                <button type="button" class="btn btn-danger" id="btn-delete-myaccount"
                     data-bs-dismiss="modal">Confirmar</button>
             </div>
         </div>
