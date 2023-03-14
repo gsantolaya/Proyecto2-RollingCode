@@ -5,7 +5,6 @@ body{
 .links{
     text-decoration: none;
     color: black;
-    margin: 10px;
 }
 .links:hover {
 	text-decoration: underline;
@@ -49,10 +48,6 @@ footer{
     bottom: 20px;
     right: 30px;
 }
-
-
-
-
 @media screen and (max-width: 576px){
     #footer-1{
         display: none !important;
@@ -63,8 +58,14 @@ footer{
     .pub-final{
         display:none;
     }
+    table {
+        width: 300px !important;
+      }
+    .table-container {
+        overflow-x: scroll !important;
+      }
 }
-@media screen and (min-width:577px) and (max-width: 766px){
+@media screen and (min-width:577px) and (max-width: 991px){
     #footer-1{
         display: none !important;
     }

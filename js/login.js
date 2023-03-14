@@ -77,14 +77,34 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-if(storageUserLogIn){
+if (storageUserLogIn) {
     let bookAppointmentButton = document.getElementById("book-appointment-button")
 
-bookAppointmentButton.onclick = (e) => {
-    e.preventDefault()
-    window.location = './bookAnAppointment.html'
+    bookAppointmentButton.onclick = (e) => {
+        e.preventDefault()
+        window.location = './bookAnAppointment.html'
+    }
 }
-}
+//-----------------------------------------------------------------------------------------------------------------------------------------
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 let formLogin = document.getElementById('form-login')
 let userEmail = document.getElementById('user-email')
@@ -102,37 +122,77 @@ formLogin.onsubmit = (e) => {
     const storageAdminsList = localStorage.getItem('admins')
 
     if (storageUsersList) {
-            usersList = JSON.parse(storageUsersList)
+        usersList = JSON.parse(storageUsersList)
+        if (userEmail.value.trim() != "" && userPassword.value.trim() != "") {
             const userFind = usersList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
             if (userFind) {
-            const user = {
-                email: userFind.email,
-                firstname: userFind.firstName,
-                lastname: userFind.lastName,
-                type: userFind.type,
-                dni: userFind.dni
+                const user = {
+                    email: userFind.email,
+                    firstname: userFind.firstName,
+                    lastname: userFind.lastName,
+                    type: userFind.type,
+                    dni: userFind.dni
+                }
+                localStorage.setItem('userLogIn', JSON.stringify(user))
+                window.location = 'index.html'
+            } else {
+                const errorToastDOM = document.getElementById('error-toast')
+                const toastErrorBodyDOM = document.getElementById('toast-error-body')
+                toastErrorBodyDOM.innerHTML = 'El usuario y la contraseña ingresados no coinciden'
+                const toast = new bootstrap.Toast(errorToastDOM)
+                toast.show()
             }
-            localStorage.setItem('userLogIn', JSON.stringify(user))
-            window.location = 'index.html'
+        } else {
+            const errorToastDOM = document.getElementById('error-toast')
+            const toastErrorBodyDOM = document.getElementById('toast-error-body')
+            toastErrorBodyDOM.innerHTML = 'Ingrese su usuario y contraseña'
+            const toast = new bootstrap.Toast(errorToastDOM)
+            toast.show()
         }
     }
-    if (storageAdminsList){
+
+
+    if (storageAdminsList) {
         adminsList = JSON.parse(storageAdminsList)
-        const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
-        if (adminFind){
-            if(adminFind.status == "activado"){
-            const admin = {
-                email: adminFind.email,
-                firstname: adminFind.firstName,
-                lastname: adminFind.lastName,
-                type: adminFind.type,
-                dni: adminFind.dni
+        if (userEmail.value.trim() != "" && userPassword.value.trim() != "") {
+            const adminFind = adminsList.find(user => user.email == userEmail.value.trim() && user.password == userPassword.value.trim())
+            if (adminFind) {
+                if (adminFind.status == "activado") {
+                    const admin = {
+                        email: adminFind.email,
+                        firstname: adminFind.firstName,
+                        lastname: adminFind.lastName,
+                        type: adminFind.type,
+                        dni: adminFind.dni
+                    }
+                    localStorage.setItem('adminLogIn', JSON.stringify(admin))
+                    window.location = 'index.html'
+                } else {
+                    const invalidFeedbackEmailDOM = document.getElementById('invalid-feedback-email')
+                    invalidFeedbackEmailDOM.innerHTML = ''
+                    const invalidFeedbackPasswordDOM = document.getElementById('invalid-feedback-password')
+                    invalidFeedbackPasswordDOM.innerHTML = ''
+                    userEmail.setCustomValidity(":invalid")
+                    userPassword.setCustomValidity(":invalid")
+                    const errorToastDOM = document.getElementById('error-toast')
+                    const toastErrorBodyDOM = document.getElementById('toast-error-body')
+                    toastErrorBodyDOM.innerHTML = 'El usuario ingresado no se encuentra activado'
+                    const toast = new bootstrap.Toast(errorToastDOM)
+                    toast.show()
+                }
+            } else {
+                const errorToastDOM = document.getElementById('error-toast')
+                const toastErrorBodyDOM = document.getElementById('toast-error-body')
+                toastErrorBodyDOM.innerHTML = 'El usuario y la contraseña ingresados no coinciden'
+                const toast = new bootstrap.Toast(errorToastDOM)
+                toast.show()
             }
-            localStorage.setItem('adminLogIn', JSON.stringify(admin))
-            window.location = 'index.html'
-        }else{
-            alert("usuario no activado")
-        }
+        } else {
+            const errorToastDOM = document.getElementById('error-toast')
+            const toastErrorBodyDOM = document.getElementById('toast-error-body')
+            toastErrorBodyDOM.innerHTML = 'Ingrese su usuario y contraseña'
+            const toast = new bootstrap.Toast(errorToastDOM)
+            toast.show()
         }
     }
 }
