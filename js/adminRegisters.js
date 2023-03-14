@@ -188,14 +188,14 @@ function generateTableRegisterAdmins(listAdmins) {
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
-            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-check"></span>`
+            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-check btnEdit"></span>`
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#activeAdminModal");
             btnEditDOM.onclick = () => {loadActiveAdmin(admin) }
 
             const btnDeleteDOM = document.createElement('button')
-            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmAdminDelete");
@@ -246,14 +246,14 @@ function generateTableAdmins(listAdmins) {
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
-            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit"></span>`
+            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit btnEdit"></span>`
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editAdminModal");
             btnEditDOM.onclick = () => { loadEditAdmin(admin) }
 
             const btnDeleteDOM = document.createElement('button')
-            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmAdminDelete");
@@ -310,14 +310,14 @@ function generateTableUsers(listUsers) {
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
-            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit"></span>`
+            btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit btnEdit"></span>`
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editUserModal");
             btnEditDOM.onclick = () => { loadEditUser(user) }
 
             const btnDeleteDOM = document.createElement('button')
-            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash"></span>`
+            btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmUserDelete");
