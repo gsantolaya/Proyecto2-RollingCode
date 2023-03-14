@@ -504,8 +504,8 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
                 <div class="col-12 col-lg-6 align-items-center justify-content-center mx-md-5">
                     <div class="form-check col-12 mx-md-5">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck"><b>Estoy de acuerdo con los términos y condiciones.</b></label>
+                        <input class="form-check-input" type="checkbox" value="" id="adminTermsAndConditions" required>
+                        <label class="form-check-label" for="adminTermsAndConditions"><b>Estoy de acuerdo con los términos y condiciones.</b></label>
                         <div class="invalid-feedback">
                             Debes estar de acuerdo con los términos y condiciones antes de registrarte.
                         </div>
@@ -530,6 +530,7 @@ formSelectUserType.onsubmit = (e) => {
             let adminEmailDOM = document.getElementById('admin-email')
             let adminPasswordDOM = document.getElementById('admin-password')
             let adminRepeatPasswordDOM = document.getElementById('admin-repeat-password')
+            let adminTermsAndConditionsDOM = document.getElementById("adminTermsAndConditions")
             let hoursMonday = []
             let hoursTuesday = []
             let hoursWednesday = []
@@ -576,7 +577,7 @@ formSelectUserType.onsubmit = (e) => {
 
             e.preventDefault()
 
-            if (adminFirstNameDOM.value.trim() != "" && adminLastNameDOM.value.trim() != "" && adminDniDOM.value.trim() != "" && userbirthdateDOM.value.trim() != "" && adminGenderDOM.value.trim() != "" && adminPhoneDOM.value.trim() != "" && adminAddressDOM.value.trim() != "" && adminPrDOM.value.trim() != "" && adminSpecialtyDOM.value.trim() != "" && adminEmailDOM.value.trim() != "" && adminPasswordDOM.value.trim() != "" && adminRepeatPasswordDOM.value.trim() != "") {
+            if (adminFirstNameDOM.value.trim() != "" && adminLastNameDOM.value.trim() != "" && adminDniDOM.value.trim() != "" && userbirthdateDOM.value.trim() != "" && adminGenderDOM.value.trim() != "" && adminPhoneDOM.value.trim() != "" && adminAddressDOM.value.trim() != "" && adminPrDOM.value.trim() != "" && adminSpecialtyDOM.value.trim() != "" && adminEmailDOM.value.trim() != "" && adminPasswordDOM.value.trim() != "" && adminRepeatPasswordDOM.value.trim() != "" && adminTermsAndConditionsDOM.checked) {
                 if (storageAdminsList) {
                     adminsList = JSON.parse(storageAdminsList)
                 }
@@ -650,7 +651,6 @@ formSelectUserType.onsubmit = (e) => {
                 <div class="valid-feedback">
                     Excelente!
                 </div>
-            </div>
             </div>
             <div class="col-md-4">
                 <label for="user-last-name" class="form-label"><b>Apellido:</b></label>
@@ -807,8 +807,8 @@ formSelectUserType.onsubmit = (e) => {
             <div class="mt-4">
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
+                        <input class="form-check-input" type="checkbox" value="" id="userTermsAndConditions" required>
+                        <label class="form-check-label" for="userTermsAndConditions">
                         <b>Estoy de acuerdo con los términos y condiciones.</b>
                         </label>
                         <div class="invalid-feedback">
@@ -836,6 +836,7 @@ formSelectUserType.onsubmit = (e) => {
                 let userEmailDOM = document.getElementById('user-email')
                 let userPasswordDOM = document.getElementById('user-password')
                 let userRepeatPasswordDOM = document.getElementById('user-repeat-password')
+                let userTermsAndConditionsDOM = document.getElementById('userTermsAndConditions')
 
                 const successfulRegistrationToastDOM = document.getElementById('successful-registration-toast')
                 const successfulRegistrationBodyToastDOM = document.getElementById('successful-registration-body-toast')
@@ -848,7 +849,7 @@ formSelectUserType.onsubmit = (e) => {
                 const storageUsersList = localStorage.getItem('users')
 
 
-                if (userFirstNameDOM.value.trim() != "" && userLastNameDOM.value.trim() != "" && userDniDOM.value.trim() != "" && userNationalityDOM.value.trim() != "" && userPhoneDOM.value.trim() != "" && userAddressDOM.value.trim() != "" && userGenderDOM.value.trim() != "" && userBirthdateDOM.value.trim() != "" && userSureDOM.value.trim() != "" && userEmailDOM.value.trim() != "" && userPasswordDOM.value.trim() != "" && userRepeatPasswordDOM.value.trim() != "") {
+                if (userFirstNameDOM.value.trim() != "" && userLastNameDOM.value.trim() != "" && userDniDOM.value.trim() != "" && userNationalityDOM.value.trim() != "" && userPhoneDOM.value.trim() != "" && userAddressDOM.value.trim() != "" && userGenderDOM.value.trim() != "" && userBirthdateDOM.value.trim() != "" && userSureDOM.value.trim() != "" && userEmailDOM.value.trim() != "" && userPasswordDOM.value.trim() != "" && userRepeatPasswordDOM.value.trim() != "" && userTermsAndConditionsDOM.checked) {
                     if (storageUsersList) {
                         usersList = JSON.parse(storageUsersList)
                     }

@@ -1,0 +1,89 @@
+body {
+    background-color:  #f3d8c7 !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.btnEdit {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.btnDelete {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Zen Dots', cursive;
+    font-size: 12px;
+}
+
+.button-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 250px;
+    height: 30px;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.footer-tt {
+    font-size: 16px;
+}
+
+.button-icon-footer {
+    height: 30px;
+    width: 30px;
+}
+
+.button-footer:hover {
+    color: black;
+    transform: scale(1.1);
+}
+
+.whatsapp-icon {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+}
+
+@media screen and (max-width: 576px) {
+    #footer-1 {
+        display: none !important;
+    }
+
+    #footer-3 {
+        display: none !important;
+    }
+
+    .pub-final {
+        display: none;
+    }
+
+    table {
+        width: 300px !important;
+    }
+
+    .table-container {
+        overflow-x: scroll !important;
+    }
+}
+
+@media screen and (min-width:577px) and (max-width: 991px) {
+    #footer-1 {
+        display: none !important;
+    }
+
+    #footer-3 {
+        display: none !important;
+    }
+}

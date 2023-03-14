@@ -357,7 +357,7 @@ btnDeleteMyAccountDOM.onclick = (e) => {
     localStorage.removeItem('adminLogIn')
     window.location = './index.html'
 }
-formEditMyAccount.onsubmit = (e) => {
+formEditMyAccountDOM.onsubmit = (e) => {
     e.preventDefault()
     const id = listAdmins.findIndex(u => u.email == adminToEdit.email)
     const firstNameAdminDOM = document.getElementById('admin-first-name')

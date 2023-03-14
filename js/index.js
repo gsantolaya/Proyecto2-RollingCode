@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
