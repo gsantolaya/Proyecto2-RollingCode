@@ -26,6 +26,9 @@ main{
 .card-name{
     text-align: center;
 }
+.card{
+    transition: transform 3s;
+}
 .card-body{
     height: 80px;
     width: 322;
