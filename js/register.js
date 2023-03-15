@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -77,7 +77,8 @@ if (storageUserLogIn) {
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-if (storageUserLogIn) {
+if (storageAdminLogIn) {
+} else {
     let bookAppointmentButton = document.getElementById("book-appointment-button")
 
     bookAppointmentButton.onclick = (e) => {
@@ -142,7 +143,7 @@ formSelectUserType.onsubmit = (e) => {
             <div class="col-md-4">
                 <label for="admin-dni" class="form-label"><b>DNI:</b></label>
                 <input type="number" maxlength="8" minlength="7" class="form-control" id="admin-dni" value="" placeholder="Ej: 35263544" required>
-                <div class="invalid-feedback">
+                <div id="invalid-feedback-dni-admin" class="invalid-feedback">
                     Por favor ingrese su número de DNI correctamente.
                 </div>
                 <div class="valid-feedback">
@@ -224,7 +225,7 @@ formSelectUserType.onsubmit = (e) => {
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                     <input type="email" maxlength="30" minlength="5" class="form-control" id="admin-email"aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
-                    <div class="invalid-feedback">
+                    <div id="invalid-feedback-email-admin" class="invalid-feedback">
                         Por favor ingrese su email correctamente.
                     </div>
                     <div class="valid-feedback">
@@ -234,16 +235,22 @@ formSelectUserType.onsubmit = (e) => {
             </div>
             <div class="col-md-4">
                 <label for="admin-password" class="form-label"><b>Contraseña:</b></label>
-                <input type="password" maxlength="30" minlength="5" class="form-control" id="admin-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="admin-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
+                </div>
+                <div class="invalid-feedback">
+                    La contraseña debe tener entre 6 y 15 caracteres.
                 </div>
             </div>
             <div class="col-md-4">
                 <label for="admin-repeat-password" class="form-label"><b>Repetir contraseña:</b></label>
-                <input type="password" maxlength="30" minlength="5" class="form-control" id="admin-repeat-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="admin-repeat-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
+                </div>
+                <div id="invalid-feedback-password-admin" class="invalid-feedback">
+                    Repita la contraseña.
                 </div>
             </div>
             <div class="d-md-flex flex-row align-items-center justify-content-center mt-lg-4">
@@ -291,7 +298,8 @@ formSelectUserType.onsubmit = (e) => {
                             <div class="form-check">
                                 <input class="form-check-input hours-monday" type="checkbox" value="18.00" id="monday18">
                                 <label class="form-check-label" for="monday18">18.00</label>
-                            </div>                            <div class="form-check">
+                            </div>
+                            <div class="form-check">
                                 <input class="form-check-input hours-monday" type="checkbox" value="19.00" id="monday19">
                                 <label class="form-check-label" for="monday19">19.00</label>
                             </div>                            
@@ -504,8 +512,8 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
                 <div class="col-12 col-lg-6 align-items-center justify-content-center mx-md-5">
                     <div class="form-check col-12 mx-md-5">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck"><b>Estoy de acuerdo con los términos y condiciones.</b></label>
+                        <input class="form-check-input" type="checkbox" value="" id="adminTermsAndConditions" required>
+                        <label class="form-check-label" for="adminTermsAndConditions"><b>Estoy de acuerdo con los términos y condiciones.</b></label>
                         <div class="invalid-feedback">
                             Debes estar de acuerdo con los términos y condiciones antes de registrarte.
                         </div>
@@ -530,6 +538,7 @@ formSelectUserType.onsubmit = (e) => {
             let adminEmailDOM = document.getElementById('admin-email')
             let adminPasswordDOM = document.getElementById('admin-password')
             let adminRepeatPasswordDOM = document.getElementById('admin-repeat-password')
+            let adminTermsAndConditionsDOM = document.getElementById("adminTermsAndConditions")
             let hoursMonday = []
             let hoursTuesday = []
             let hoursWednesday = []
@@ -576,13 +585,18 @@ formSelectUserType.onsubmit = (e) => {
 
             e.preventDefault()
 
-            if (adminFirstNameDOM.value.trim() != "" && adminLastNameDOM.value.trim() != "" && adminDniDOM.value.trim() != "" && userbirthdateDOM.value.trim() != "" && adminGenderDOM.value.trim() != "" && adminPhoneDOM.value.trim() != "" && adminAddressDOM.value.trim() != "" && adminPrDOM.value.trim() != "" && adminSpecialtyDOM.value.trim() != "" && adminEmailDOM.value.trim() != "" && adminPasswordDOM.value.trim() != "" && adminRepeatPasswordDOM.value.trim() != "") {
-                if (storageAdminsList) {
+            if ((adminFirstNameDOM.value.trim().length > 1) && (adminLastNameDOM.value.trim().length > 1) && (adminDniDOM.value.trim() != "") &&
+                (userbirthdateDOM.value.trim() != "") && (adminGenderDOM.value.trim() != "") && (adminPhoneDOM.value.trim().length > 1) &&
+                (adminAddressDOM.value.trim().length > 9 ) && (adminPrDOM.value.trim() > 2 ) && (adminSpecialtyDOM.value.trim() != "") && (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(adminEmailDOM.value.trim())) &&
+                (adminPasswordDOM.value.trim().length > 5) && (adminRepeatPasswordDOM.value.trim() > 5) && adminTermsAndConditionsDOM.checked) {
+                    if (storageAdminsList) {
                     adminsList = JSON.parse(storageAdminsList)
                 }
                 const userDniFind = adminsList.find(admin => admin.dni === adminDniDOM.value.trim())
                 if (userDniFind) {
                     adminDniDOM.setCustomValidity(":invalid")
+                    const invaliFeedbackDniAdmin = document.getElementById('invalid-feedback-dni-admin')
+                    invaliFeedbackDniAdmin.innerHTML = 'Este DNI ya se encuentra registrado.'
                     const toast = new bootstrap.Toast(errorRegistrationToastDOM)
                     errorRegistrationBodyToastDOM.innerHTML = 'El DNI ingresado ya se encuentra registrado.'
                     toast.show()
@@ -590,6 +604,8 @@ formSelectUserType.onsubmit = (e) => {
                     const userEmailFind = adminsList.find(admin => admin.email === adminEmailDOM.value.trim())
                     if (userEmailFind) {
                         adminEmailDOM.setCustomValidity(":invalid")
+                        const invaliFeedbackEmailAdmin = document.getElementById('invalid-feedback-email-admin')
+                        invaliFeedbackEmailAdmin.innerHTML = 'Este Email ya se encuentra registrado.'
                         const toast = new bootstrap.Toast(errorRegistrationToastDOM)
                         errorRegistrationBodyToastDOM.innerHTML = 'El email ingresado ya se encuentra registrado.'
                         toast.show()
@@ -620,26 +636,29 @@ formSelectUserType.onsubmit = (e) => {
                             adminsList.push(newAdmin)
                             localStorage.setItem('admins', JSON.stringify(adminsList))
                             const toast = new bootstrap.Toast(successfulRegistrationToastDOM)
-                            successfulRegistrationBodyToastDOM.innerHTML='Se ha registrado correctamente como profesional, recibira un mail cuando su cuenta sea activada'
+                            successfulRegistrationBodyToastDOM.innerHTML = 'Se ha registrado correctamente como profesional, recibira un mail cuando su cuenta sea activada'
                             toast.show()
+                            setTimeout(function () {
+                                window.location = './index.html'
+                            }, 3000);
                         } else {
                             adminPasswordDOM.setCustomValidity(":invalid")
                             adminRepeatPasswordDOM.setCustomValidity(":invalid")
+                            const invaliFeedbackPasswordAdmin = document.getElementById('invalid-feedback-password-admin')
+                            invaliFeedbackPasswordAdmin.innerHTML = 'Las contraseñas ingresadas no coinciden'
                             const toast = new bootstrap.Toast(errorRegistrationToastDOM)
                             errorRegistrationBodyToastDOM.innerHTML = 'Las contraseñas ingresadas no son iguales.'
                             toast.show()
                         }
                     }
                 }
-            }else{
+            } else {
                 const toast = new bootstrap.Toast(errorRegistrationToastDOM)
                 toast.show()
-                //window.location = 'index.html'
-
             }
         }
-    }else if (userType.value == "Paciente") {
-            registerForm.innerHTML = `
+    } else if (userType.value == "Paciente") {
+        registerForm.innerHTML = `
             <div class="col-md-4">
                 <label for="user-first-name" class="form-label"><b>Nombre:</b></label>
                 <input type="text" maxlength="30" minlength="2" class="form-control" id="user-first-name" value="" placeholder="Ej:Juán" required>
@@ -649,7 +668,6 @@ formSelectUserType.onsubmit = (e) => {
                 <div class="valid-feedback">
                     Excelente!
                 </div>
-            </div>
             </div>
             <div class="col-md-4">
                 <label for="user-last-name" class="form-label"><b>Apellido:</b></label>
@@ -664,7 +682,7 @@ formSelectUserType.onsubmit = (e) => {
             <div class="col-md-4">
                 <label for="user-dni" class="form-label"><b>DNI:</b></label>
                 <input type="number" maxlength="8" minlength="7" class="form-control" id="user-dni" value="" placeholder="Ej: 35263544" required>
-                <div class="invalid-feedback">
+                <div id="invalid-feedback-dni-user" class="invalid-feedback">
                     Por favor ingrese su número de DNI correctamente.
                 </div>
                 <div class="valid-feedback">
@@ -781,7 +799,7 @@ formSelectUserType.onsubmit = (e) => {
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                     <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email"aria-describedby="inputGroupPrepend" placeholder="Ej: juanperez@gmail.com" required>
-                    <div class="invalid-feedback">
+                    <div id="invalid-feedback-email-user" class="invalid-feedback">
                         Por favor ingrese su email correctamente.
                     </div>
                     <div class="valid-feedback">
@@ -791,23 +809,29 @@ formSelectUserType.onsubmit = (e) => {
             </div>
             <div class="col-md-4">
                 <label for="user-password" class="form-label"><b>Contraseña:</b></label>
-                <input type="password" maxlength="30" minlength="5" class="form-control" id="user-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="user-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
+                </div>
+                <div class="invalid-feedback">
+                    La contraseña debe tener entre 6 y 15 caracteres.
                 </div>
             </div>
             <div class="col-md-4">
                 <label for="user-repeat-password" class="form-label"><b>Repetir contraseña:</b></label>
-                <input type="password" maxlength="30" minlength="5" class="form-control" id="user-repeat-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="user-repeat-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
+                <div id="invalid-feedback-password-user" class="invalid-feedback">
+                    Repita la contraseña.
+                </div>
             </div>
             <div class="mt-4">
-                <div class="col-12">
+                <div class="col-12 ms-5 mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
+                        <input class="form-check-input" type="checkbox" value="" id="userTermsAndConditions" required>
+                        <label class="form-check-label" for="userTermsAndConditions">
                         <b>Estoy de acuerdo con los términos y condiciones.</b>
                         </label>
                         <div class="invalid-feedback">
@@ -815,89 +839,101 @@ formSelectUserType.onsubmit = (e) => {
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <button class="btn btn-secondary w-75" type="submit"><b>Registrarse</b></button>
                 </div>
             </div>
 
             `
 
-            registerForm.onsubmit = (e) => {
-                let userFirstNameDOM = document.getElementById('user-first-name')
-                let userLastNameDOM = document.getElementById('user-last-name')
-                let userDniDOM = document.getElementById('user-dni')
-                let userNationalityDOM = document.getElementById('user-nationality')
-                let userBirthdateDOM = document.getElementById('user-birthdate')
-                let userPhoneDOM = document.getElementById('user-phone')
-                let userAddressDOM = document.getElementById('user-address')
-                let userGenderDOM = document.getElementById('user-gender')
-                let userSureDOM = document.getElementById('user-sure')
-                let userEmailDOM = document.getElementById('user-email')
-                let userPasswordDOM = document.getElementById('user-password')
-                let userRepeatPasswordDOM = document.getElementById('user-repeat-password')
+        registerForm.onsubmit = (e) => {
+            let userFirstNameDOM = document.getElementById('user-first-name')
+            let userLastNameDOM = document.getElementById('user-last-name')
+            let userDniDOM = document.getElementById('user-dni')
+            let userNationalityDOM = document.getElementById('user-nationality')
+            let userBirthdateDOM = document.getElementById('user-birthdate')
+            let userPhoneDOM = document.getElementById('user-phone')
+            let userAddressDOM = document.getElementById('user-address')
+            let userGenderDOM = document.getElementById('user-gender')
+            let userSureDOM = document.getElementById('user-sure')
+            let userEmailDOM = document.getElementById('user-email')
+            let userPasswordDOM = document.getElementById('user-password')
+            let userRepeatPasswordDOM = document.getElementById('user-repeat-password')
+            let userTermsAndConditionsDOM = document.getElementById('userTermsAndConditions')
 
-                const successfulRegistrationToastDOM = document.getElementById('successful-registration-toast')
-                const successfulRegistrationBodyToastDOM = document.getElementById('successful-registration-body-toast')
-                const errorRegistrationToastDOM = document.getElementById('error-registration-toast')
-                const errorRegistrationBodyToastDOM = document.getElementById('error-registration-body-toast')
-
-
-
-                e.preventDefault()
-                const storageUsersList = localStorage.getItem('users')
+            const successfulRegistrationToastDOM = document.getElementById('successful-registration-toast')
+            const successfulRegistrationBodyToastDOM = document.getElementById('successful-registration-body-toast')
+            const errorRegistrationToastDOM = document.getElementById('error-registration-toast')
+            const errorRegistrationBodyToastDOM = document.getElementById('error-registration-body-toast')
 
 
-                if (userFirstNameDOM.value.trim() != "" && userLastNameDOM.value.trim() != "" && userDniDOM.value.trim() != "" && userNationalityDOM.value.trim() != "" && userPhoneDOM.value.trim() != "" && userAddressDOM.value.trim() != "" && userGenderDOM.value.trim() != "" && userBirthdateDOM.value.trim() != "" && userSureDOM.value.trim() != "" && userEmailDOM.value.trim() != "" && userPasswordDOM.value.trim() != "" && userRepeatPasswordDOM.value.trim() != "") {
-                    if (storageUsersList) {
-                        usersList = JSON.parse(storageUsersList)
-                    }
-                    const userDniFind = usersList.find(user => user.dni === userDniDOM.value.trim())
-                    if (userDniFind) {
-                        userDniDOM.setCustomValidity(":invalid")
+            e.preventDefault()
+            const storageUsersList = localStorage.getItem('users')
+
+            if ((userFirstNameDOM.value.trim().length > 1) && (userLastNameDOM.value.trim().length > 1) &&
+                (userDniDOM.value.trim() != "") && (userNationalityDOM.value.trim().length > 4) && (userPhoneDOM.value.trim().length > 1) &&
+                (userAddressDOM.value.trim().length > 9) && (userGenderDOM.value.trim().length != "") && (userBirthdateDOM.value.trim() != "") &&
+                (userSureDOM.value.trim() != "") && (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmailDOM.value.trim())) && (userPasswordDOM.value.trim().length > 5) &&
+                (userRepeatPasswordDOM.value.trim().length > 5) && (userTermsAndConditionsDOM.checked)) {
+                if (storageUsersList) {
+                    usersList = JSON.parse(storageUsersList)
+                }
+                const userDniFind = usersList.find(user => user.dni === userDniDOM.value.trim())
+                if (userDniFind) {
+                    userDniDOM.setCustomValidity(":invalid")
+                    const invaliFeedbackDniUser = document.getElementById('invalid-feedback-dni-user')
+                    invaliFeedbackDniUser.innerHTML = 'Este DNI ya se encuentra registrado.'
+                    const toast = new bootstrap.Toast(errorRegistrationToastDOM)
+                    errorRegistrationBodyToastDOM.innerHTML = 'El DNI ingresado ya se encuentra registrado.'
+                    toast.show()
+                } else {
+                    const userEmailFind = usersList.find(user => user.email === userEmailDOM.value.trim())
+                    if (userEmailFind) {
+                        userEmailDOM.setCustomValidity(":invalid")
+                        const invaliFeedbackEmailUser = document.getElementById('invalid-feedback-email-user')
+                        invaliFeedbackEmailUser.innerHTML = 'Este Email ya se encuentra registrado.'
                         const toast = new bootstrap.Toast(errorRegistrationToastDOM)
-                        errorRegistrationBodyToastDOM.innerHTML = 'El DNI ingresado ya se encuentra registrado.'
+                        errorRegistrationBodyToastDOM.innerHTML = 'El email ingresado ya se encuentra registrado.'
                         toast.show()
                     } else {
-                        const userEmailFind = usersList.find(user => user.email === userEmailDOM.value.trim())
-                        if (userEmailFind) {
-                            userEmailDOM.setCustomValidity(":invalid")
-                            const toast = new bootstrap.Toast(errorRegistrationToastDOM)
-                            errorRegistrationBodyToastDOM.innerHTML = 'El email ingresado ya se encuentra registrado.'
-                            toast.show()
-                        } else {
-                            if (userPasswordDOM.value == userRepeatPasswordDOM.value) {
-                                const newUser = {
-                                        firstName: userFirstNameDOM.value,
-                                        lastName: userLastNameDOM.value,
-                                        birthdate: userBirthdateDOM.value,
-                                        dni: userDniDOM.value,
-                                        gender: userGenderDOM.value,
-                                        nationality: userNationalityDOM.value,
-                                        phone: userPhoneDOM.value,
-                                        address: userAddressDOM.value,
-                                        sure: userSureDOM.value,
-                                        email: userEmailDOM.value,
-                                        password: userPasswordDOM.value,
-                                        type: userType.value
-                                    }
-                                usersList.push(newUser)
-                                localStorage.setItem('users', JSON.stringify(usersList))
-                                const toast = new bootstrap.Toast(successfulRegistrationToastDOM)
-                                successfulRegistrationBodyToastDOM.innerHTML='Se ha registrado correctamente como paciente, ya puede ingresar a su cuenta.'
-                                toast.show()
-                            }else {
-                                adminPasswordDOM.setCustomValidity(":invalid")
-                                adminRepeatPasswordDOM.setCustomValidity(":invalid")
-                                const toast = new bootstrap.Toast(errorRegistrationToastDOM)
-                                errorRegistrationBodyToastDOM.innerHTML = 'Las contraseñas ingresadas no son iguales.'
-                                toast.show()
+                        if (userPasswordDOM.value == userRepeatPasswordDOM.value) {
+                            const newUser = {
+                                firstName: userFirstNameDOM.value,
+                                lastName: userLastNameDOM.value,
+                                birthdate: userBirthdateDOM.value,
+                                dni: userDniDOM.value,
+                                gender: userGenderDOM.value,
+                                nationality: userNationalityDOM.value,
+                                phone: userPhoneDOM.value,
+                                address: userAddressDOM.value,
+                                sure: userSureDOM.value,
+                                email: userEmailDOM.value,
+                                password: userPasswordDOM.value,
+                                type: userType.value
                             }
+                            usersList.push(newUser)
+                            localStorage.setItem('users', JSON.stringify(usersList))
+                            const toast = new bootstrap.Toast(successfulRegistrationToastDOM)
+                            successfulRegistrationBodyToastDOM.innerHTML = 'Se ha registrado correctamente como paciente, ya puede ingresar a su cuenta.'
+                            toast.show()
+                            setTimeout(function () {
+                                window.location = './login.html'
+                            }, 3000)
+                        } else {
+                            userPasswordDOM.setCustomValidity(":invalid")
+                            userRepeatPasswordDOM.setCustomValidity(":invalid")
+                            const invaliFeedbackPasswordUser = document.getElementById('invalid-feedback-password-user')
+                            invaliFeedbackPasswordUser.innerHTML = 'Las contraseñas ingresadas no coinciden'
+                            const toast = new bootstrap.Toast(errorRegistrationToastDOM)
+                            errorRegistrationBodyToastDOM.innerHTML = 'Las contraseñas ingresadas no son iguales.'
+                            toast.show()
                         }
                     }
-                }else{
-                    const toast = new bootstrap.Toast(errorRegistrationToastDOM)
-                    toast.show()
-                }    
+                }
+            } else {
+                const toast = new bootstrap.Toast(errorRegistrationToastDOM)
+                toast.show()
             }
         }
     }
+}

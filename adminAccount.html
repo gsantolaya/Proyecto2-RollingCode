@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Clínica odontológica">
-        <meta name="keywords" content="clínica odontológica, odontologo, dentista, dentist">
-        <meta name="author" content="X Team">
-        <link rel="shortcut icon" type="image/x-icon" href="./icons/icono-diente-png.png">
-        <title>Clínica odontológica</title>
-        <link rel="stylesheet" href="./css/adminAccount.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica odontológica">
+    <meta name="keywords" content="clínica odontológica, odontologo, dentista, dentist">
+    <meta name="author" content="X Team">
+    <link rel="shortcut icon" type="image/x-icon" href="./icons/icono-diente-png.png">
+    <title>Clínica odontológica</title>
+    <link rel="stylesheet" href="./css/adminAccount.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
 <body>
     <header>
         <!-- Navbar -->
@@ -32,19 +33,19 @@
                     <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll"
                         style="--bs-scroll-height: 100px;" id="ul-navbar">
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="#clinica">Nuestra clinica</a>
+                            <a class="nav-link" href="./index.html#clinica">Nuestra clinica</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="#especialistas">Especialistas</a>
+                            <a class="nav-link" href="./index.html#especialistas">Especialistas</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="#tratamientos">Tratamientos</a>
+                            <a class="nav-link" href="./index.html#tratamientos">Tratamientos</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="#tratamientos">Casos clinicos</a>
+                            <a class="nav-link" href="./error.html">Casos clinicos</a>
                         </li>
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="./error.html">Blog</a>
+                            <a class="nav-link" href="./aboutUs.html">Nosotros</a>
                         </li>
                         <li class="nav-item mx-3">
                             <a class="nav-link" href="./contact.html">Contacto</a>
@@ -70,29 +71,95 @@
         </nav>
     </header>
     <main>
-        <h1>Mi cuenta</h1>
+        <div class="m-md-5">
+            <h2 class="text-center text-lg-start mt-5 ms-lg-4">Mi cuenta</h2>
+            <div class="col-12 col-md-10 mt-md-2 ms-md-5 text-center table-container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="num-prod" scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contraseña</th>
 
-        <h2>Mis turnos asignados</h2>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="myAccountTableBody">
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>Email</td>
+                            <td>Contraseña</td>
+                            <td>
+                                <button class="btn btn-outline-dark" id=""><span
+                                        class="fa fa-solid fa-edit"></span></button>
+                                <button class="btn btn-outline-danger" id=""><span
+                                        class="fa fa-solid fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="text-center text-lg-start mt-5 ms-lg-4">Mis turnos asignados</h2>
+            <div class="col-12 col-md-10 mt-md-2 ms-md-5 text-center table-container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="num-prod" scope="col">#</th>
+                            <th scope="col">Nombre del paciente</th>
+                            <th scope="col">Día</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Motivo de la consulta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyTurnsDrTable">
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Nombre del paciente</td>
+                            <td>Día</td>
+                            <td>Hora</td>
+                            <td>Motivo de la consulta</td>
+                            <td>
+                                <button class="btn btn-outline-danger" id=""><span
+                                        class="fa fa-solid fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="text-center text-lg-start mt-5 ms-lg-4">Consultas web</h2>
+            <div class="col-12 col-md-10 mt-md-2 ms-md-5 text-center table-container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="num-prod" scope="col">#</th>
+                            <th scope="col">Nombre y apellido</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Consulta</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyConsultsTable">
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Nombre y apellido</td>
+                            <td>Email</td>
+                            <td>Teléfono</td>
+                            <td>Consulta</td>
 
-        <h2>Consultas web</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            <td>
+                                <button class="btn btn-outline-danger" id=""><span
+                                        class="fa fa-solid fa-trash"></span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
     <div>
         <a href="https://api.whatsapp.com/send?phone=543815792863" target="_blank"><img src="./icons/icono-whatsapp.png"
@@ -141,6 +208,197 @@
             </div>
         </div>
     </footer>
+    <!-- Modals -->
+    <div class="modal fade" id="confirmConsultDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalDeleteLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Estas seguro de eliminar esta consulta?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-consult"
+                        data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmDrTurntDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalDeleteLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Estas seguro de eliminar este turno?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-turn"
+                        data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmMyAccountDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalDeleteLabel">Advertencia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Esta operacion es irreversible. ¿Esta seguro de eliminar su cuenta?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete-myaccount"
+                        data-bs-dismiss="modal">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editMyAccount" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="edit-admin">Editar usuario:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditMyAccount">
+                        <div class="">
+                            <label for="admin-first-name" class="form-label">Nombre:</label>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="admin-first-name"
+                                value="" placeholder="Ej:Juán" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-last-name" class="form-label">Apellido:</label>
+                            <input type="text" maxlength="30" minlength="2" class="form-control" id="admin-last-name"
+                                value="" placeholder="Ej:Pérez" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-birthdate" class="form-label">Fecha de nacimiento:</label>
+                            <input type="date" class="form-control" id="admin-birthdate" value="" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-gender" class="form-label">Sexo:</label>
+                            <select class="form-select" id="admin-gender" required>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <label for="admin-phone" class="form-label">Teléfono:</label>
+                            <input type="tel" maxlength="15" minlength="2" class="form-control" id="admin-phone"
+                                value="" placeholder="Ej: 3815792562" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-address" class="form-label">Domicilio:</label>
+                            <input type="text" maxlength="30" minlength="10" class="form-control" id="admin-address"
+                                value="" placeholder="Ej: Laprida 550" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-pr" class="form-label">Matrícula profesional:</label>
+                            <input type="text" maxlength="4" minlength="3" class="form-control" id="admin-pr" value=""
+                                placeholder="Ej: 2750" required>
+                        </div>
+                        <div class="">
+                            <label for="admin-specialty" class="form-label">Especialidad:</label>
+                            <select class="form-select" id="admin-specialty" required>
+                                <option>General</option>
+                                <option>Endodoncia</option>
+                                <option>Cirugia</option>
+                                <option>Ortodoncia</option>
+                                <option>Operatoria</option>
+                                <option>Protesis</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <label for="admin-password" class="form-label">Contraseña:</label>
+                            <input type="password" maxlength="15" minlength="6" class="form-control" id="admin-password"
+                                value="" placeholder="******" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="admin-status" class="form-label">Estado:</label>
+                            <select class="form-select" id="admin-status">
+                                <option value="activado">Activado</option>
+                                <option value="desactivado">Desactivado</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Toasts -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="consult-delete-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Consulta eliminada</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                La consulta ha sido eliminada correctamente.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="drTurn-delete-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Turno eliminado</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                El turno ha sido eliminado correctamente.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="success-editMyAccount-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/check-icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-success" class="me-auto">Usario editado.</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Tu cuenta ha sido editada correctamente.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/error_icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-error" class="me-auto">Error</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Algo ha salido mal, intente nuevamente.
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
     <script src="./js/adminAccount.js"></script>
+    <script src="https://kit.fontawesome.com/9f538b4106.js" defer crossorigin="anonymous"></script>
 </body>
+
 </html>

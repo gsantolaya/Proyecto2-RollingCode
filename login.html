@@ -13,90 +13,98 @@
     <link rel="stylesheet" href="./css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <!-- Navbar -->
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2"
-                alt="logo" width="30px" height="30px">Clinica odontológica</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll"
-                style="--bs-scroll-height: 100px;" id="ul-navbar">
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="#clinica">Nuestra clinica</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="#especialistas">Especialistas</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="#tratamientos">Tratamientos</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="#tratamientos">Casos clinicos</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="./error.html">Blog</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="./contact.html">Contacto</a>
-                </li>
-                <li class="nav-item dropdown mx-3" id="profile">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false"><img src="./icons/user.svg" height="25px" weight="25px"
-                            alt="user-icon">
-                        Perfil
-                    </a>
-                    <ul class="dropdown-menu mx-3">
-                        <li><a class="dropdown-item" href="./login.html">Iniciar Sesion</a></li>
-                        <li><a class="dropdown-item" href="./register.html">Registrarse</a></li>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html"><img src="./icons/icono-diente-png.png" class="mx-2"
+                        alt="logo" width="30px" height="30px">Clinica odontológica</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav ms-auto me-auto my-2 my-lg-0 navbar-nav-scroll"
+                        style="--bs-scroll-height: 100px;" id="ul-navbar">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./index.html#clinica">Nuestra clinica</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./index.html#especialistas">Especialistas</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./index.html#tratamientos">Tratamientos</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./error.html">Casos clinicos</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./aboutUs.html">Nosotros</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="./contact.html">Contacto</a>
+                        </li>
+                        <li class="nav-item dropdown mx-3" id="profile">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false"><img src="./icons/user.svg" height="25px" weight="25px"
+                                    alt="user-icon">
+                                Perfil
+                            </a>
+                            <ul class="dropdown-menu mx-3">
+                                <li><a class="dropdown-item" href="./login.html">Iniciar Sesion</a></li>
+                                <li><a class="dropdown-item" href="./register.html">Registrarse</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-            <form class="d-flex" role="book-appointment" id="turn-button">
-                <button class="btn btn-sm btn-outline-secondary" type="button"
-                    id="book-appointment-button">Solicitar turno</button>
-            </form>
-        </div>
-    </div>
-</nav>
+                    <form class="d-flex" role="book-appointment" id="turn-button">
+                        <button class="btn btn-sm btn-outline-secondary" type="button"
+                            id="book-appointment-button">Solicitar turno</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
-        <div class="row">
-            <div class="col-12 mt-5 d-flex align-items-center justify-content-center">
-                <form id="form-login">
-                    <div class="mb-3">
-                        <label for="user-email" class="form-label"><b>Usuario:</b></label>
-                        <input type="email" class="form-control" id="user-email" aria-describedby="emailHelp"
-                            placeholder="Ingrese su email" required>
+        <div class="d-flex justify-content-center ">
+            <form id="form-login" class="needs-validation col-12 col-md-6 p-3 my-5" novalidate action="">
+                <div class="my-3">
+                    <label for="user-email" class="form-label"><b>Usuario:</b></label>
+                    <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email"
+                        aria-describedby="emailHelp" placeholder="Ingrese su email" required>
+                    <div class="valid-feedback">
+                        Excelente!
                     </div>
-                    <div class="mb-3">
-                        <label for="user-password" class="form-label"><b>Contraseña:</b></label>
-                        <input type="password" class="form-control" id="user-password" maxlength="20" minlength="6"
-                            placeholder="********" required>
+                    <div class="invalid-feedback" id="invalid-feedback-email">
+                        Ingresa tu usuario.
                     </div>
-                    <div class="text-center m-3">
-                        <a class="links" href="./error.html"><b><i>¿Olvidó su contraseña?</i></b></a>
+                </div>
+                <div class="my-3">
+                    <label for="user-password" class="form-label"><b>Contraseña:</b></label>
+                    <input type="password" class="form-control" id="user-password" maxlength="30" minlength="5"
+                        placeholder="********" required>
+                    <div class="valid-feedback">
+                        Excelente!
                     </div>
-                    <div class="d-flex flex-column gap-3 justify-content-center">
-                        <button type="submit" class="btn btn-secondary"><b>Iniciar sesión</b></button>
+                    <div class="invalid-feedback" id="invalid-feedback-password">
+                        Ingresa tu contraseña.
                     </div>
-                    <div class="mt-3 d-flex justify-content-center">
-                        <a class="links" href="">¿No tenes una cuenta? <b>Registrate aquí</b></a>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="text-center">
+                    <a class="links" href="./error.html"><b><i>¿Olvidó su contraseña?</i></b></a>
+                </div>
+                <div class="col-12 my-3">
+                    <button type="submit" class="btn btn-secondary w-100"><b>Iniciar sesión</b></button>
+                </div>
+                <div class="text-center">
+                    <a class="links" href="./register.html">¿No tenes una cuenta? <b>Registrate aquí</b></a>
+                </div>
+            </form>
         </div>
     </main>
     <div>
@@ -146,6 +154,21 @@
             </div>
         </div>
     </footer>
+    <!-- Toasts -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="error-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./icons/error_icon.svg" class="rounded me-2" alt="error icon">
+                <strong id="title-error" class="me-auto">Error</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-error-body">
+                El usuario y la contraseña ingresados no coinciden.
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
     <script src="./js/login.js"></script>
 </body>
 

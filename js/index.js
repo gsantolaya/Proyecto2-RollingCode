@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -77,9 +77,13 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
-bookAppointmentButton.onclick = (e) => {
-    e.preventDefault()
-    window.location = './bookAnAppointment.html'
+if (storageAdminLogIn) {
+}else{
+    let bookAppointmentButton = document.getElementById("book-appointment-button")
+
+    bookAppointmentButton.onclick = (e) => {
+        e.preventDefault()
+        window.location = './bookAnAppointment.html'
+    }
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------

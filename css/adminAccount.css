@@ -1,6 +1,21 @@
 body{
-    background-color:  #f3d8c7 !important;
-    font-family: 'Open Sans', sans-serif !important;
+        background-image: linear-gradient(
+            to right top,
+            #d0b8ac,
+            #f3d8c7,
+            #efe5dc,
+            #fbfefb,
+            #ffffff
+          ) !important;
+          font-family: 'Open Sans', sans-serif !important;
+    }
+.btnEdit{
+    width: 10px !important;
+    height: 10px !important;
+}
+.btnDelete{
+    width: 10px !important;
+    height: 10px !important;
 }
 footer{
     width: 100%;
@@ -19,6 +34,7 @@ footer{
     margin: 5px;
     text-decoration: none;
 }
+
 .footer-tt{
     font-size: 16px;
 }
@@ -47,8 +63,14 @@ footer{
     .pub-final{
         display:none;
     }
+    table {
+        width: 300px !important;
+      }
+    .table-container {
+        overflow-x: scroll !important;
+      }
 }
-@media screen and (min-width:577px) and (max-width: 766px){
+@media screen and (min-width:577px) and (max-width: 991px){
     #footer-1{
         display: none !important;
     }

@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -77,12 +77,15 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-let bookAppointmentButton = document.getElementById("book-appointment-button")
-bookAppointmentButton.onclick = (e) => {
-    e.preventDefault()
-    window.location = './bookAnAppointment.html'
-}
+if (storageAdminLogIn) {
+}else{
+    let bookAppointmentButton = document.getElementById("book-appointment-button")
 
+    bookAppointmentButton.onclick = (e) => {
+        e.preventDefault()
+        window.location = './bookAnAppointment.html'
+    }
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
@@ -105,13 +108,13 @@ bookAppointmentButton.onclick = (e) => {
 })()
 //-------------------------------------------------------------------------------------------------------------------------------------
 let contactForm = document.getElementById('contact-form')
-const storageConsults = localStorage.getItem('listConsults')
+const storageConsults = localStorage.getItem('consults')
 
 let listConsults = []
 
 
 if (storageConsults) {
-    listConsults = JASON.parse(storageConsults)
+    listConsults = JSON.parse(storageConsults)
 }
 
 
@@ -121,7 +124,7 @@ contactForm.onsubmit = (e) => {
     let userEmail = document.getElementById('user-email')
     let userPhone = document.getElementById('user-phone')
     let userConsult = document.getElementById('user-consult')
-    if (userFullname.value.trim() != "" && userFullname.value.trim() != "" && userEmail.value.trim() != "" && userConsult.value.trim() != "") {
+    if ((userFullname.value.trim().length > 4) && (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail.value.trim())) && (userPhone.value.trim().length > 4) && (userConsult.value.trim().length > 9)) {
         const newConsult = {
             fullname: userFullname.value,
             email: userEmail.value,
@@ -129,7 +132,7 @@ contactForm.onsubmit = (e) => {
             consult: userConsult.value
         }
         listConsults.push(newConsult)
-        localStorage.setItem('consult', JSON.stringify(listConsults))
+        localStorage.setItem('consults', JSON.stringify(listConsults))
         const successToastDOM = document.getElementById('success-toast')
         const toast = new bootstrap.Toast(successToastDOM)
         toast.show()
