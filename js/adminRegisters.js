@@ -175,6 +175,8 @@ function generateTableRegisterAdmins(listAdmins) {
             tdLastNameDOM.textContent = admin.lastName
             const tdDNIDOM = document.createElement('td')
             tdDNIDOM.textContent = admin.dni
+            const tdEmailDOM = document.createElement('td')
+            tdEmailDOM.textContent = admin.email
 
 
             const tdActionsDOM = document.createElement('td')
@@ -200,7 +202,7 @@ function generateTableRegisterAdmins(listAdmins) {
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
-
+            trDOM.appendChild(tdEmailDOM)
             trDOM.appendChild(tdActionsDOM)
             tbodyUserDOM.append(trDOM)
         }
@@ -215,14 +217,14 @@ function generateTableAdmins(listAdmins) {
             const thDOM = document.createElement('th')
             thDOM.textContent = i + 1
             const trDOM = document.createElement('tr')
-
             const tdFirstNameDOM = document.createElement('td')
             tdFirstNameDOM.textContent = admin.firstName
             const tdLastNameDOM = document.createElement('td')
             tdLastNameDOM.textContent = admin.lastName
             const tdDNIDOM = document.createElement('td')
             tdDNIDOM.textContent = admin.dni
-
+            const tdEmailDOM = document.createElement('td')
+            tdEmailDOM.textContent = admin.email
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
             btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit btnEdit"></span>`
@@ -230,22 +232,19 @@ function generateTableAdmins(listAdmins) {
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editAdminModal");
             btnEditDOM.onclick = () => { loadEditAdmin(admin) }
-
             const btnDeleteDOM = document.createElement('button')
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmAdminDelete");
             btnDeleteDOM.onclick = () => { deleteUser(admin.email) }
-
             tdActionsDOM.appendChild(btnEditDOM)
             tdActionsDOM.appendChild(btnDeleteDOM)
-
-
             trDOM.appendChild(thDOM)
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
+            trDOM.appendChild(tdEmailDOM)
             trDOM.appendChild(tdActionsDOM)
             tbodyAdminsDOM.append(trDOM)
         }
@@ -260,14 +259,14 @@ function generateTableUsers(listUsers) {
             const thDOM = document.createElement('th')
             thDOM.textContent = i + 1
             const trDOM = document.createElement('tr')
-
             const tdFirstNameDOM = document.createElement('td')
             tdFirstNameDOM.textContent = user.firstName
             const tdLastNameDOM = document.createElement('td')
             tdLastNameDOM.textContent = user.lastName
             const tdDNIDOM = document.createElement('td')
             tdDNIDOM.textContent = user.dni
-
+            const tdEmailDOM = document.createElement('td')
+            tdEmailDOM.textContent = user.email
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
             btnEditDOM.innerHTML = `<span class="fa fa-solid fa-edit btnEdit"></span>`
@@ -275,24 +274,19 @@ function generateTableUsers(listUsers) {
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editUserModal");
             btnEditDOM.onclick = () => { loadEditUser(user) }
-
             const btnDeleteDOM = document.createElement('button')
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
             btnDeleteDOM.setAttribute("data-bs-toggle", "modal");
             btnDeleteDOM.setAttribute("data-bs-target", "#confirmUserDelete");
             btnDeleteDOM.onclick = () => { deleteUser(user.email)}
-
             tdActionsDOM.appendChild(btnEditDOM)
             tdActionsDOM.appendChild(btnDeleteDOM)
-
-
             trDOM.appendChild(thDOM)
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
-
-
+            trDOM.appendChild(tdEmailDOM)
             trDOM.appendChild(tdActionsDOM)
             tbodyUsersDOM.append(trDOM)
         }
@@ -362,7 +356,10 @@ formEditAdminDOM.onsubmit = (e) => {
 
     adminToEdit = null;
     
-    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
+    if (((firstNameAdminDOM.value.trim().length > 1) && (lastNameAdminDOM.value.trim().length > 1) &&
+    (birthdateAdminDOM.value.trim() != "") && (genderAdminDOM.value.trim() != "") && (phoneAdminDOM.value.trim().length > 1) &&
+    (addressAdminDOM.value.trim().length > 9 ) && (prAdminDOM.value.trim() > 2 ) && (specialtyAdminDOM.value.trim() != "") &&
+    (passwordAdminDOM.value.trim().length > 5) && (statusAdminDOM.value.trim() != ""))) {
         listAdmins[id].firstName = firstNameAdminDOM.value
         listAdmins[id].lastName = lastNameAdminDOM.value
         listAdmins[id].birthdate = birthdateAdminDOM.value
@@ -410,7 +407,9 @@ formEditUserDOM.onsubmit = (e) => {
 
     userToEdit = null;
 
-    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (passwordUserDOM.value)){
+    if ((firstNameUserDOM.value.trim().length > 1) && (lastNameUserDOM.value.trim().length > 1) && (nationalityUserDOM.value.trim().length > 4) && (phoneUserDOM.value.trim().length > 1) &&
+    (addressUserDOM.value.trim().length > 9) && (genderUserDOM.value.trim().length != "") && (birthdateUserDOM.value.trim() != "") &&
+    (sureUserDOM.value.trim() != "") && (passwordUserDOM.value.trim().length > 5)){
         listUsers[id].firstName = firstNameUserDOM.value
         listUsers[id].lastName = lastNameUserDOM.value
         listUsers[id].dni = birthdateUserDOM.value

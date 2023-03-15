@@ -235,17 +235,17 @@ formSelectUserType.onsubmit = (e) => {
             </div>
             <div class="col-md-4">
                 <label for="admin-password" class="form-label"><b>Contraseña:</b></label>
-                <input type="password" maxlength="30" minlength="6" class="form-control" id="admin-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="admin-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
                 <div class="invalid-feedback">
-                    La contraseña debe tener entre 6 y 20 caracteres.
+                    La contraseña debe tener entre 6 y 15 caracteres.
                 </div>
             </div>
             <div class="col-md-4">
                 <label for="admin-repeat-password" class="form-label"><b>Repetir contraseña:</b></label>
-                <input type="password" maxlength="30" minlength="6" class="form-control" id="admin-repeat-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="admin-repeat-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
@@ -809,17 +809,17 @@ formSelectUserType.onsubmit = (e) => {
             </div>
             <div class="col-md-4">
                 <label for="user-password" class="form-label"><b>Contraseña:</b></label>
-                <input type="password" maxlength="20" minlength="6" class="form-control" id="user-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="user-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
                 <div class="invalid-feedback">
-                    La contraseña debe tener entre 6 y 20 caracteres.
+                    La contraseña debe tener entre 6 y 15 caracteres.
                 </div>
             </div>
             <div class="col-md-4">
                 <label for="user-repeat-password" class="form-label"><b>Repetir contraseña:</b></label>
-                <input type="password" maxlength="20" minlength="6" class="form-control" id="user-repeat-password" value="" maxlength="20" minlength="6" placeholder="******" required>
+                <input type="password" maxlength="15" minlength="6" class="form-control" id="user-repeat-password" value="" placeholder="******" required>
                 <div class="valid-feedback">
                     Excelente!
                 </div>
@@ -828,7 +828,7 @@ formSelectUserType.onsubmit = (e) => {
                 </div>
             </div>
             <div class="mt-4">
-                <div class="col-12">
+                <div class="col-12 ms-5 mb-3">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="userTermsAndConditions" required>
                         <label class="form-check-label" for="userTermsAndConditions">
@@ -839,7 +839,7 @@ formSelectUserType.onsubmit = (e) => {
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <button class="btn btn-secondary w-75" type="submit"><b>Registrarse</b></button>
                 </div>
             </div>

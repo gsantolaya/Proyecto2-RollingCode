@@ -169,7 +169,7 @@ for (let i = 0; i < listAdmins.length; i++) {
             password: admin.password,
             type: admin.type,
             schedules: admin.schedules,
-            status:admin.status
+            status: admin.status
         }
         myAdmin.push(newAdmin)
     }
@@ -198,7 +198,7 @@ function generateMyAccount(myAdmin) {
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editMyAccount");
-            btnEditDOM.onclick = () => {loadEditMyAccount(admin) }
+            btnEditDOM.onclick = () => { loadEditMyAccount(admin) }
             const btnDeleteDOM = document.createElement('button')
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
@@ -225,20 +225,22 @@ function generateMyAccount(myAdmin) {
 const storageUsersList = localStorage.getItem('users')
 if (storageUsersList) {
     let usersList = JSON.parse(storageUsersList)
-for (let i = 0; i < listTurns.length; i++) {
-    adminLogin = JSON.parse(storageAdminLogIn)
-    const turn = listTurns[i];
-    if (turn.dr == adminLogin.dni) {
-        const patientName = usersList.find(user => user.dni == turn.patient)
-        let newDrTurn = {
-            patient: `${patientName.firstName} ${patientName.lastName}`,
-            hour: turn.hour,
-            day: turn.day,
-            reasonConsultation: turn.reasonConsultation
+    for (let i = 0; i < listTurns.length; i++) {
+        adminLogin = JSON.parse(storageAdminLogIn)
+        const turn = listTurns[i];
+        if (turn.dr == adminLogin.dni) {
+            const patientName = usersList.find(user => user.dni == turn.patient)
+            if (patientName) {
+                let newDrTurn = {
+                    patient: `${patientName.firstName} ${patientName.lastName}`,
+                    hour: turn.hour,
+                    day: turn.day,
+                    reasonConsultation: turn.reasonConsultation
+                }
+                listTurnsDr.push(newDrTurn)
+            }
         }
-        listTurnsDr.push(newDrTurn)
     }
-}
 }
 function generateTableDrTurns(listTurnsDr) {
     tbodyDrTurnsTableDOM.innerHTML = ''
@@ -372,8 +374,11 @@ formEditMyAccountDOM.onsubmit = (e) => {
     const statusAdminDOM = document.getElementById('admin-status')
 
     adminToEdit = null;
-    
-    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
+
+    if ((firstNameAdminDOM.value.trim().length > 1) && (lastNameAdminDOM.value.trim().length > 1) &&
+        (birthdateAdminDOM.value.trim() != "") && (genderAdminDOM.value.trim() != "") && (phoneAdminDOM.value.trim().length > 1) &&
+        (addressAdminDOM.value.trim().length > 9) && (prAdminDOM.value.trim() > 2) && (specialtyAdminDOM.value.trim() != "") &&
+        (passwordAdminDOM.value.trim().length > 5) && (statusAdminDOM.value.trim() != "")) {
         listAdmins[id].firstName = firstNameAdminDOM.value
         listAdmins[id].lastName = lastNameAdminDOM.value
         listAdmins[id].birthdate = birthdateAdminDOM.value
@@ -391,14 +396,14 @@ formEditMyAccountDOM.onsubmit = (e) => {
         const successEditToastDOM = document.getElementById('success-editMyAccount-toast')
         const toast = new bootstrap.Toast(successEditToastDOM)
         toast.show()
-        setTimeout(function() {
+        setTimeout(function () {
             location.reload()
         }, 3000)
-    }else {
+    } else {
         const errorToastDOM = document.getElementById('error-toast')
         const toast = new bootstrap.Toast(errorToastDOM)
         toast.show()
-        setTimeout(function() {
+        setTimeout(function () {
             location.reload()
         }, 3000);
     }

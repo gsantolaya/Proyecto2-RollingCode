@@ -60,15 +60,12 @@ footer {
     #footer-1 {
         display: none !important;
     }
-
     #footer-3 {
         display: none !important;
     }
-
     .pub-final {
         display: none;
     }
-
     table {
         width: 300px !important;
     }
@@ -78,7 +75,7 @@ footer {
     }
 }
 
-@media screen and (min-width:577px) and (max-width: 991px) {
+@media screen and (min-width:577px) and (max-width: 766px) {
     #footer-1 {
         display: none !important;
     }

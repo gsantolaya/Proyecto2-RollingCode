@@ -228,13 +228,15 @@ if (storageAdminList) {
         const turn = listTurns[i];
         if (turn.patient == userLogin.dni) {
             const drName = adminsList.find(admin => admin.dni == turn.dr)
-            let newPatientTurn = {
-                dr: `${drName.firstName} ${drName.lastName}`,
-                hour: turn.hour,
-                day: turn.day,
-                reasonConsultation: turn.reasonConsultation
+            if (drName) {
+                let newPatientTurn = {
+                    dr: `${drName.firstName} ${drName.lastName}`,
+                    hour: turn.hour,
+                    day: turn.day,
+                    reasonConsultation: turn.reasonConsultation
+                }
+                listPatientTurn.push(newPatientTurn)
             }
-            listPatientTurn.push(newPatientTurn)
         }
     }
 }
@@ -321,7 +323,9 @@ formEditMyAccountDOM.onsubmit = (e) => {
 
     adminToEdit = null;
 
-    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (passwordUserDOM.value)) {
+    if (((firstNameUserDOM.value.trim().length > 1) && (lastNameUserDOM.value.trim().length > 1) && (nationalityUserDOM.value.trim().length > 4) && (phoneUserDOM.value.trim().length > 1) &&
+    (addressUserDOM.value.trim().length > 9) && (genderUserDOM.value.trim().length != "") && (birthdateUserDOM.value.trim() != "") &&
+    (sureUserDOM.value.trim() != "") && (passwordUserDOM.value.trim().length > 5))) {
         listUsers[id].firstName = firstNameUserDOM.value
         listUsers[id].lastName = lastNameUserDOM.value
         listUsers[id].birthdate = birthdateUserDOM.value
