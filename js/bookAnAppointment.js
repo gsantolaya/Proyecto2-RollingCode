@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -77,7 +77,8 @@ if (storageUserLogIn) {
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-if (storageUserLogIn) {
+if (storageAdminLogIn) {
+}else{
     let bookAppointmentButton = document.getElementById("book-appointment-button")
 
     bookAppointmentButton.onclick = (e) => {
@@ -290,7 +291,7 @@ bookAnAppointmentForm.onsubmit = (e) => {
     if (storageUserLogIn) {
         userLogIn = JSON.parse(storageUserLogIn)
     }
-    if (selectDrDOM.value.trim() != "" && selectDayDOM.value.trim() != "" && selectHourDOM.value.trim() != "" && validationTextarea.value.trim() != "") {
+    if (selectDrDOM.value.trim() != "" && selectDayDOM.value.trim() != "" && selectHourDOM.value.trim() != "" && (validationTextarea.value.trim().length > 4)) {
         const userFind = listTurns.find(turn => turn.patient == userLogIn.dni && turn.dr == selectDrDOM.value)
         if (userFind) {
             const errorToastDOM = document.getElementById('error-toast')

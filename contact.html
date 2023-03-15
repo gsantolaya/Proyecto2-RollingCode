@@ -83,13 +83,12 @@
             <form class="row needs-validation" id="contact-form" novalidate>
                 <div class="col-md-6 my-2">
                     <label for="user-fullname" class="form-label"><b>Nombre y Apellido:</b></label>
-                    <input type="text" maxlenght="40" minlength="5" class="form-control" id="user-fullname" value=""
-                        required>
+                    <input type="text" maxlength="30" minlength="5" class="form-control" id="user-fullname" placeholder="Ej: Juan Perez" required> 
                     <div class="valid-feedback">
                         Excelente!
                     </div>
                     <div class="invalid-feedback">
-                        Por favor, complete este campo.
+                        Por favor, complete este campo correctamente.
                     </div>
                 </div>
 
@@ -97,36 +96,33 @@
                     <label for="user-email" class="form-label"><b>Email:</b></label>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="email" class="form-control" id="user-email" aria-describedby="inputGroupPrepend"
-                            required>
+                        <input type="email" maxlength="30" minlength="5" class="form-control" id="user-email" placeholder="Ej: jp@gmail.com" aria-describedby="inputGroupPrePend" required>
                         <div class="valid-feedback">
                             Excelente!
                         </div>
                         <div class="invalid-feedback">
-                            Por favor, complete este campo.
+                            Por favor, complete este campo correctamente.
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 my-2">
                     <label for="user-phone" class="form-label"><b>Teléfono:</b></label>
-                    <input type="tel" maxlenght="15" minlength="5" class="form-control" id="user-phone" value=""
-                        required>
+                    <input type="tel" maxlength="15" minlength="5" class="form-control" id="user-phone" placeholder="Ej: 381 5679234" required>
                     <div class="valid-feedback">
                         Excelente!
                     </div>
                     <div class="invalid-feedback">
-                        Por favor, complete este campo.
+                        Por favor, complete este campo correctamente.
                     </div>
                 </div>
                 <div class="mb-3 col-md-6 my-2">
                     <label for="user-consult" class="form-label"><b>Motivo de la consulta:</b></label>
-                    <textarea class="form-control" maxlength="300" minlength="5" id="user-consult"
-                        placeholder="Detalle el motivo de su consulta." required></textarea>
+                    <textarea name="" id="user-consult" class="form-control" maxlength="150" minlength="10" placeholder="Detalle el motivo de su consulta" required></textarea>
                     <div class="valid-feedback">
                         Excelente!
                     </div>
                     <div class="invalid-feedback">
-                        Por favor, complete este campo.
+                        Por favor, complete este campo correctamente.
                     </div>
                 </div>
                 <div class="col-12 text-center">
@@ -134,7 +130,6 @@
                         <button class="btn btn-secondary w-100" type="submit">Enviar formulario</button>
                     </div>
                 </div>
-
             </form>
         </section>
     </main>

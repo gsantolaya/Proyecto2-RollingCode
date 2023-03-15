@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -84,7 +84,6 @@ let formEditAdminDOM = document.getElementById('formEditAdmin')
 let formEditUserDOM = document.getElementById('formEditUser')
 let btnDeleteAdminDOM = document.getElementById('btn-delete-admin')
 let btnDeleteUserDOM = document.getElementById('btn-delete-user')
-//let btnActivationDOM = document.getElementById('btnActivation')
 let tbodyUserDOM = document.getElementById('adminsRegisterTableDetails')
 let tbodyAdminsDOM = document.getElementById('adminsTableDetails')
 let tbodyUsersDOM = document.getElementById('usersTableDetails')
@@ -119,8 +118,6 @@ function loadEditAdmin(admin) {
     firstNameAdminDOM.value = admin.firstName
     const lastNameAdminDOM = document.getElementById('admin-last-name')
     lastNameAdminDOM.value = admin.lastName
-    const dniAdminDOM = document.getElementById('admin-dni')
-    dniAdminDOM.value = admin.dni
     const birthdateAdminDOM = document.getElementById('admin-birthdate')
     birthdateAdminDOM.value = admin.birthdate
     const genderAdminDOM = document.getElementById('admin-gender')
@@ -133,8 +130,6 @@ function loadEditAdmin(admin) {
     prAdminDOM.value = admin.pr
     const specialtyAdminDOM = document.getElementById('admin-specialty')
     specialtyAdminDOM.value = admin.specialty
-    const emailAdminDOM = document.getElementById('admin-email')
-    emailAdminDOM.value = admin.email
     const passwordAdminDOM = document.getElementById('admin-password')
     passwordAdminDOM.value = admin.password
     const statusAdminDOM = document.getElementById('admin-status')
@@ -148,8 +143,6 @@ function loadEditUser(user) {
     firstNameUserDOM.value = user.firstName
     const lastNameUserDOM = document.getElementById('user-last-name')
     lastNameUserDOM.value = user.lastName
-    const dniUserDOM = document.getElementById('user-dni')
-    dniUserDOM.value = user.dni
     const nationalityUserDOM = document.getElementById('user-nationality')
     nationalityUserDOM.value = user.dni
     const birthdateUserDOM = document.getElementById('user-birthdate')
@@ -162,8 +155,6 @@ function loadEditUser(user) {
     addressUserDOM.value = user.address
     const sureUserDOM = document.getElementById('user-sure')
     sureUserDOM.value = user.sure
-    const emailUserDOM = document.getElementById('user-email')
-    emailUserDOM.value = user.email
     const passwordUserDOM = document.getElementById('user-password')
     passwordUserDOM.value = user.password
 }
@@ -231,18 +222,6 @@ function generateTableAdmins(listAdmins) {
             tdLastNameDOM.textContent = admin.lastName
             const tdDNIDOM = document.createElement('td')
             tdDNIDOM.textContent = admin.dni
-            /*const tdBirthdateDOM = document.createElement('td')
-            tdBirthdateDOM.textContent = admin.birthdate
-            const tdGenderDOM = document.createElement('td')
-            tdGenderDOM.textContent = admin.gender
-            const tdPhoneDOM = document.createElement('td')
-            tdPhoneDOM.textContent = admin.phone
-            const tdAddressDOM = document.createElement('td')
-            tdAddressDOM.textContent = admin.address
-            const tdPrDOM = document.createElement('td')
-            tdPrDOM.textContent = admin.pr
-            const tdSpecialtyDOM = document.createElement('td')
-            tdSpecialtyDOM.textContent = admin.specialty*/
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
@@ -267,13 +246,6 @@ function generateTableAdmins(listAdmins) {
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
-            /*trDOM.appendChild(tdBirthdateDOM)
-            trDOM.appendChild(tdGenderDOM)
-            trDOM.appendChild(tdPhoneDOM)
-            trDOM.appendChild(tdAddressDOM)
-            trDOM.appendChild(tdPrDOM)
-            trDOM.appendChild(tdSpecialtyDOM)*/
-
             trDOM.appendChild(tdActionsDOM)
             tbodyAdminsDOM.append(trDOM)
         }
@@ -295,18 +267,6 @@ function generateTableUsers(listUsers) {
             tdLastNameDOM.textContent = user.lastName
             const tdDNIDOM = document.createElement('td')
             tdDNIDOM.textContent = user.dni
-            /*const tdBirthdateDOM = document.createElement('td')
-            tdBirthdateDOM.textContent = user.birthdate
-            const tdGenderDOM = document.createElement('td')
-            tdGenderDOM.textContent = user.gender
-            const tdNationalityDOM = document.createElement('td')
-            tdNationalityDOM.textContent = user.nationality
-            const tdPhoneDOM = document.createElement('td')
-            tdPhoneDOM.textContent = user.phone
-            const tdAddressDOM = document.createElement('td')
-            tdAddressDOM.textContent = user.address
-            const tdSureDOM = document.createElement('td')
-            tdSureDOM.textContent = user.sure*/
 
             const tdActionsDOM = document.createElement('td')
             const btnEditDOM = document.createElement('button')
@@ -331,12 +291,6 @@ function generateTableUsers(listUsers) {
             trDOM.appendChild(tdFirstNameDOM)
             trDOM.appendChild(tdLastNameDOM)
             trDOM.appendChild(tdDNIDOM)
-            /*trDOM.appendChild(tdBirthdateDOM)
-            trDOM.appendChild(tdGenderDOM)
-            trDOM.appendChild(tdNationalityDOM)
-            trDOM.appendChild(tdPhoneDOM)
-            trDOM.appendChild(tdAddressDOM)
-            trDOM.appendChild(tdSureDOM)*/
 
 
             trDOM.appendChild(tdActionsDOM)
@@ -381,9 +335,6 @@ formActiveAdminDOM.onsubmit = (e) => {
         listAdmins = JSON.parse(localStorage.getItem('admins'))
         generateTableRegisterAdmins(listAdmins)
         generateTableAdmins(listAdmins)
-        // setTimeout(function() {
-        //     location.reload();
-        // }, 3000);
         if(adminActiveStatusDOM.value == "activado"){
         const adminActivedToastDOM = document.getElementById('admin-actived-toast')
         const toast = new bootstrap.Toast(adminActivedToastDOM)
@@ -400,30 +351,26 @@ formEditAdminDOM.onsubmit = (e) => {
     const id = listAdmins.findIndex(u => u.email == adminToEdit.email)
     const firstNameAdminDOM = document.getElementById('admin-first-name')
     const lastNameAdminDOM = document.getElementById('admin-last-name')
-    const dniAdminDOM = document.getElementById('admin-dni')
     const birthdateAdminDOM = document.getElementById('admin-birthdate')
     const genderAdminDOM = document.getElementById('admin-gender')
     const phoneAdminDOM = document.getElementById('admin-phone')
     const addressAdminDOM = document.getElementById('admin-address')
     const prAdminDOM = document.getElementById('admin-pr')
     const specialtyAdminDOM = document.getElementById('admin-specialty')
-    const emailAdminDOM = document.getElementById('admin-email')
     const passwordAdminDOM = document.getElementById('admin-password')
     const statusAdminDOM = document.getElementById('admin-status')
 
     adminToEdit = null;
     
-    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (dniAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (emailAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
+    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
         listAdmins[id].firstName = firstNameAdminDOM.value
         listAdmins[id].lastName = lastNameAdminDOM.value
-        listAdmins[id].dni = dniAdminDOM.value
         listAdmins[id].birthdate = birthdateAdminDOM.value
         listAdmins[id].gender = genderAdminDOM.value
         listAdmins[id].phone = phoneAdminDOM.value
         listAdmins[id].address = addressAdminDOM.value
         listAdmins[id].pr = prAdminDOM.value
         listAdmins[id].specialty = specialtyAdminDOM.value
-        listAdmins[id].email = emailAdminDOM.value
         listAdmins[id].password = passwordAdminDOM.value
         listAdmins[id].status = statusAdminDOM.value
 
@@ -453,29 +400,25 @@ formEditUserDOM.onsubmit = (e) => {
     const id = listUsers.findIndex(u => u.email == userToEdit.email)
     const firstNameUserDOM = document.getElementById('user-first-name')
     const lastNameUserDOM = document.getElementById('user-last-name')
-    const dniUserDOM = document.getElementById('user-dni')
     const birthdateUserDOM = document.getElementById('user-birthdate')
     const genderUserDOM = document.getElementById('user-gender')
     const phoneUserDOM = document.getElementById('user-phone')
     const addressUserDOM = document.getElementById('user-address')
     const sureUserDOM = document.getElementById('user-sure')
     const nationalityUserDOM = document.getElementById('user-nationality')
-    const emailUserDOM = document.getElementById('user-email')
     const passwordUserDOM = document.getElementById('user-password')
 
     userToEdit = null;
 
-    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (dniUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (emailUserDOM.value) && (passwordUserDOM.value)){
+    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (passwordUserDOM.value)){
         listUsers[id].firstName = firstNameUserDOM.value
         listUsers[id].lastName = lastNameUserDOM.value
-        listUsers[id].dni = dniUserDOM.value
         listUsers[id].dni = birthdateUserDOM.value
         listUsers[id].gender = genderUserDOM.value
         listUsers[id].phone = phoneUserDOM.value
         listUsers[id].address = addressUserDOM.value
         listUsers[id].pr = sureUserDOM.value
         listUsers[id].specialty = nationalityUserDOM.value
-        listUsers[id].email = emailUserDOM.value
         listUsers[id].password = passwordUserDOM.value
 
         localStorage.setItem('users', JSON.stringify(listUsers))
@@ -485,9 +428,6 @@ formEditUserDOM.onsubmit = (e) => {
         const successEditToastDOM = document.getElementById('success-edit-toast')
         const toast = new bootstrap.Toast(successEditToastDOM)
         toast.show()
-        // setTimeout(function() {
-        //     location.reload();
-        // }, 3000);
     } else {
         const errorToastDOM = document.getElementById('error-toast')
         const toast = new bootstrap.Toast(errorToastDOM)

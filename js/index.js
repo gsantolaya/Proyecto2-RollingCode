@@ -77,7 +77,8 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-if (storageUserLogIn) {
+if (storageAdminLogIn) {
+}else{
     let bookAppointmentButton = document.getElementById("book-appointment-button")
 
     bookAppointmentButton.onclick = (e) => {

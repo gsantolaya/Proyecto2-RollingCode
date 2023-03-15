@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -77,7 +77,8 @@ if (storageUserLogIn) {
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 //Boton solicitar turno
-if (storageUserLogIn) {
+if (storageAdminLogIn) {
+} else {
     let bookAppointmentButton = document.getElementById("book-appointment-button")
 
     bookAppointmentButton.onclick = (e) => {
@@ -133,8 +134,6 @@ function loadEditMyAccount(user) {
     firstNameUserDOM.value = user.firstName
     const lastNameUserDOM = document.getElementById('user-last-name')
     lastNameUserDOM.value = user.lastName
-    const dniUserDOM = document.getElementById('user-dni')
-    dniUserDOM.value = user.dni
     const birthdateUserDOM = document.getElementById('user-birthdate')
     birthdateUserDOM.value = user.birthdate
     const genderUserDOM = document.getElementById('user-gender')
@@ -147,8 +146,6 @@ function loadEditMyAccount(user) {
     sureUserDOM.value = user.sure
     const nationalityUserDOM = document.getElementById('user-nationality')
     nationalityUserDOM.value = user.nationality
-    const emailUserDOM = document.getElementById('user-email')
-    emailUserDOM.value = user.email
     const passwordUserDOM = document.getElementById('user-password')
     passwordUserDOM.value = user.password
 
@@ -198,7 +195,7 @@ function generateMyAccount(myUser) {
             btnEditDOM.classList = 'btn btn-outline-dark me-1'
             btnEditDOM.setAttribute("data-bs-toggle", "modal");
             btnEditDOM.setAttribute("data-bs-target", "#editMyAccount");
-            btnEditDOM.onclick = () => {loadEditMyAccount(user) }
+            btnEditDOM.onclick = () => { loadEditMyAccount(user) }
             const btnDeleteDOM = document.createElement('button')
             btnDeleteDOM.innerHTML = `<span class="fa fa-solid fa-trash btnDelete"></span>`
             btnDeleteDOM.classList = 'btn btn-outline-danger'
@@ -222,20 +219,25 @@ function generateMyAccount(myUser) {
     });
 }
 ///----------------------------------------------------------------------------------------------------------------------------------------------------
-for (let i = 0; i < listTurns.length; i++) {
-    userLogin = JSON.parse(storageUserLogIn)
-    const turn = listTurns[i];
-    if (turn.patient == userLogin.dni) {
-        let newPatientTurn = {
-            dr: turn.dr,
-            hour: turn.hour,
-            day: turn.day,
-            reasonConsultation: turn.reasonConsultation
+const storageAdminList = localStorage.getItem('admins')
+if (storageAdminList) {
+    let adminsList = JSON.parse(storageAdminList)
+
+    for (let i = 0; i < listTurns.length; i++) {
+        userLogin = JSON.parse(storageUserLogIn)
+        const turn = listTurns[i];
+        if (turn.patient == userLogin.dni) {
+            const drName = adminsList.find(admin => admin.dni == turn.dr)
+            let newPatientTurn = {
+                dr: `${drName.firstName} ${drName.lastName}`,
+                hour: turn.hour,
+                day: turn.day,
+                reasonConsultation: turn.reasonConsultation
+            }
+            listPatientTurn.push(newPatientTurn)
         }
-        listPatientTurn.push(newPatientTurn)
     }
 }
-
 function generateTableMyTurns(listPatientTurn) {
     tbodyDrTurnsTableDOM.innerHTML = ''
     listPatientTurn.forEach((turn, i) => {
@@ -309,29 +311,25 @@ formEditMyAccountDOM.onsubmit = (e) => {
     const id = listUsers.findIndex(u => u.email == userToEdit.email)
     const firstNameUserDOM = document.getElementById('user-first-name')
     const lastNameUserDOM = document.getElementById('user-last-name')
-    const dniUserDOM = document.getElementById('user-dni')
     const birthdateUserDOM = document.getElementById('user-birthdate')
     const genderUserDOM = document.getElementById('user-gender')
     const phoneUserDOM = document.getElementById('user-phone')
     const addressUserDOM = document.getElementById('user-address')
     const sureUserDOM = document.getElementById('user-sure')
     const nationalityUserDOM = document.getElementById('user-nationality')
-    const emailUserDOM = document.getElementById('user-email')
     const passwordUserDOM = document.getElementById('user-password')
 
     adminToEdit = null;
-    
-    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (dniUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (emailUserDOM.value) && (passwordUserDOM.value)){
+
+    if ((firstNameUserDOM.value) && (lastNameUserDOM.value) && (birthdateUserDOM.value) && (genderUserDOM.value) && (phoneUserDOM.value) && (addressUserDOM.value) && (sureUserDOM.value) && (nationalityUserDOM.value) && (passwordUserDOM.value)) {
         listUsers[id].firstName = firstNameUserDOM.value
         listUsers[id].lastName = lastNameUserDOM.value
-        listUsers[id].dni = dniUserDOM.value
         listUsers[id].birthdate = birthdateUserDOM.value
         listUsers[id].gender = genderUserDOM.value
         listUsers[id].phone = phoneUserDOM.value
         listUsers[id].address = addressUserDOM.value
         listUsers[id].pr = sureUserDOM.value
         listUsers[id].specialty = nationalityUserDOM.value
-        listUsers[id].email = emailUserDOM.value
         listUsers[id].password = passwordUserDOM.value
 
         localStorage.setItem('users', JSON.stringify(listUsers))
@@ -340,10 +338,10 @@ formEditMyAccountDOM.onsubmit = (e) => {
         const successEditToastDOM = document.getElementById('success-editMyAccount-toast')
         const toast = new bootstrap.Toast(successEditToastDOM)
         toast.show()
-        setTimeout(function() {
+        setTimeout(function () {
             location.reload()
         }, 3000)
-    }else {
+    } else {
         const errorToastDOM = document.getElementById('error-toast')
         const toast = new bootstrap.Toast(errorToastDOM)
         toast.show()

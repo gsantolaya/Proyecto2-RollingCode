@@ -19,7 +19,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./userAccount.html">Mi cuenta</a>
         </li>
     <li>
     <a class="dropdown-item" href="./bookAnAppointment.html">Solicitar turno</a>
@@ -51,7 +51,7 @@ if (storageUserLogIn) {
         </a>
         <ul class="dropdown-menu">
         <li>
-            <a class="dropdown-item" href="./error.html">Mi cuenta</a>
+            <a class="dropdown-item" href="./adminAccount.html">Mi cuenta</a>
         </li>
         <li>
         <a class="dropdown-item" href="./adminRegisters.html">Registros</a>
@@ -130,8 +130,6 @@ function loadEditMyAccount(admin) {
     firstNameAdminDOM.value = admin.firstName
     const lastNameAdminDOM = document.getElementById('admin-last-name')
     lastNameAdminDOM.value = admin.lastName
-    const dniAdminDOM = document.getElementById('admin-dni')
-    dniAdminDOM.value = admin.dni
     const birthdateAdminDOM = document.getElementById('admin-birthdate')
     birthdateAdminDOM.value = admin.birthdate
     const genderAdminDOM = document.getElementById('admin-gender')
@@ -144,8 +142,6 @@ function loadEditMyAccount(admin) {
     prAdminDOM.value = admin.pr
     const specialtyAdminDOM = document.getElementById('admin-specialty')
     specialtyAdminDOM.value = admin.specialty
-    const emailAdminDOM = document.getElementById('admin-email')
-    emailAdminDOM.value = admin.email
     const passwordAdminDOM = document.getElementById('admin-password')
     passwordAdminDOM.value = admin.password
     const statusAdminDOM = document.getElementById('admin-status')
@@ -362,30 +358,26 @@ formEditMyAccountDOM.onsubmit = (e) => {
     const id = listAdmins.findIndex(u => u.email == adminToEdit.email)
     const firstNameAdminDOM = document.getElementById('admin-first-name')
     const lastNameAdminDOM = document.getElementById('admin-last-name')
-    const dniAdminDOM = document.getElementById('admin-dni')
     const birthdateAdminDOM = document.getElementById('admin-birthdate')
     const genderAdminDOM = document.getElementById('admin-gender')
     const phoneAdminDOM = document.getElementById('admin-phone')
     const addressAdminDOM = document.getElementById('admin-address')
     const prAdminDOM = document.getElementById('admin-pr')
     const specialtyAdminDOM = document.getElementById('admin-specialty')
-    const emailAdminDOM = document.getElementById('admin-email')
     const passwordAdminDOM = document.getElementById('admin-password')
     const statusAdminDOM = document.getElementById('admin-status')
 
     adminToEdit = null;
     
-    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (dniAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (emailAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
+    if ((firstNameAdminDOM.value) && (lastNameAdminDOM.value) && (birthdateAdminDOM.value) && (genderAdminDOM.value) && (phoneAdminDOM.value) && (addressAdminDOM.value) && (prAdminDOM.value) && (specialtyAdminDOM.value) && (passwordAdminDOM.value) && (statusAdminDOM.value)) {
         listAdmins[id].firstName = firstNameAdminDOM.value
         listAdmins[id].lastName = lastNameAdminDOM.value
-        listAdmins[id].dni = dniAdminDOM.value
         listAdmins[id].birthdate = birthdateAdminDOM.value
         listAdmins[id].gender = genderAdminDOM.value
         listAdmins[id].phone = phoneAdminDOM.value
         listAdmins[id].address = addressAdminDOM.value
         listAdmins[id].pr = prAdminDOM.value
         listAdmins[id].specialty = specialtyAdminDOM.value
-        listAdmins[id].email = emailAdminDOM.value
         listAdmins[id].password = passwordAdminDOM.value
         listAdmins[id].status = statusAdminDOM.value
 
@@ -399,9 +391,9 @@ formEditMyAccountDOM.onsubmit = (e) => {
             location.reload()
         }, 3000)
     }else {
-        /*const errorToastDOM = document.getElementById('error-toast')
+        const errorToastDOM = document.getElementById('error-toast')
         const toast = new bootstrap.Toast(errorToastDOM)
-        toast.show()*/
+        toast.show()
         setTimeout(function() {
             location.reload()
         }, 3000);
