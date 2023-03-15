@@ -222,12 +222,16 @@ function generateMyAccount(myAdmin) {
     });
 }
 ///----------------------------------------------------------------------------------------------------------------------------------------------------
+const storageUsersList = localStorage.getItem('users')
+if (storageUsersList) {
+    let usersList = JSON.parse(storageUsersList)
 for (let i = 0; i < listTurns.length; i++) {
     adminLogin = JSON.parse(storageAdminLogIn)
     const turn = listTurns[i];
     if (turn.dr == adminLogin.dni) {
+        const patientName = usersList.find(user => user.dni == turn.patient)
         let newDrTurn = {
-            patient: turn.patient,
+            patient: `${patientName.firstName} ${patientName.lastName}`,
             hour: turn.hour,
             day: turn.day,
             reasonConsultation: turn.reasonConsultation
@@ -235,7 +239,7 @@ for (let i = 0; i < listTurns.length; i++) {
         listTurnsDr.push(newDrTurn)
     }
 }
-
+}
 function generateTableDrTurns(listTurnsDr) {
     tbodyDrTurnsTableDOM.innerHTML = ''
     listTurnsDr.forEach((turn, i) => {
