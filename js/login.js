@@ -137,6 +137,12 @@ formLogin.onsubmit = (e) => {
                 localStorage.setItem('userLogIn', JSON.stringify(user))
                 window.location = 'index.html'
             } else {
+                userEmail.setCustomValidity(":invalid")
+                userPassword.setCustomValidity(":invalid")
+                const invalidFeedbackEmailDOM = document.getElementById('invalid-feedback-email')
+                invalidFeedbackEmailDOM.innerHTML = ''
+                const invalidFeedbackPasswordDOM = document.getElementById('invalid-feedback-password')
+                invalidFeedbackPasswordDOM.innerHTML = ''  
                 const errorToastDOM = document.getElementById('error-toast')
                 const toastErrorBodyDOM = document.getElementById('toast-error-body')
                 toastErrorBodyDOM.innerHTML = 'El usuario y la contraseña ingresados no coinciden'
@@ -169,12 +175,12 @@ formLogin.onsubmit = (e) => {
                     localStorage.setItem('adminLogIn', JSON.stringify(admin))
                     window.location = 'index.html'
                 } else {
+                    userEmail.setCustomValidity(":invalid")
+                    userPassword.setCustomValidity(":invalid")
                     const invalidFeedbackEmailDOM = document.getElementById('invalid-feedback-email')
                     invalidFeedbackEmailDOM.innerHTML = ''
                     const invalidFeedbackPasswordDOM = document.getElementById('invalid-feedback-password')
-                    invalidFeedbackPasswordDOM.innerHTML = ''
-                    userEmail.setCustomValidity(":invalid")
-                    userPassword.setCustomValidity(":invalid")
+                    invalidFeedbackPasswordDOM.innerHTML = ''  
                     const errorToastDOM = document.getElementById('error-toast')
                     const toastErrorBodyDOM = document.getElementById('toast-error-body')
                     toastErrorBodyDOM.innerHTML = 'El usuario ingresado no se encuentra activado'
